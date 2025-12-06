@@ -1,0 +1,60 @@
+'use server';
+
+import prisma from '@/lib/prisma';
+import { revalidatePath } from 'next/cache';
+import { getOrganizationId } from './utils';
+import { Customer } from '@/app/[locale]/dashboard/crm/types';
+
+export async function createLead(data: {
+  fullName: string;
+  email: string;
+  phone?: string;
+  source?: string;
+}) {
+  try {
+    const organizationId = await getOrganizationId();
+
+    // Check if customer exists
+    let customer = await prisma.customer.findFirst({
+      where: {
+        organizationId,
+        email: data.email,
+      }
+    });
+
+    if (customer) {
+      return { success: true, customer, isNew: false };
+    }
+
+    customer = await prisma.customer.create({
+      data: {
+        organizationId,
+        fullName: data.fullName,
+        email: data.email,
+        phone: data.phone || '',
+        status: 'lead',
+        notes: `Lead captured via ${data.source || 'website widget'}`,
+      }
+    });
+
+    revalidatePath('/dashboard/crm');
+    return { success: true, customer, isNew: true };
+  } catch (error) {
+    console.error('Failed to create lead:', error);
+    return { success: false, error: 'Failed to create lead' };
+  }
+}
+
+export async function getCustomers() {
+  try {
+    const organizationId = await getOrganizationId();
+    const customers = await prisma.customer.findMany({
+      where: { organizationId },
+      orderBy: { createdAt: 'desc' },
+    });
+    return { success: true, data: customers as unknown as Customer[] };
+  } catch (error) {
+    console.error('Failed to fetch customers:', error);
+    return { success: false, error: 'Failed to fetch customers', data: [] };
+  }
+}

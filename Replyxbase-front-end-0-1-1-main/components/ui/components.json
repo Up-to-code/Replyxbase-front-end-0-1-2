@@ -1,0 +1,253 @@
+{
+  "version": "1.0.0",
+  "components": {
+    "Button": {
+      "file": "Button.tsx",
+      "description": "Primary button component with multiple variants and sizes",
+      "variants": ["primary", "secondary", "outline", "ghost", "danger", "success"],
+      "sizes": ["sm", "md", "lg", "icon"],
+      "props": {
+        "variant": "string - Button style variant",
+        "size": "string - Button size",
+        "loading": "boolean - Show loading spinner",
+        "icon": "React.ElementType - Optional icon component",
+        "disabled": "boolean - Disable button",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Button } from '@/components/ui/Button'",
+      "theme": {
+        "primary": "bg-[#005bbc] hover:bg-[#004a9f] text-white border border-[#005bbc]",
+        "secondary": "bg-white border-2 border-slate-200 text-slate-700 hover:bg-slate-50",
+        "outline": "bg-transparent border-2 border-slate-200 text-slate-700 hover:bg-slate-50"
+      }
+    },
+    "Input": {
+      "file": "Input.tsx",
+      "description": "Text input component with optional icon and error states",
+      "props": {
+        "error": "boolean - Show error state",
+        "icon": "React.ElementType - Optional left icon",
+        "type": "string - Input type (text, email, password, etc.)",
+        "placeholder": "string - Placeholder text",
+        "disabled": "boolean - Disable input",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Input } from '@/components/ui/Input'",
+      "theme": "bg-slate-50 border-2 border-slate-200 focus:bg-white focus:border-[#005bbc] rounded-xl"
+    },
+    "Card": {
+      "file": "Card.tsx",
+      "description": "Card container component with header, content, and footer sections",
+      "subcomponents": ["CardHeader", "CardTitle", "CardDescription", "CardContent", "CardFooter"],
+      "props": {
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'",
+      "theme": "bg-white rounded-2xl border-2 border-slate-200"
+    },
+    "Badge": {
+      "file": "Badge.tsx",
+      "description": "Badge component for labels, tags, and status indicators",
+      "variants": ["default", "secondary", "outline", "destructive", "success", "warning"],
+      "props": {
+        "variant": "string - Badge style variant",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Badge } from '@/components/ui/Badge'",
+      "theme": "Primary: bg-[#005bbc]/10 text-[#005bbc] border border-[#005bbc]/20"
+    },
+    "Avatar": {
+      "file": "Avatar.tsx",
+      "description": "Avatar component for user profile pictures",
+      "props": {
+        "src": "string - Image source URL",
+        "alt": "string - Alt text",
+        "size": "string - Size variant (sm, md, lg)",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Avatar } from '@/components/ui/Avatar'"
+    },
+    "Separator": {
+      "file": "Separator.tsx",
+      "description": "Horizontal or vertical divider line",
+      "props": {
+        "orientation": "string - 'horizontal' or 'vertical'",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Separator } from '@/components/ui/Separator'"
+    },
+    "SectionSkeleton": {
+      "file": "SectionSkeleton.tsx",
+      "description": "Loading skeleton component for sections",
+      "props": {
+        "height": "string - Height class (e.g., 'h-[400px]')",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { SectionSkeleton } from '@/components/ui/SectionSkeleton'"
+    },
+    "Modal": {
+      "file": "Modal.tsx",
+      "description": "Modal dialog component with overlay",
+      "subcomponents": ["ModalHeader", "ModalContent", "ModalFooter"],
+      "props": {
+        "open": "boolean - Control modal visibility",
+        "onClose": "function - Close handler",
+        "title": "string - Modal title",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Modal, ModalHeader, ModalContent, ModalFooter } from '@/components/ui/Modal'"
+    },
+    "Select": {
+      "file": "Select.tsx",
+      "description": "Select dropdown component",
+      "props": {
+        "options": "array - Array of {value, label} objects",
+        "value": "string - Selected value",
+        "onChange": "function - Change handler",
+        "placeholder": "string - Placeholder text",
+        "disabled": "boolean - Disable select",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Select } from '@/components/ui/Select'"
+    },
+    "Textarea": {
+      "file": "Textarea.tsx",
+      "description": "Multi-line text input component",
+      "props": {
+        "rows": "number - Number of rows",
+        "error": "boolean - Show error state",
+        "placeholder": "string - Placeholder text",
+        "disabled": "boolean - Disable textarea",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Textarea } from '@/components/ui/Textarea'"
+    },
+    "Alert": {
+      "file": "Alert.tsx",
+      "description": "Alert component for notifications and messages",
+      "variants": ["default", "success", "warning", "error", "info"],
+      "props": {
+        "variant": "string - Alert style variant",
+        "title": "string - Alert title",
+        "icon": "React.ElementType - Optional icon",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Alert } from '@/components/ui/Alert'"
+    },
+    "Checkbox": {
+      "file": "Checkbox.tsx",
+      "description": "Checkbox input component",
+      "props": {
+        "checked": "boolean - Checked state",
+        "onChange": "function - Change handler",
+        "label": "string - Checkbox label",
+        "disabled": "boolean - Disable checkbox",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Checkbox } from '@/components/ui/Checkbox'"
+    },
+    "Radio": {
+      "file": "Radio.tsx",
+      "description": "Radio button component",
+      "props": {
+        "checked": "boolean - Checked state",
+        "onChange": "function - Change handler",
+        "label": "string - Radio label",
+        "value": "string - Radio value",
+        "disabled": "boolean - Disable radio",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Radio } from '@/components/ui/Radio'"
+    },
+    "Switch": {
+      "file": "Switch.tsx",
+      "description": "Toggle switch component",
+      "props": {
+        "checked": "boolean - Checked state",
+        "onChange": "function - Change handler",
+        "label": "string - Switch label",
+        "disabled": "boolean - Disable switch",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Switch } from '@/components/ui/Switch'"
+    },
+    "Tabs": {
+      "file": "Tabs.tsx",
+      "description": "Tab navigation component",
+      "subcomponents": ["TabsList", "TabsTrigger", "TabsContent"],
+      "props": {
+        "defaultValue": "string - Default active tab",
+        "value": "string - Controlled active tab",
+        "onValueChange": "function - Change handler",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/Tabs'"
+    },
+    "Tooltip": {
+      "file": "Tooltip.tsx",
+      "description": "Tooltip component for hover information",
+      "props": {
+        "content": "string - Tooltip content",
+        "side": "string - Position (top, bottom, left, right)",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Tooltip } from '@/components/ui/Tooltip'"
+    },
+    "Spinner": {
+      "file": "Spinner.tsx",
+      "description": "Loading spinner component",
+      "props": {
+        "size": "string - Size variant (sm, md, lg)",
+        "className": "string - Additional CSS classes"
+      },
+      "usage": "import { Spinner } from '@/components/ui/Spinner'"
+    }
+  },
+  "designSystem": {
+    "colors": {
+      "primary": "#005bbc",
+      "primaryDark": "#004a9f",
+      "accent": "#ffd600",
+      "slate": {
+        "50": "bg-slate-50",
+        "200": "border-slate-200",
+        "600": "text-slate-600",
+        "700": "text-slate-700",
+        "800": "text-slate-800",
+        "900": "text-slate-900"
+      }
+    },
+    "spacing": {
+      "padding": {
+        "sm": "p-4",
+        "md": "p-6",
+        "lg": "p-8"
+      },
+      "margin": {
+        "sm": "m-4",
+        "md": "m-6",
+        "lg": "m-8"
+      }
+    },
+    "borders": {
+      "standard": "border-2 border-slate-200",
+      "primary": "border-2 border-[#005bbc]/20",
+      "accent": "border-2 border-[#ffd600]/20"
+    },
+    "radius": {
+      "sm": "rounded-lg",
+      "md": "rounded-xl",
+      "lg": "rounded-2xl",
+      "full": "rounded-full"
+    },
+    "rules": [
+      "Always use border-2 for borders (never border or border-1)",
+      "No shadows - use borders instead",
+      "Primary color: #005bbc for main actions",
+      "Accent color: #ffd600 for highlights",
+      "Use slate color palette for text and backgrounds",
+      "Consistent padding: p-4, p-6, p-8",
+      "Rounded corners: rounded-xl or rounded-2xl"
+    ]
+  }
+}

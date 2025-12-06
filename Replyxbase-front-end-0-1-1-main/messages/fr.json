@@ -1,0 +1,1311 @@
+{
+  "Common": {
+    "languageSwitchLabel": "Langue",
+    "localeEnglish": "Anglais",
+    "localeArabic": "Arabe",
+    "localeFrench": "Français",
+    "localeSpanish": "Espagnol",
+    "getStarted": "Commencer",
+    "watchDemo": "Voir la démo",
+    "logIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "contactSales": "Contacter les ventes",
+    "startFreeTrial": "Commencer l'essai gratuit",
+    "copyright": "© {year} Replyxbase Inc. Tous droits réservés.",
+    "allSystemsOperational": "Tous les systèmes opérationnels",
+    "dashboard": "Tableau de bord",
+    "pricing": "Tarification",
+    "integrations": "Intégrations",
+    "docs": "Documentation",
+    "menu": "Menu",
+    "notFound": {
+      "title": "Page non trouvée",
+      "description": "Oups ! La page que vous recherchez semble avoir disparu. Revenons sur le bon chemin.",
+      "goHome": "Aller au tableau de bord",
+      "viewAgents": "Voir les agents",
+      "helpfulLinks": "Ou essayez l'un de ces liens :"
+    }
+  },
+  "Landing": {
+    "Metadata": {
+      "title": "Replyxbase - AI Customer Support & Sales Automation",
+      "description": "Automate your customer support and sales with AI agents. Connect WhatsApp, Telegram, and more."
+    },
+    "Hero": {
+      "ariaLabel": "Section héro",
+      "badge": {
+        "text": "Agent IA tout-en-un",
+        "ariaLabel": "Badge agent IA tout-en-un"
+      },
+      "heading": {
+        "line1": "Agents IA pour des expériences client magiques"
+      },
+      "description": "Replyxbase est la plateforme complète pour créer et déployer des agents de support IA pour votre entreprise.",
+      "highlights": {
+        "ariaLabel": "Points clés",
+        "llm": "Conçu pour les LLM",
+        "llmDesc": "Modèles de langage avec capacités de raisonnement pour des réponses efficaces",
+        "simple": "Conçu pour la simplicité",
+        "simpleDesc": "Créez, gérez et déployez des agents IA facilement, même sans compétences techniques",
+        "secure": "Conçu pour la sécurité",
+        "secureDesc": "Chiffrement robuste et normes de conformité strictes pour votre tranquillité d'esprit",
+        "complete": "Plateforme complète",
+        "completeDesc": "Tout ce dont vous avez besoin pour créer et déployer des agents de support IA"
+      },
+      "HowItWorks": {
+        "title": "Une solution complète pour l'IA conversationnelle",
+        "description": "Avec Replyxbase, vos clients peuvent facilement trouver des réponses, résoudre des problèmes et prendre des mesures significatives grâce à des conversations fluides pilotées par l'IA.",
+        "step1": {
+          "title": "Créer et déployer",
+          "desc": "Formez un agent sur vos données commerciales, configurez les actions, puis déployez pour vos clients"
+        },
+        "step2": {
+          "title": "L'agent résout les problèmes",
+          "desc": "Votre agent IA gère les requêtes clients et résout les problèmes automatiquement"
+        },
+        "step3": {
+          "title": "Affiner et optimiser",
+          "desc": "Améliorez continuellement les performances de votre agent basées sur de vraies interactions"
+        },
+        "step4": {
+          "title": "Transférer aux humains",
+          "desc": "L'escalade intelligente transfère les problèmes complexes aux agents humains si nécessaire"
+        },
+        "step5": {
+          "title": "Examiner les analyses",
+          "desc": "Obtenez des insights et optimisez les performances de l'agent avec des analyses détaillées"
+        }
+      },
+      "Integrations": {
+        "title": "Fonctionne avec vos outils",
+        "description": "Intégrez diverses sources de données pour enrichir les connaissances et les capacités de votre agent.",
+        "website": {
+          "desc": "Connectez le widget de chat de votre site web"
+        },
+        "whatsapp": {
+          "desc": "Intégrez l'API WhatsApp Business"
+        },
+        "messenger": {
+          "desc": "Connectez Facebook Messenger"
+        },
+        "email": {
+          "desc": "Synchronisez avec votre système de messagerie"
+        },
+        "slack": {
+          "desc": "Ajoutez l'agent à votre espace de travail Slack"
+        },
+        "crm": {
+          "desc": "Connectez-vous à votre système CRM"
+        },
+        "learnMore": "En savoir plus",
+        "features": {
+          "title": "Créez l'agent IA client parfait",
+          "description": "Replyxbase vous donne tous les outils nécessaires pour former votre agent IA parfait et le connecter à vos systèmes.",
+          "api": {
+            "title": "Comparer les modèles IA",
+            "desc": "Expérimentez avec divers modèles et configurations pour vous assurer d'avoir la meilleure configuration pour votre cas d'usage."
+          },
+          "actions": {
+            "title": "Escalade intelligente",
+            "desc": "Donnez à votre agent des instructions en langage naturel sur quand escalader les requêtes vers les agents humains."
+          },
+          "analytics": {
+            "title": "Rapports avancés",
+            "desc": "Obtenez des insights et optimisez les performances de l'agent avec des analyses détaillées."
+          }
+        }
+      },
+      "advantages": {
+        "title": "Fonctionne comme les meilleurs agents de service client",
+        "description": "Replyxbase est conçu pour fonctionner avec vos outils et flux de travail existants.",
+        "personalized": {
+          "title": "Réponses personnalisées",
+          "desc": "Votre agent connaît l'utilisateur connecté et récupère ses informations pour des réponses personnalisées"
+        },
+        "instant": {
+          "title": "Actions instantanées",
+          "desc": "Exécutez des actions immédiatement basées sur les demandes et le contexte des clients"
+        },
+        "empathetic": {
+          "title": "Empathique et conforme à la marque",
+          "desc": "Maintient la voix de votre marque et fournit des interactions empathiques et humaines"
+        },
+        "secure": {
+          "title": "Garde-fous d'entreprise",
+          "desc": "Les garde-fous alimentés par l'IA empêchent la désinformation et maintiennent le professionnalisme"
+        }
+      },
+      "platforms": {
+        "title": "Fonctionne sur tous les canaux",
+        "description": "Intégrez facilement votre agent IA avec diverses plateformes, garantissant une fonctionnalité fluide sur tous les canaux.",
+        "ariaLabel": "Plateformes prises en charge",
+        "website": {
+          "label": "Site web",
+          "text": "Fonctionne sur le site web"
+        },
+        "whatsapp": {
+          "label": "WhatsApp",
+          "text": "Fonctionne sur WhatsApp"
+        }
+      },
+      "cta": {
+        "buildAgent": "Créer votre agent",
+        "getStarted": {
+          "text": "Commencer",
+          "ariaLabel": "Commencer avec l'agent IA"
+        },
+        "watchDemo": {
+          "text": "Voir la démo",
+          "ariaLabel": "Regarder la vidéo de démonstration"
+        },
+        "noCreditCard": "Aucune carte de crédit requise"
+      },
+      "trust": {
+        "ariaLabel": "Indicateurs de confiance",
+        "title": "Approuvé par des entreprises du monde entier",
+        "customer": "Client",
+        "businesses": "10 000+",
+        "using": "Utilisent notre agent IA",
+        "worldwide": "entreprises dans le monde",
+        "rating": "Note des clients"
+      },
+      "highlights": {
+        "title": "La plateforme complète pour les agents de support IA",
+        "llm": {
+          "title": "Conçu pour les LLM",
+          "desc": "Modèles de langage avec capacités de raisonnement pour des réponses efficaces aux requêtes complexes."
+        },
+        "simplicity": {
+          "title": "Conçu pour la simplicité",
+          "desc": "Créez, gérez et déployez facilement des agents IA, même sans compétences techniques."
+        },
+        "security": {
+          "title": "Conçu pour la sécurité",
+          "desc": "Profitez de la tranquillité d'esprit avec un chiffrement robuste et des normes de conformité strictes."
+        }
+      },
+      "showcase": {
+        "ai": {
+          "title": "Alimenté par l'IA",
+          "desc": "IA avancée qui comprend le contexte et fournit des réponses intelligentes"
+        },
+        "fast": {
+          "title": "Ultra rapide",
+          "desc": "Réponses instantanées pour garder vos clients engagés 24/7"
+        },
+        "team": {
+          "title": "Prêt pour l'équipe",
+          "desc": "Transfert transparent vers les agents humains si nécessaire"
+        },
+        "growth": {
+          "title": "Croissance rapide",
+          "desc": "Développez votre entreprise sans augmenter votre équipe de support"
+        }
+      }
+    },
+    "Marquee": {
+      "realEstate": "Real Estate Empire",
+      "ecommerce": "E-commerce Giants",
+      "healthcare": "Healthcare Heroes",
+      "technology": "Tech Innovators",
+      "finance": "Finance Leaders",
+      "whatsapp": "WhatsApp Business",
+      "telegram": "Telegram Bot",
+      "website": "Web Chat"
+    },
+    "TrustedBy": {
+      "title": "Trusted by leading companies",
+      "companies": {
+        "techflow": "TechFlow",
+        "growthlabs": "GrowthLabs",
+        "elevate": "Elevate",
+        "globalcorp": "GlobalCorp",
+        "nextgen": "NextGen Systems",
+        "futureworks": "FutureWorks"
+      }
+    },
+    "Features": {
+      "title": "One Platform. Unlimited Growth.",
+      "subtitle": "Everything you need to manage customer conversations, sales, and support in one place.",
+      "Inbox": {
+        "badge": "Unified Inbox",
+        "title": "All your conversations in one place",
+        "description": "Stop switching between apps. Manage WhatsApp, Telegram, and Website messages from a single interface.",
+        "benefit1": "User-friendly interface",
+        "benefit2": "Auto-assign chats to team",
+        "benefit3": "Instant notifications",
+        "messages": {
+          "msg1": { "sender": "Sarah Ahmed", "text": "Hi, can I book an appointment?" },
+          "msg2": { "sender": "Mike Ali", "text": "Thanks, the service was great!" },
+          "msg3": { "sender": "Site Visitor", "text": "What are your pricing plans?" }
+        },
+        "Mock": {
+          "headerTitle": "Replyxbase Inbox",
+          "statusTitle": "Status",
+          "statusOnline": "All Systems Operational",
+          "aiFormPlaceholder": "Type your reply..."
+        }
+      },
+      "Agents": {
+        "badge": "AI Agents",
+        "title": "Hire a team that never sleeps",
+        "description": "Create custom AI agents to answer queries, book appointments, and qualify leads 24/7.",
+        "feature1Title": "Custom Training",
+        "feature1Desc": "Train your agent on your own data.",
+        "feature2Title": "Multilingual",
+        "feature2Desc": "Speak to customers in their preferred language.",
+        "feature3Title": "Seamless Integration",
+        "feature3Desc": "Works with your existing tools.",
+        "cta": "See Agents in Action",
+        "Mock": {
+          "salesBot": "Sales Bot Alpha",
+          "leadGen": "Lead Gen",
+          "supportHelper": "Support Helper",
+          "customerService": "Customer Service",
+          "active": "Active",
+          "conversations": "Conversations",
+          "conversion": "Conversion"
+        }
+      },
+      "CRM": {
+        "badge": "Smart CRM",
+        "title": "Turn conversations into customers.",
+        "description": "Automatically capture leads and build detailed customer profiles from every interaction.",
+        "feature1Title": "Auto-Capture",
+        "feature1Desc": "Save contact details automatically.",
+        "feature2Title": "Interaction History",
+        "feature2Desc": "View every past conversation.",
+        "Mock": {
+          "name": "Sarah Jenkins",
+          "company": "TechFlow",
+          "vip": "VIP",
+          "activeDeal": "Active Deal",
+          "enterprise": "Enterprise",
+          "recentActivity": "Recent Activity",
+          "demoCall": "Demo Call Scheduled",
+          "invoiceSent": "Invoice Sent",
+          "tomorrow2pm": "Tomorrow 2:00 PM",
+          "twoHoursAgo": "2 hours ago",
+          "bookingTitle": "Book a Call",
+          "bookingDate": "Select Date",
+          "bookingTime": "Select Time",
+          "confirmBooking": "Confirm Booking"
+        }
+      },
+      "Analytics": {
+        "badge": "Analytics",
+        "title": "Data-driven decisions.",
+        "description": "Track team performance, response times, and customer satisfaction in real-time.",
+        "feature1Title": "Live Metrics",
+        "feature1Desc": "Monitor active conversations and agent status.",
+        "feature2Title": "Performance Reports",
+        "feature2Desc": "Detailed insights to improve your support.",
+        "Mock": {
+          "performanceOverview": "Performance Overview",
+          "last7Days": "Last 7 Days",
+          "responseTime": "Response Time",
+          "csatScore": "CSAT Score",
+          "resolutionRate": "Resolution Rate"
+        }
+      },
+      "Omnichannel": {
+        "title": "Central Intelligence for Your Business",
+        "subtitle": "Watch how Replyxbase unifies every customer interaction into a single, powerful stream of actionable data."
+      }
+    },
+    "PlatformShowcase": {
+      "title": "Libérez la puissance des agents IA",
+      "description": "Intégrez facilement votre agent IA avec diverses plateformes, garantissant une fonctionnalité fluide sur tous les canaux.",
+      "website": {
+        "title": "Chat sur site web",
+        "desc": "Connectez-vous à votre site web"
+      },
+      "whatsapp": {
+        "title": "Bot WhatsApp",
+        "desc": "Connectez-vous à WhatsApp"
+      },
+      "messenger": {
+        "title": "Bot Messenger",
+        "desc": "Connectez-vous à Messenger"
+      },
+      "learnMore": "En savoir plus"
+    },
+    "Integrations": {
+      "title": "Fonctionne avec vos outils",
+      "description": "Intégrez diverses sources de données pour enrichir les connaissances et capacités de votre agent.",
+      "features": {
+        "seamless": {
+          "title": "Intégrations transparentes",
+          "desc": "Connectez-vous aux outils et plateformes populaires que votre équipe utilise déjà."
+        },
+        "monitoring": {
+          "title": "Surveillance et sécurité 24/7",
+          "desc": "Surveillance en temps réel et sécurité de niveau entreprise pour vos intégrations."
+        },
+        "security": {
+          "title": "Sécurité de niveau entreprise",
+          "desc": "Connexions sécurisées avec chiffrement et conformité aux normes de l'industrie."
+        }
+      }
+    },
+    "Testimonials": {
+      "title": "Ce que les gens disent",
+      "subtitle": "Avec plus de 10 000 clients servis, voici ce qu'ils ont à dire",
+      "customers": "10 000+ Clients",
+      "reviews": "140+ avis 5 étoiles",
+      "testimonial1": {
+        "quote": "Replyxbase est un signal fort de l'évolution du support client. C'est un adepte précoce de l'approche agentique, qui deviendra de plus en plus efficace, fiable et proéminent.",
+        "author": "Greg Kogan",
+        "role": "PDG",
+        "company": "Pinecone"
+      },
+      "testimonial2": {
+        "quote": "Un outil surpuissant construit avec la pile OP.",
+        "author": "Sarah Jenkins",
+        "role": "Responsable du support",
+        "company": "TechFlow"
+      },
+      "testimonial3": {
+        "quote": "L'intégration CRM est transparente. Fortement recommandé.",
+        "author": "Emma Wilson",
+        "role": "Directrice des ventes",
+        "company": "Elevate"
+      }
+    },
+    "Security": {
+      "title": "Sécurité et confidentialité de niveau entreprise",
+      "description": "Vos données ne sont accessibles qu'à votre agent IA et ne sont jamais utilisées pour entraîner des modèles. Toutes les données sont chiffrées au repos et en transit.",
+      "dataOwnership": {
+        "title": "Vos données vous appartiennent",
+        "desc": "Vos données ne sont accessibles qu'à votre agent IA et ne sont jamais utilisées pour entraîner des modèles."
+      },
+      "encryption": {
+        "title": "Chiffrement des données",
+        "desc": "Toutes les données sont chiffrées au repos et en transit. Nous utilisons des algorithmes de chiffrement standard de l'industrie."
+      },
+      "integrations": {
+        "title": "Intégrations sécurisées",
+        "desc": "Nous utilisons des variables vérifiées pour garantir que les utilisateurs ne peuvent accéder qu'à leurs propres données dans vos systèmes."
+      }
+    },
+    "Pricing": {
+      "title": "Tarification simple et transparente",
+      "subtitle": "Commencez gratuitement, évoluez avec votre croissance",
+      "month": "mois",
+      "mostPopular": "Le plus populaire",
+      "free": "Gratuit",
+      "freeDesc": "Parfait pour commencer",
+      "starter": "Starter",
+      "starterDesc": "Pour les équipes en croissance",
+      "pro": "Pro",
+      "proDesc": "Pour les entreprises",
+      "enterprise": "Entreprise",
+      "enterpriseDesc": "Tout illimité",
+      "monthly": "Mensuel",
+      "yearly": "Annuel",
+      "save": "Économisez 20%",
+      "features": {
+        "1agent": "1 Agent IA",
+        "1000conv": "1,000 messages/mois",
+        "website": "Intégration site web",
+        "whatsapp": "Intégration WhatsApp",
+        "basicSupport": "Support de base",
+        "5agents": "5 Agents IA",
+        "10kconv": "10,000 messages/mois",
+        "5members": "5 membres d'équipe",
+        "allIntegrations": "Toutes les intégrations",
+        "prioritySupport": "Support prioritaire",
+        "advancedAnalytics": "Analyses avancées",
+        "unlimitedAgents": "Agents IA illimités",
+        "50kconv": "50,000 messages/mois",
+        "unlimitedMembers": "Membres d'équipe illimités",
+        "customIntegrations": "Intégrations personnalisées",
+        "support247": "Support 24/7",
+        "advancedCRM": "Fonctionnalités CRM avancées",
+        "unlimitedConv": "Messages illimités",
+        "whiteLabel": "Option white-label",
+        "dedicatedSupport": "Support dédié",
+        "customSLA": "SLA personnalisé"
+      },
+      "terms": {
+        "text": "Tous les plans incluent nos fonctionnalités de base.",
+        "viewTerms": "Voir les conditions",
+        "and": "et",
+        "privacyPolicy": "politique de confidentialité",
+        "noCreditCard": "Aucune carte de crédit requise",
+        "cancelAnytime": "Annulez à tout moment",
+        "guarantee": "Garantie de 14 jours"
+      },
+      "monthly": "Mensuel",
+      "yearly": "Annuel",
+      "save": "Économisez 20%",
+      "community": "Support communautaire",
+      "3agents": "3 Agents IA",
+      "100conv": "100 Conversations/mois",
+      "priority": "Support prioritaire",
+      "analytics": "Analyses avancées",
+      "branding": "Marque personnalisée",
+      "successManager": "Gestionnaire de succès dédié",
+      "sla": "SLA 99.9%"
+    },
+    "CTA": {
+      "badge": "Prêt à commencer ?",
+      "title": "Faites de l'expérience client votre avantage concurrentiel",
+      "subtitle": "Utilisez Replyxbase pour offrir des expériences de support exceptionnelles qui vous distinguent de la concurrence.",
+      "noCreditCard": "Aucune carte de crédit requise",
+      "freeTrial": "Essai gratuit de 14 jours",
+      "cancelAnytime": "Annuler à tout moment"
+    },
+    "Footer": {
+      "desc": "L'avenir de la communication client.",
+      "product": "Produit",
+      "company": "Entreprise",
+      "resources": "Ressources",
+      "legal": "Légal",
+      "newsletter": {
+        "title": "Restez informé",
+        "description": "Recevez les dernières actualités et mises à jour dans votre boîte de réception.",
+        "placeholder": "Entrez votre email",
+        "button": "S'abonner"
+      },
+      "links": {
+        "features": "Features",
+        "pricing": "Pricing",
+        "integrations": "Integrations",
+        "changelog": "Changelog",
+        "about": "About",
+        "careers": "Careers",
+        "blog": "Blog",
+        "contact": "Contact",
+        "docs": "Documentation",
+        "api": "API Reference",
+        "community": "Community",
+        "help": "Help Center",
+        "privacy": "Privacy",
+        "terms": "Terms",
+        "security": "Security",
+        "status": "System Status",
+        "resources": "Resources",
+        "company": "Company"
+      }
+    },
+    "Widget": {
+      "callout": "Chat with AI",
+      "title": "Replyxbase AI",
+      "online": "Online",
+      "welcome": "Hello! 👋 I'm Replyxbase's AI assistant. How can I help you today?",
+      "placeholder": "Type your message...",
+      "poweredBy": "Powered by Replyxbase",
+      "aiResponseDefault": "I can help you with that! Replyxbase is designed to streamline your customer support. Would you like a demo?",
+      "aiResponsePricing": "Our plans start at $0/mo. Pro plan is $39/mo. Visit our pricing page for details!",
+      "aiResponseWhatsapp": "Yes, we fully support WhatsApp Business API! You can manage everything from here."
+    }
+  },
+  "Auth": {
+    "Login": {
+      "title": "Welcome back",
+      "subtitle": "Enter your email to sign in to your account",
+      "google": "Google",
+      "github": "GitHub",
+      "or": "Or continue with",
+      "emailPlaceholder": "name@example.com",
+      "passwordPlaceholder": "Password",
+      "submit": "Sign In",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign Up",
+      "error": "Something went wrong. Please try again.",
+      "success": "Signed in successfully!",
+      "email": "Email",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "signIn": "Sign In",
+      "signUp": "Sign Up"
+    },
+    "Signup": {
+      "title": "Create an account",
+      "subtitle": "Start your free trial today",
+      "namePlaceholder": "Full Name",
+      "submit": "Create Account",
+      "hasAccount": "Already have an account?",
+      "signInLink": "Sign In",
+      "error": "Something went wrong. Please try again.",
+      "success": "Account created successfully!",
+      "fullName": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "signOut": "Sign Out"
+    },
+    "LogoutModal": {
+      "title": "Sign Out",
+      "description": "Are you sure you want to sign out? You will need to sign in again to access your account.",
+      "cancel": "Cancel",
+      "confirm": "Sign Out"
+    },
+    "Branding": {
+      "welcome": "Welcome to the future of business communication",
+      "description": "Connect with your customers across all platforms in one unified inbox powered by AI."
+    },
+    "CreateOrganization": {
+      "title": "Create Organization",
+      "subtitle": "Set up your workspace to get started",
+      "nameLabel": "Organization Name",
+      "namePlaceholder": "e.g. Acme Corp",
+      "slugLabel": "Workspace URL",
+      "slugPlaceholder": "acme-corp",
+      "slugDescription": "This will be your unique identifier",
+      "submit": "Create Workspace",
+      "success": "Workspace Created!",
+      "error": "Failed to create organization",
+      "terms": "By creating an organization, you agree to our Terms of Service",
+      "slugAvailable": "Workspace URL is available",
+      "slugTaken": "This URL is already taken",
+      "slugChecking": "Checking availability...",
+      "slugTooShort": "URL must be at least 3 characters",
+      "slugInvalid": "URL can only contain lowercase letters, numbers, and hyphens"
+    }
+  },
+  "Dashboard": {
+    "createAgent": "Create Agent",
+    "existingAgents": "Existing Agents",
+    "Header": {
+      "organizations": "Organisations",
+      "available": "Disponibles",
+      "createOrganization": "Créer une organisation",
+      "notifications": "Notifications",
+      "unreadMessages": "{count} non lus",
+      "markAllRead": "Tout marquer comme lu",
+      "viewAllNotifications": "Voir toutes les notifications",
+      "Notifications": {
+        "messageFromSarah": "Nouveau message de Sarah",
+        "paymentReceived": "Paiement reçu pour la commande #2842",
+        "systemUpdate": "Mise à jour du système disponible",
+        "securityAlert": "Alerte de sécurité : Nouvelle connexion détectée",
+        "subscriptionRenew": "Votre abonnement se renouvelle dans 7 jours",
+        "newFollower": "Nouveau follower : TechCorp Inc",
+        "downloadCompleted": "Téléchargement terminé : Rapport mensuel",
+        "2minAgo": "Il y a 2 min",
+        "1hourAgo": "Il y a 1 heure",
+        "2hoursAgo": "Il y a 2 heures",
+        "3hoursAgo": "Il y a 3 heures",
+        "5hoursAgo": "Il y a 5 heures",
+        "6hoursAgo": "Il y a 6 heures",
+        "1dayAgo": "Il y a 1 jour"
+      },
+      "ProfileMenu": {
+        "profile": "Profil",
+        "profileDesc": "Voir votre profil personnel",
+        "billing": "Facturation",
+        "billingDesc": "Gérer la facturation et l'abonnement",
+        "security": "Sécurité",
+        "securityDesc": "Paramètres de sécurité et de confidentialité",
+        "downloads": "Téléchargements",
+        "downloadsDesc": "Vos fichiers téléchargés",
+        "settings": "Paramètres",
+        "settingsDesc": "Paramètres du compte et de l'application",
+        "help": "Aide",
+        "helpDesc": "Obtenir de l'aide et du support",
+        "signOut": "Se déconnecter",
+        "signOutDesc": "Se déconnecter de votre compte",
+        "LogoutModal": {
+          "title": "Se déconnecter",
+          "description": "Êtes-vous sûr de vouloir vous déconnecter ? Vous devrez vous reconnecter pour accéder à votre compte.",
+          "cancel": "Annuler",
+          "confirm": "Se déconnecter"
+        }
+      }
+    },
+    "Notifications": {
+      "messageFromSarah": "New message from Sarah",
+      "paymentReceived": "Payment received for order #2842",
+      "systemUpdate": "System update available",
+      "securityAlert": "Security alert: New login detected",
+      "subscriptionRenew": "Your subscription renews in 7 days",
+      "newFollower": "New follower: TechCorp Inc",
+      "downloadCompleted": "Download completed: Monthly report",
+      "2minAgo": "2 min ago",
+      "1hourAgo": "1 hour ago",
+      "2hoursAgo": "2 hours ago",
+      "3hoursAgo": "3 hours ago",
+      "5hoursAgo": "5 hours ago",
+      "6hoursAgo": "6 hours ago",
+      "1dayAgo": "1 day ago"
+    },
+    "Sidebar": {
+      "dashboard": "Dashboard",
+      "home": "Home",
+      "inbox": "Inbox",
+      "agents": "Agents",
+      "crm": "CRM",
+      "settings": "Settings"
+    },
+    "Home": {
+      "title": "Dashboard",
+      "subtitle": "Welcome back! Here's what's happening with your business today.",
+      "downloadReport": "Download Report",
+      "createAgent": "Create New Agent",
+      "stats": {
+        "totalConversations": "Total Conversations",
+        "activeUsers": "Active Users",
+        "avgResponseTime": "Avg Response Time",
+        "satisfactionRate": "Satisfaction Rate",
+        "conversations": "Conversations",
+        "revenue": "Revenue",
+        "leads": "Leads",
+        "customers": "Customers",
+        "loading": "Loading chart data...",
+        "messages": "Total Messages",
+        "sales": "Sales Conversions",
+        "csat": "CSAT Score",
+        "saved": "Hours Saved"
+      },
+      "charts": {
+        "title": "Conversation Volume",
+        "last7Days": "Last 7 Days",
+        "last30Days": "Last 30 Days",
+        "thisYear": "This Year",
+        "loading": "Loading chart data..."
+      },
+      "agents": {
+        "title": "Active Agents",
+        "viewAll": "View All",
+        "agent": "Agent",
+        "status": "Status",
+        "conversations": "Conversations",
+        "conversion": "Conversion"
+      },
+      "bookings": {
+        "title": "Upcoming Bookings",
+        "upcoming": "{count} Upcoming",
+        "viewCalendar": "View Calendar",
+        "noBookings": "No upcoming bookings"
+      },
+      "channels": {
+        "title": "Connected Channels",
+        "connectNew": "Connect New Channel"
+      },
+      "activity": {
+        "title": "Recent Activity"
+      }
+    },
+    "Agents": {
+      "title": "Agents",
+      "subtitle": "Gérez vos agents IA et leurs capacités.",
+      "createAgent": "Créer un agent",
+      "searchPlaceholder": "Rechercher des agents...",
+      "filter": "Filtrer",
+      "createNew": "Créer un nouvel agent",
+      "createNewDesc": "Déployez un nouvel agent IA pour votre entreprise.",
+      "noAgentsTitle": "Aucun agent trouvé",
+      "noAgentsSubtitle": "Commencez par créer votre premier agent IA.",
+      "createFirstAgent": "Créer le premier agent",
+      "Card": {
+        "conversations": "Conversations",
+        "users": "Utilisateurs",
+        "satisfaction": "Satisfaction",
+        "viewDashboard": "Voir le tableau de bord"
+      },
+      "Detail": {
+        "title": "Détails de l'agent",
+        "notFoundTitle": "Agent introuvable",
+        "notFoundSubtitle": "L'agent que vous recherchez n'existe pas ou a été supprimé.",
+        "backToAgents": "Retour aux agents",
+        "lastActive": "Dernière activité {time}",
+        "tabs": {
+          "overview": "Vue d'ensemble",
+          "knowledge": "Connaissances",
+          "integrations": "Intégrations",
+          "settings": "Paramètres"
+        },
+        "status": {
+          "pause": "Pause"
+        },
+        "knowledge": {
+          "add": "Ajouter une source",
+          "title": "Base de connaissances",
+          "subtitle": "Gérez les documents que votre agent utilise pour répondre aux questions.",
+          "searchPlaceholder": "Rechercher des fichiers...",
+          "table": {
+            "name": "Nom",
+            "type": "Type",
+            "dateAdded": "Date d'ajout",
+            "status": "Statut",
+            "actions": "Actions"
+          }
+        },
+        "integrations": {
+          "title": "Intégrations",
+          "subtitle": "Connectez votre agent à différents canaux et plateformes.",
+          "add": "Ajouter une intégration",
+          "status": {
+            "active": "Actif",
+            "available": "Disponible"
+          },
+          "manage": "Gérer l'intégration",
+          "connect": "Connecter",
+          "whatsapp": {
+            "description": "Connectez votre numéro professionnel pour automatiser les réponses sur WhatsApp.",
+            "title": "Intégration WhatsApp",
+            "subtitle": "Connectez votre agent à l'API WhatsApp Business.",
+            "configSteps": "Étapes de configuration",
+            "configStepsDesc": "Suivez ces étapes pour connecter votre numéro.",
+            "step1": "Identifiants API",
+            "step1Desc": "Allez sur le portail développeur Meta, sélectionnez votre application et copiez votre ID de numéro de téléphone et votre jeton d'accès.",
+            "step2": "Configuration Webhook",
+            "step2Desc": "Copiez ces valeurs dans la section \"Configuration\" des paramètres de votre application Meta pour recevoir des messages.",
+            "phoneNumberId": "ID du numéro de téléphone",
+            "phoneNumberIdPlaceholder": "ex. 104928...",
+            "accessToken": "Jeton d'accès permanent",
+            "accessTokenPlaceholder": "EAAG...",
+            "callbackUrl": "URL de rappel",
+            "verifyToken": "Jeton de vérification",
+            "codeCopied": "Code copié dans le presse-papiers !",
+            "settingsSaved": "Paramètres WhatsApp enregistrés avec succès",
+            "settingsSaveError": "Échec de l'enregistrement des paramètres",
+            "saving": "Enregistrement...",
+            "saveConfiguration": "Enregistrer la configuration"
+          },
+          "website": {
+            "description": "Intégrez l'assistant IA directement sur votre site Web.",
+            "title": "Constructeur de widget",
+            "subtitle": "Personnalisez le widget de chat de votre site Web.",
+            "launcherTextDefault": "Discutez avec nous",
+            "welcomeMessageDefault": "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
+            "actionDefaultLabel": "Réserver un appel",
+            "newAction": "Nouvelle action",
+            "codeCopied": "Code copié dans le presse-papiers !",
+            "settingsSaved": "Paramètres du widget enregistrés avec succès",
+            "settingsSaveError": "Échec de l'enregistrement des paramètres",
+            "saving": "Enregistrement...",
+            "saveChanges": "Enregistrer les modifications",
+            "tabs": {
+              "design": "Design",
+              "content": "Contenu",
+              "settings": "Paramètres",
+              "install": "Installer"
+            },
+            "design": {
+              "brandColor": "Couleur de la marque",
+              "launcherStyle": "Style du lanceur",
+              "circle": "Cercle",
+              "pill": "Pilule",
+              "launcherTextPlaceholder": "Texte du lanceur (ex. Discutez avec nous)",
+              "position": "Position",
+              "bottomLeft": "En bas à gauche",
+              "bottomRight": "En bas à droite",
+              "customLogo": "Logo personnalisé",
+              "logoPlaceholder": "https://example.com/logo.png",
+              "logoHint": "Collez une URL vers l'image de votre logo."
+            },
+            "content": {
+              "welcomeMessage": "Message de bienvenue",
+              "welcomeMessagePlaceholder": "Entrez le premier message...",
+              "faqs": "FAQ",
+              "questionsCount": "{count} questions",
+              "questionPlaceholder": "Question (ex. Quels sont vos horaires ?)",
+              "answerPlaceholder": "Réponse...",
+              "addQuestion": "Ajouter une question"
+            },
+            "settings": {
+              "language": "Langue",
+              "english": "Anglais (LTR)",
+              "arabic": "Arabe (RTL)",
+              "actions": "Actions",
+              "addAction": "Ajouter une action",
+              "actionLabel": "Étiquette",
+              "actionType": "Type",
+              "booking": "Réservation",
+              "call": "Appel",
+              "link": "Lien",
+              "actionIcon": "Icône",
+              "iconCalendar": "Calendrier",
+              "iconPhone": "Téléphone",
+              "iconUser": "Utilisateur",
+              "iconLink": "Lien",
+              "iconMessage": "Message",
+              "phoneNumber": "Numéro de téléphone",
+              "url": "URL",
+              "phonePlaceholder": "+1 234 567 890",
+              "urlPlaceholder": "https://example.com",
+              "allowedDomains": "Domaines autorisés",
+              "domainsPlaceholder": "example.com, myapp.com",
+              "domainsHint": "Liste séparée par des virgules des domaines où le widget peut être chargé. Laissez vide pour autoriser tous.",
+              "removeBranding": "Supprimer la marque",
+              "brandingHint": "Masquer le pied de page \"Propulsé par ReplyXBase\"."
+            },
+            "install": {
+              "title": "Instructions d'installation",
+              "description": "Copiez le code ci-dessous et collez-le dans la balise",
+              "descriptionCode": "head",
+              "descriptionEnd": "de votre site Web."
+            },
+            "preview": {
+              "livePreview": "Aperçu en direct",
+              "connected": "Connecté",
+              "supportAgent": "Agent de support",
+              "online": "En ligne",
+              "chat": "Chat",
+              "help": "Aide",
+              "noFaqs": "Aucune FAQ ajoutée pour le moment.",
+              "typeMessage": "Tapez un message...",
+              "poweredBy": "Propulsé par ReplyXBase"
+            }
+          },
+          "messenger": {
+            "description": "Automatisez les réponses aux messages de votre page Facebook."
+          },
+          "slack": {
+            "description": "Ajoutez l'agent à votre espace de travail Slack pour le support interne."
+          },
+          "telegram": {
+            "description": "Créez un bot Telegram alimenté par votre agent IA."
+          }
+        },
+        "knowledge": {
+          "title": "Base de connaissances",
+          "subtitle": "Gérez les documents que votre agent utilise pour répondre aux questions.",
+          "add": "Ajouter une source",
+          "searchPlaceholder": "Rechercher des fichiers...",
+          "table": {
+            "name": "Nom",
+            "type": "Type",
+            "dateAdded": "Date d'ajout",
+            "status": "Statut",
+            "actions": "Actions"
+          }
+        },
+        "overview": {
+          "stats": {
+            "totalConversations": "Total des conversations",
+            "avgResponseTime": "Temps de réponse moyen",
+            "satisfactionRate": "Taux de satisfaction",
+            "activeUsers": "Utilisateurs actifs"
+          },
+          "chart": {
+            "title": "Volume de conversations",
+            "subtitle": "Aperçu de l'activité hebdomadaire"
+          },
+          "activity": {
+            "title": "Activité récente",
+            "replied": "Répondu à la requête du client",
+            "booked": "Réservé un appel de démonstration",
+            "statusChanged": "Statut de l'agent changé en Actif",
+            "handledCall": "Géré un appel entrant",
+            "time2min": "Il y a 2 min",
+            "time15min": "Il y a 15 min",
+            "time1hour": "Il y a 1 heure",
+            "time2hours": "Il y a 2 heures"
+          }
+        },
+        "settings": {
+          "general": {
+            "title": "Informations générales",
+            "agentName": "Nom de l'agent",
+            "agentNamePlaceholder": "ex. Bot de support",
+            "role": "Rôle / Titre",
+            "rolePlaceholder": "ex. Succès client",
+            "systemPrompt": "Invite système",
+            "instructions": "Instructions",
+            "systemPromptPlaceholder": "Vous êtes un assistant utile...",
+            "systemPromptHint": "Définissez la personnalité, le ton et les contraintes de l'agent.",
+            "saveChanges": "Enregistrer les modifications"
+          },
+          "danger": {
+            "title": "Zone de danger",
+            "deleteTitle": "Supprimer l'agent",
+            "deleteDescription": "Supprimer définitivement cet agent et toutes ses données. Cette action ne peut pas être annulée.",
+            "deleteButton": "Supprimer l'agent"
+          }
+        },
+        "retry": "Réessayer"
+      },
+      "Create": {
+        "title": "Créer un nouvel agent",
+        "subtitle": "Créez un agent IA personnalisé adapté aux besoins de votre entreprise.",
+        "backToAgents": "Retour aux agents",
+        "successTitle": "Agent créé avec succès !",
+        "successSubtitle": "Votre agent IA est prêt à être utilisé. Vous pouvez le configurer davantage depuis le tableau de bord de l'agent.",
+        "goToDashboard": "Aller au tableau de bord",
+        "steps": {
+          "1": "Informations de base",
+          "2": "Connaissances et formation"
+        },
+        "basicInfo": {
+          "title": "Informations de base",
+          "subtitle": "Configurez le nom, le modèle et les capacités principales de votre agent."
+        },
+        "form": {
+          "name": "Nom de l'agent",
+          "namePlaceholder": "ex. Bot de support, Assistant commercial",
+          "model": "Modèle IA",
+          "capabilities": "Capacités"
+        },
+        "knowledge": {
+          "title": "Connaissances et formation",
+          "subtitle": "Formez votre agent avec des connaissances sectorielles et des instructions personnalisées.",
+          "systemPromptLabel": "Invite système",
+          "improveWithAI": "Améliorer avec l'IA",
+          "systemPromptPlaceholder": "Vous êtes un assistant utile pour...",
+          "uploadTitle": "Télécharger la base de connaissances",
+          "uploadDesc": "Téléchargez des documents, des PDF ou connectez un site Web pour former votre agent."
+        },
+        "industry": "Secteur",
+        "common": {
+          "back": "Retour",
+          "create": "Créer l'agent",
+          "next": "Suivant",
+          "creating": "Création..."
+        },
+        "capabilitiesList": {
+          "crm": "Intégration CRM",
+          "booking": "Gestion des réservations",
+          "support": "Support client"
+        },
+        "models": {
+          "gpt4": "GPT-4o",
+          "gpt4Desc": "Idéal pour le raisonnement complexe",
+          "claude": "Claude 3.5 Sonnet",
+          "claudeDesc": "Naturel et articulé",
+          "gemini": "Gemini 1.5 Pro",
+          "geminiDesc": "Rapide et multimodal"
+        },
+        "industries": {
+          "realEstate": "Immobilier",
+          "ecommerce": "E-commerce",
+          "healthcare": "Santé",
+          "technology": "Technologie",
+          "finance": "Finance",
+          "other": "Autre"
+        }
+      },
+      "Stats": {
+        "overview": "Overview",
+        "tabs": {
+          "overview": "Overview",
+          "knowledge": "Knowledge",
+          "integrations": "Integrations",
+          "settings": "Settings"
+        },
+        "knowledge": {
+          "title": "Knowledge Base",
+          "subtitle": "Manage agent's knowledge sources",
+          "manage": "Manage",
+          "add": "Add Source"
+        },
+        "integrations": {
+          "title": "Active Integrations",
+          "subtitle": "Manage connected channels",
+          "add": "Add Channel"
+        }
+      }
+    },
+    "CRM": {
+      "title": "Bookings & CRM",
+      "subtitle": "Manage your appointments and customer relationships",
+      "newCustomer": "New Customer",
+      "searchPlaceholder": "Search customers...",
+      "status": "Status",
+      "service": "Service",
+      "dateRange": "Date Range",
+      "export": "Export",
+      "filter": "Filter",
+      "table": "Table",
+      "kanban": "Kanban",
+      "calendar": "Calendar",
+      "Stats": {
+        "totalBookings": "Total Bookings",
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "activeCustomers": "Active Customers",
+        "revenue": "Revenue",
+        "growth": "Growth",
+        "cancelled": "Cancelled"
+      },
+      "Form": {
+        "newTitle": "New Booking",
+        "editTitle": "Edit Booking",
+        "customerInfo": "Customer Info",
+        "fullName": "Full Name",
+        "email": "Email",
+        "phone": "Phone",
+        "company": "Company",
+        "bookingDetails": "Booking Details",
+        "date": "Date",
+        "startTime": "Start Time",
+        "duration": "Duration (min)",
+        "people": "People",
+        "serviceType": "Service Type",
+        "status": "Status",
+        "additionalInfo": "Additional Info",
+        "specialRequests": "Special Requests",
+        "internalNotes": "Internal Notes",
+        "cancel": "Cancel",
+        "create": "Create Booking",
+        "update": "Update Booking"
+      },
+      "Header": {
+        "title": "Bookings Management",
+        "subtitle": "Manage all your bookings in one place",
+        "refresh": "Refresh",
+        "newBooking": "New Booking"
+      },
+      "ViewToggle": {
+        "table": "Table View",
+        "calendar": "Calendar View",
+        "kanban": "Kanban"
+      },
+      "Filters": {
+        "searchPlaceholder": "Search by customer name, email, or phone...",
+        "filters": "Filters",
+        "newestFirst": "Newest First",
+        "oldestFirst": "Oldest First",
+        "customerAZ": "Customer A-Z",
+        "customerZA": "Customer Z-A",
+        "priority": "Priority",
+        "statusFilter": "Status Filter",
+        "allStatuses": "All Statuses",
+        "serviceType": "Service Type",
+        "allServices": "All Services",
+        "dateRange": "Date Range",
+        "advancedFilters": "Advanced Filters",
+        "addFilterRule": "Add Filter Rule",
+        "noAdvancedFilters": "No advanced filters applied.",
+        "Dynamic": {
+          "price": "Price",
+          "people": "People",
+          "duration": "Duration",
+          "equals": "Equals",
+          "gt": "Greater Than",
+          "lt": "Less Than",
+          "valuePlaceholder": "Value..."
+        }
+      },
+      "Pagination": {
+        "showing": "Showing {start}-{end} of {total} items",
+        "show": "Show:"
+      },
+      "Status": {
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "cancelled": "Cancelled",
+        "completed": "Completed",
+        "no-show": "No Show"
+      },
+      "Priority": {
+        "normal": "Normal",
+        "high": "High",
+        "urgent": "Urgent"
+      },
+      "Bookings": {
+        "Table": {
+          "customer": "Customer",
+          "contact": "Contact",
+          "dateTime": "Date & Time",
+          "service": "Service",
+          "status": "Status",
+          "actions": "Actions",
+          "viewDetails": "View Details",
+          "deleteBooking": "Delete Booking"
+        },
+        "Details": {
+          "title": "Booking Details",
+          "customerDetails": "Customer Details",
+          "bookingInfo": "Booking Information",
+          "internalNotes": "Internal Notes",
+          "tags": "Tags",
+          "activityLog": "Activity Log",
+          "chatTooltip": "Chat with Customer",
+          "editTooltip": "Edit Booking",
+          "deleteTooltip": "Delete Booking",
+          "closeTooltip": "Close",
+          "status": "Status",
+          "priority": "Priority",
+          "rating": "Rating",
+          "serviceType": "Service Type",
+          "duration": "Duration",
+          "people": "People",
+          "occasion": "Occasion",
+          "location": "Location",
+          "specialRequests": "Special Requests",
+          "minutes": "minutes"
+        },
+        "DeleteModal": {
+          "title": "Delete Booking",
+          "subtitle": "This action cannot be undone",
+          "confirmation": "Are you sure you want to delete this booking? All associated data will be permanently removed.",
+          "cancel": "Cancel",
+          "delete": "Delete Booking"
+        }
+      },
+      "Activities": {
+        "Form": {
+          "note": "Note",
+          "call": "Call",
+          "email": "Email",
+          "meeting": "Meeting",
+          "placeholder": "Add a {type} note..."
+        },
+        "Log": {
+          "noActivities": "No activities recorded yet.",
+          "loggedBy": "Logged by {name}"
+        }
+      },
+      "Calendar": {
+        "today": "Today",
+        "month": "Month",
+        "week": "Week",
+        "day": "Day",
+        "more": "+{count} more",
+        "Drawer": {
+          "title": "Bookings for {date}",
+          "noBookings": "No bookings for this date",
+          "people": "{count} people",
+          "viewDetails": "View Details"
+        }
+      },
+      "Kanban": {
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "completed": "Completed",
+        "cancelled": "Cancelled",
+        "overdue": "Overdue",
+        "viewDetails": "View Details",
+        "noBookings": "No bookings"
+      }
+    },
+    "Settings": {
+      "title": "Paramètres",
+      "subtitle": "Gérez les préférences de votre compte et les paramètres de l'espace de travail.",
+      "nav": {
+        "profile": "Profil",
+        "account": "Compte",
+        "notifications": "Notifications",
+        "appearance": "Apparence",
+        "billing": "Facturation"
+      },
+      "Profile": {
+        "title": "Paramètres du profil",
+        "description": "Mettez à jour vos informations personnelles et votre photo de profil.",
+        "form": {
+          "fullName": "Nom complet",
+          "email": "Adresse e-mail",
+          "bio": "Biographie",
+          "save": "Enregistrer les modifications",
+          "cancel": "Annuler"
+        }
+      },
+      "Organization": {
+        "title": "Paramètres de l'organisation",
+        "description": "Gérez les détails de votre espace de travail et votre image de marque.",
+        "form": {
+          "name": "Nom de l'organisation",
+          "domain": "Domaine de l'espace de travail",
+          "logo": "Logo de l'organisation",
+          "save": "Enregistrer les modifications"
+        }
+      },
+      "Team": {
+        "title": "Membres de l'équipe",
+        "description": "Gérez les membres de votre équipe et leurs rôles.",
+        "invite": "Inviter un membre",
+        "table": {
+          "member": "Membre",
+          "role": "Rôle",
+          "status": "Statut",
+          "actions": "Actions"
+        },
+        "roles": {
+          "owner": "Propriétaire",
+          "admin": "Administrateur",
+          "member": "Membre"
+        },
+        "Modals": {
+          "AddMember": {
+            "title": "Inviter un membre de l'équipe",
+            "email": "Adresse e-mail",
+            "role": "Rôle",
+            "cancel": "Annuler",
+            "submit": "Envoyer l'invitation"
+          },
+          "RemoveMember": {
+            "title": "Supprimer le membre",
+            "confirmation": "Êtes-vous sûr de vouloir supprimer {name} de l'équipe ? Cette action ne peut pas être annulée.",
+            "cancel": "Annuler",
+            "confirm": "Supprimer le membre"
+          },
+          "EditMember": {
+            "title": "Modifier le membre",
+            "role": "Rôle",
+            "cancel": "Annuler",
+            "save": "Enregistrer les modifications"
+          }
+        }
+      },
+      "Notifications": {
+        "title": "Notifications",
+        "description": "Gérez la façon dont vous recevez les notifications.",
+        "email": {
+          "title": "Notifications par e-mail",
+          "description": "Recevez des e-mails concernant l'activité de votre compte."
+        },
+        "push": {
+          "title": "Notifications push",
+          "description": "Recevez des notifications push sur vos appareils."
+        }
+      },
+      "Appearance": {
+        "title": "Apparence",
+        "description": "Personnalisez l'apparence et la sensation de votre tableau de bord.",
+        "theme": {
+          "title": "Thème"
+        },
+        "language": {
+          "title": "Langue",
+          "description": "Choisissez votre langue préférée pour l'interface.",
+          "note": "Les modifications seront appliquées immédiatement et la page sera actualisée."
+        }
+      },
+      "Billing": {
+        "title": "Facturation et plans",
+        "description": "Gérez votre abonnement et vos méthodes de paiement.",
+        "paymentMethods": {
+          "title": "Méthodes de paiement"
+        },
+        "history": {
+          "title": "Historique de facturation"
+        },
+        "upgradeModal": {
+          "title": "Mettre à niveau le plan",
+          "cancel": "Annuler",
+          "upgrade": "Mettre à niveau"
+        }
+      }
+    },
+    "Inbox": {
+      "searchPlaceholder": "Search messages...",
+      "online": "Online",
+      "offline": "Offline",
+      "activeNow": "Active now",
+      "away": "Away",
+      "typing": "typing...",
+      "typeMessage": "Type a message...",
+      "aiActive": "AI Agent is active...",
+      "send": "Send",
+      "aiMode": "AI Agent",
+      "humanMode": "Human",
+      "goToCRM": "Go to CRM Profile",
+      "source": "Source",
+      "contextMenu": {
+        "delete": "Delete conversation",
+        "markRead": "Mark as read",
+        "markUnread": "Mark as unread",
+        "archive": "Archive"
+      },
+      "emptyState": {
+        "title": "Select a conversation",
+        "subtitle": "Choose a conversation from the sidebar to start chatting"
+      }
+    }
+  }
+}

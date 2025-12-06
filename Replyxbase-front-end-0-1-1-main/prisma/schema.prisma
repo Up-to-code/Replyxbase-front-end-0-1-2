@@ -1,0 +1,305 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String       @id
+  name          String
+  email         String       @unique
+  emailVerified Boolean      @default(false)
+  image         String?
+  metadata      Json?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  credits       Int          @default(0)
+  accounts      Account[]
+  invitations   Invitation[]
+  members       Member[]
+  sessions      Session[]
+
+  @@map("user")
+}
+
+model Session {
+  id                   String   @id
+  expiresAt            DateTime
+  token                String   @unique
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  ipAddress            String?
+  userAgent            String?
+  userId               String
+  activeOrganizationId String?
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}
+
+model Organization {
+  id          String       @id
+  name        String
+  slug        String       @unique
+  logo        String?
+  createdAt   DateTime
+  metadata    String?
+  crmSettings Json?        @default("{\"columns\": [{\"id\": \"pending\", \"title\": \"Pending\"}, {\"id\": \"confirmed\", \"title\": \"Confirmed\"}, {\"id\": \"completed\", \"title\": \"Completed\"}, {\"id\": \"cancelled\", \"title\": \"Cancelled\"}, {\"id\": \"no-show\", \"title\": \"No Show\"}]}")
+  planId      String?
+  agents      Agent[]
+  bookings    Booking[]
+  customers   Customer[]
+  invitations Invitation[]
+  members     Member[]
+  plan        plan?        @relation(fields: [planId], references: [id])
+  pipelines   Pipeline[]
+  deals       Deal[]
+
+  @@index([planId])
+  @@map("organization")
+}
+
+model Agent {
+  id                String       @id @default(cuid())
+  organizationId    String
+  name              String
+  role              String       @default("assistant")
+  status            String       @default("active")
+  avatar            String?
+  isWebsiteEnabled  Boolean      @default(false)
+  isWhatsappEnabled Boolean      @default(false)
+  isDmEnabled       Boolean      @default(false)
+  config            Json?        @default("{}")
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  organization      Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@map("agent")
+}
+
+model Member {
+  id             String       @id
+  organizationId String
+  userId         String
+  role           String       @default("member")
+  createdAt      DateTime
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("member")
+}
+
+model Invitation {
+  id             String       @id
+  organizationId String
+  email          String
+  role           String?
+  status         String       @default("pending")
+  expiresAt      DateTime
+  inviterId      String
+  user           User         @relation(fields: [inviterId], references: [id], onDelete: Cascade)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@map("invitation")
+}
+
+model Customer {
+  id             String       @id @default(cuid())
+  organizationId String
+  fullName       String
+  email          String
+  phone          String
+  company        String?
+  address        String?
+  notes          String?
+  avatar         String?
+  loyaltyTier    String?      @default("bronze")
+  totalBookings  Int          @default(0)
+  totalSpent     Float        @default(0)
+  lastVisit      DateTime?
+  preferences    String[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  status         String       @default("lead")
+  activities     Activity[]
+  bookings       Booking[]
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  crmNotes       Note[]       @relation("CustomerNotes")
+  deals          Deal[]
+
+  @@index([organizationId])
+  @@map("customer")
+}
+
+model Booking {
+  id              String       @id @default(cuid())
+  organizationId  String
+  customerId      String
+  date            DateTime
+  startTime       String
+  endTime         String
+  duration        Int
+  people          Int          @default(1)
+  position        Int          @default(0)
+  serviceType     String
+  occasion        String?
+  specialRequests String?
+  location        String?
+  status          String       @default("pending")
+  priority        String       @default("normal")
+  staffAssigned   String?
+  notes           String?
+  rating          Int?
+  feedback        String?
+  source          String?
+  tags            String[]
+  price           Float?
+  deposit         Float?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  activities      Activity[]
+  customer        Customer     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  organization    Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  crmNotes        Note[]       @relation("BookingNotes")
+
+  @@index([organizationId])
+  @@index([customerId])
+  @@map("booking")
+}
+
+model Note {
+  id         String    @id @default(cuid())
+  content    String
+  isInternal Boolean   @default(true)
+  priority   String    @default("low")
+  tags       String[]
+  createdAt  DateTime  @default(now())
+  createdBy  String
+  customerId String?
+  bookingId  String?
+  booking    Booking?  @relation("BookingNotes", fields: [bookingId], references: [id], onDelete: Cascade)
+  customer   Customer? @relation("CustomerNotes", fields: [customerId], references: [id], onDelete: Cascade)
+
+  @@map("note")
+}
+
+model Activity {
+  id          String    @id @default(cuid())
+  type        String
+  content     String
+  status      String    @default("completed") // "pending", "completed", "cancelled"
+  scheduledAt DateTime?
+  createdAt   DateTime  @default(now())
+  createdBy   String
+  bookingId   String?
+  customerId  String?
+  dealId      String?
+  booking     Booking?  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  customer    Customer? @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  deal        Deal?     @relation(fields: [dealId], references: [id], onDelete: Cascade)
+
+  @@map("activity")
+}
+
+model Pipeline {
+  id             String       @id @default(cuid())
+  organizationId String
+  name           String
+  isDefault      Boolean      @default(false)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  stages         Stage[]
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@map("pipeline")
+}
+
+model Stage {
+  id         String   @id @default(cuid())
+  pipelineId String
+  name       String
+  order      Int
+  color      String   @default("#005bbc")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  pipeline   Pipeline @relation(fields: [pipelineId], references: [id], onDelete: Cascade)
+  deals      Deal[]
+
+  @@index([pipelineId])
+  @@map("stage")
+}
+
+model Deal {
+  id             String       @id @default(cuid())
+  organizationId String
+  title          String
+  value          Float        @default(0)
+  currency       String       @default("USD")
+  probability    Int          @default(0)
+  expectedClose  DateTime?
+  stageId        String
+  customerId     String?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  stage          Stage        @relation(fields: [stageId], references: [id], onDelete: Cascade)
+  customer       Customer?    @relation(fields: [customerId], references: [id], onDelete: SetNull)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  activities     Activity[]
+
+  @@index([organizationId])
+  @@index([stageId])
+  @@index([customerId])
+  @@map("deal")
+}
+
+model plan {
+  id           String         @id
+  name         String
+  slug         String         @unique
+  orgLimit     Int            @default(1)
+  agentLimit   Int            @default(1)
+  price        Int            @default(0)
+  currency     String         @default("USD")
+  features     Json?          @default("{}")
+  isActive     Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime
+  organization Organization[]
+}

@@ -1,0 +1,1285 @@
+{
+  "Common": {
+    "languageSwitchLabel": "اللغة",
+    "localeEnglish": "الإنجليزية",
+    "localeArabic": "العربية",
+    "localeFrench": "الفرنسية",
+    "localeSpanish": "الإسبانية",
+    "getStarted": "ابدأ الآن",
+    "watchDemo": "شاهد العرض",
+    "logIn": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "contactSales": "تواصل مع المبيعات",
+    "startFreeTrial": "ابدأ التجربة المجانية",
+    "copyright": "© {year} Replyxbase Inc. جميع الحقوق محفوظة.",
+    "allSystemsOperational": "جميع الأنظمة تعمل",
+    "dashboard": "لوحة التحكم",
+    "pricing": "الأسعار",
+    "integrations": "التكاملات",
+    "docs": "التوثيق",
+    "menu": "القائمة",
+    "notFound": {
+      "title": "الصفحة غير موجودة",
+      "description": "عذراً! يبدو أن الصفحة التي تبحث عنها غير موجودة. دعنا نعيدك إلى المسار الصحيح.",
+      "goHome": "الذهاب إلى لوحة التحكم",
+      "viewAgents": "عرض الوكلاء",
+      "helpfulLinks": "أو جرب أحد هذه:"
+    }
+  },
+  "Landing": {
+    "Metadata": {
+      "title": "Replyxbase - أتمتة دعم العملاء والمبيعات بالذكاء الاصطناعي",
+      "description": "قم بأتمتة دعم العملاء والمبيعات باستخدام وكلاء الذكاء الاصطناعي. اربط واتساب، تيليجرام، والمزيد."
+    },
+    "Hero": {
+      "ariaLabel": "قسم البطل",
+      "badge": {
+        "text": "وكيل ذكاء اصطناعي شامل",
+        "ariaLabel": "شارة وكيل ذكاء اصطناعي شامل"
+      },
+      "heading": {
+        "line1": "وكلاء ذكاء اصطناعي لتجارب عملاء سحرية"
+      },
+      "description": "Replyxbase هي المنصة الكاملة لإنشاء ونشر وكلاء دعم الذكاء الاصطناعي لعملك.",
+      "benefits": {
+        "ariaLabel": "الفوائد الرئيسية",
+        "instant": "ردود فورية على مدار الساعة",
+        "bookings": "حجز المواعيد تلقائيًا",
+        "crm": "تكامل CRM كامل",
+        "analytics": "تحليلات الأعمال في الوقت الفعلي"
+      },
+      "platforms": {
+        "ariaLabel": "المنصات المدعومة",
+        "website": {
+          "label": "الموقع",
+          "text": "يعمل على الموقع"
+        },
+        "whatsapp": {
+          "label": "واتساب",
+          "text": "يعمل على واتساب"
+        }
+      },
+      "cta": {
+        "buildAgent": "أنشئ وكيلك",
+        "getStarted": {
+          "text": "ابدأ الآن",
+          "ariaLabel": "ابدأ مع وكيل الذكاء الاصطناعي"
+        },
+        "watchDemo": {
+          "text": "شاهد العرض التوضيحي",
+          "ariaLabel": "شاهد فيديو العرض التوضيحي"
+        },
+        "noCreditCard": "لا حاجة لبطاقة ائتمان"
+      },
+      "trust": {
+        "ariaLabel": "مؤشرات الثقة",
+        "title": "موثوق به من قبل الشركات في جميع أنحاء العالم",
+        "customer": "عميل",
+        "businesses": "أكثر من 10,000",
+        "using": "تستخدم وكيلنا للذكاء الاصطناعي",
+        "worldwide": "شركة في جميع أنحاء العالم",
+        "rating": "تقييم العملاء"
+      },
+      "highlights": {
+        "title": "المنصة الكاملة لوكلاء دعم الذكاء الاصطناعي",
+        "llm": {
+          "title": "مصمم خصيصًا لـ LLM",
+          "desc": "نماذج لغة مع قدرات استدلالية لردود فعالة على الاستفسارات المعقدة."
+        },
+        "simplicity": {
+          "title": "مصمم للبساطة",
+          "desc": "أنشئ وأدر ونشر وكلاء الذكاء الاصطناعي بسهولة، حتى بدون مهارات تقنية."
+        },
+        "security": {
+          "title": "مصمم للأمان",
+          "desc": "استمتع براحة البال مع التشفير القوي ومعايير الامتثال الصارمة."
+        }
+      },
+      "showcase": {
+        "ai": {
+          "title": "مدعوم بالذكاء الاصطناعي",
+          "desc": "ذكاء اصطناعي متقدم يفهم السياق ويقدم ردودًا ذكية"
+        },
+        "fast": {
+          "title": "سريع جدًا",
+          "desc": "ردود فورية لإبقاء عملائك منخرطين على مدار الساعة"
+        },
+        "team": {
+          "title": "جاهز للفريق",
+          "desc": "نقل سلس إلى الوكلاء البشريين عند الحاجة"
+        },
+        "growth": {
+          "title": "نمو سريع",
+          "desc": "نمو عملك دون زيادة فريق الدعم"
+        }
+      },
+      "Mock": {
+        "title": "دعم العملاء بالذكاء الاصطناعي",
+        "subtitle": "الإجابة على الأسئلة تلقائياً",
+        "live": "مباشر",
+        "customer": "عميل",
+        "time2min": "منذ دقيقتين",
+        "time5min": "منذ 5 دقائق",
+        "message1": "أريد حجز عرض توضيحي. هل يمكنك المساعدة؟",
+        "message2": "ما هي خطط الأسعار لديكم؟",
+        "response1": "رائع! يمكنني مساعدتك في حجز عرض توضيحي. الأوقات المتاحة:",
+        "response2": "تبدأ خططنا من 0 دولار/شهر. إليك ما هو مشمول:",
+        "times": "اليوم 2:00 مساءً • غداً 10:00 صباحاً • الجمعة 3:00 مساءً",
+        "pricing": "مجاني: وكيل واحد، 1000 رسالة • المبتدئ: 19 دولار/شهر • المحترف: 29 دولار/شهر",
+        "delivered": "تم التسليم",
+        "placeholder": "اكتب سؤالك...",
+        "responseTime": "يستجيب الذكاء الاصطناعي في 0.8 ثانية",
+        "salesBot": "بوت المبيعات ألفا",
+        "leadGen": "توليد العملاء",
+        "supportHelper": "مساعد الدعم",
+        "customerService": "خدمة العملاء",
+        "active": "نشط",
+        "conversations": "المحادثات",
+        "conversion": "التحويل"
+      }
+    },
+    "Marquee": {
+        "whatsapp": "WhatsApp",
+        "telegram": "Telegram",
+        "slack": "Slack",
+        "trello": "Trello",
+        "gmail": "Gmail",
+        "website": "Website",
+        "figma": "Figma",
+        "realEstate": "العقارات",
+        "ecommerce": "التجارة الإلكترونية",
+        "healthcare": "الرعاية الصحية",
+        "technology": "التكنولوجيا",
+        "finance": "المالية",
+        "other": "أخرى"
+    },
+    "TrustedBy": {
+      "title": "موثوق من قبل شركات رائدة",
+      "companies": {
+        "techflow": "TechFlow",
+        "growthlabs": "GrowthLabs",
+        "elevate": "Elevate",
+        "globalcorp": "GlobalCorp",
+        "nextgen": "NextGen Systems",
+        "futureworks": "FutureWorks"
+      }
+    },
+    "Features": {
+      "title": "منصة واحدة. نمو لا محدود.",
+      "subtitle": "كل ما تحتاجه لإدارة محادثات العملاء، المبيعات، والدعم الفني في مكان واحد.",
+      "Inbox": {
+        "badge": "صندوق الوارد الموحد",
+        "title": "كل محادثاتك في مكان واحد",
+        "description": "لا مزيد من التنقل بين التطبيقات. أدر رسائل واتساب، تيليجرام، والموقع الإلكتروني من واجهة واحدة.",
+        "benefit1": "واجهة عربية بالكامل وسهلة الاستخدام",
+        "benefit2": "تعيين المحادثات للفريق تلقائياً",
+        "benefit3": "تنبيهات فورية للرسائل الجديدة",
+        "messages": {
+          "msg1": { "sender": "سارة أحمد", "text": "مرحباً، هل يمكنني حجز موعد؟" },
+          "msg2": { "sender": "محمد علي", "text": "شكراً لك، الخدمة كانت ممتازة!" },
+          "msg3": { "sender": "زائر الموقع", "text": "ما هي خطط الأسعار لديكم؟" }
+        },
+        "Mock": {
+          "headerTitle": "صندوق وارد Replyxbase",
+          "statusTitle": "الحالة",
+          "statusOnline": "جميع الأنظمة تعمل",
+          "aiFormPlaceholder": "اكتب ردك..."
+        }
+      },
+      "Agents": {
+        "badge": "وكلاء الذكاء الاصطناعي",
+        "title": "وظف فريقاً لا ينام",
+        "description": "أنشئ وكلاء ذكاء اصطناعي مخصصين للرد على الاستفسارات، حجز المواعيد، وتأهيل العملاء المحتملين.",
+        "feature1Title": "تدريب مخصص",
+        "feature1Desc": "درب وكيلك على بيانات شركتك الخاصة.",
+        "feature2Title": "تعدد اللغات",
+        "feature2Desc": "تحدث مع عملائك بأي لغة يفضلونها.",
+        "feature3Title": "تكامل سلس",
+        "feature3Desc": "يعمل مع أدواتك الحالية دون تعقيد.",
+        "cta": "شاهد الوكلاء في العمل",
+        "Mock": {
+          "salesBot": "بوت المبيعات ألفا",
+          "leadGen": "توليد العملاء",
+          "supportHelper": "مساعد الدعم",
+          "customerService": "خدمة العملاء",
+          "active": "نشط",
+          "conversations": "المحادثات",
+          "conversion": "التحويل"
+        },
+        "Card": {
+          "status": "الحالة",
+          "live": "مباشر"
+        }
+      },
+      "CRM": {
+        "badge": "إدارة علاقات العملاء",
+        "title": "حول المحادثات إلى عملاء دائمين",
+        "description": "نظام CRM مدمج يحفظ بيانات العملاء تلقائياً من المحادثات، مما يساعدك على فهم جمهورك وبناء علاقات أقوى.",
+        "feature1Title": "التقاط البيانات",
+        "feature1Desc": "حفظ الأسماء، الأرقام، والبريد تلقائياً.",
+        "feature2Title": "سجل كامل",
+        "feature2Desc": "عرض تاريخ التفاعلات لكل عميل.",
+        "Mock": {
+          "name": "سارة أحمد",
+          "company": "تيك فلو",
+          "vip": "VIP",
+          "activeDeal": "صفقة نشطة",
+          "enterprise": "مؤسسة",
+          "recentActivity": "النشاط الأخير",
+          "demoCall": "تم جدولة مكالمة تجريبية",
+          "invoiceSent": "تم إرسال الفاتورة",
+          "tomorrow2pm": "غداً الساعة 2:00 م",
+          "twoHoursAgo": "منذ ساعتين",
+          "bookingTitle": "حجز مكالمة",
+          "bookingDate": "اختر التاريخ",
+          "bookingTime": "اختر الوقت",
+          "confirmBooking": "تأكيد الحجز"
+        }
+      },
+      "Analytics": {
+        "badge": "التقارير والتحليلات",
+        "title": "قرارات مبنية على الأرقام",
+        "description": "لوحة تحكم شاملة تعطيك رؤية واضحة عن أداء فريقك، سرعة الاستجابة، ومعدلات رضا العملاء.",
+        "feature1Title": "متابعة حية",
+        "feature1Desc": "راقب الأداء لحظة بلحظة.",
+        "feature2Title": "تقارير دورية",
+        "feature2Desc": "احصل على تقارير أسبوعية وشهرية.",
+        "Mock": {
+          "performanceOverview": "نظرة عامة على الأداء",
+          "last7Days": "آخر 7 أيام",
+          "responseTime": "وقت الاستجابة",
+          "csatScore": "نقاط الرضا",
+          "resolutionRate": "معدل الحل"
+        }
+      },
+      "Omnichannel": {
+        "title": "الذكاء المركزي لأعمالك",
+        "subtitle": "شاهد كيف يوحد Replyxbase كل تفاعل مع العملاء في تيار واحد قوي من البيانات القابلة للتنفيذ."
+      },
+      "Footer": {
+        "links": {
+          "features": "المميزات",
+          "pricing": "الأسعار",
+          "resources": "المصادر",
+          "company": "الشركة"
+        }
+      }
+    },
+    "HowItWorks": {
+      "title": "حل شامل للذكاء الاصطناعي المحادث",
+      "description": "مع Replyxbase، يمكن لعملائك العثور على إجابات وحل المشكلات واتخاذ إجراءات ذات معنى من خلال محادثات سلسة مدعومة بالذكاء الاصطناعي.",
+      "step1": {
+        "title": "إنشاء ونشر",
+        "desc": "درّب وكيلاً على بيانات عملك، قم بتكوين الإجراءات، ثم انشره لعملائك"
+      },
+      "step2": {
+        "title": "الوكيل يحل المشاكل",
+        "desc": "يتعامل وكيلك للذكاء الاصطناعي مع استفسارات العملاء ويحل المشاكل تلقائيًا"
+      },
+      "step3": {
+        "title": "تحسين وتحسين",
+        "desc": "حسّن أداء وكيلك باستمرار بناءً على التفاعلات الحقيقية"
+      },
+      "step4": {
+        "title": "توجيه للبشر",
+        "desc": "التصعيد الذكي يوجه المشاكل المعقدة إلى الوكلاء البشريين عند الحاجة"
+      },
+      "step5": {
+        "title": "مراجعة التحليلات",
+        "desc": "احصل على رؤى وحسّن أداء الوكيل مع تحليلات مفصلة"
+      }
+    },
+    "Integrations": {
+      "title": "يعمل مع أدواتك",
+      "description": "قم بدمج مصادر بيانات متنوعة لإثراء معرفة وقدرات وكيلك.",
+      "all": "الكل",
+      "inOne": "في واحد",
+      "website": {
+        "desc": "قم بتوصيل عنصر واجهة الدردشة لموقعك"
+      },
+      "whatsapp": {
+        "desc": "قم بدمج واجهة برمجة تطبيقات WhatsApp Business"
+      },
+      "messenger": {
+        "desc": "قم بتوصيل Facebook Messenger"
+      },
+      "email": {
+        "desc": "قم بمزامنة مع نظام البريد الإلكتروني الخاص بك"
+      },
+      "slack": {
+        "desc": "أضف الوكيل إلى مساحة عمل Slack الخاصة بك"
+      },
+      "crm": {
+        "desc": "قم بالاتصال بنظام CRM الخاص بك"
+      },
+      "learnMore": "معرفة المزيد",
+      "stats": {
+        "website": "2.4 ألف نشط",
+        "whatsapp": "1.8 ألف نشط",
+        "crm": "950 نشط"
+      },
+      "features": {
+        "title": "أنشئ وكيل الذكاء الاصطناعي المثالي للعملاء",
+        "description": "يمنحك Replyxbase جميع الأدوات التي تحتاجها لتدريب وكيلك للذكاء الاصطناعي المثالي وتوصيله بأنظمتك.",
+        "api": {
+          "title": "مقارنة نماذج الذكاء الاصطناعي",
+          "desc": "جرب نماذج وتكوينات مختلفة للتأكد من أن لديك أفضل إعداد لحالة الاستخدام الخاصة بك."
+        },
+        "actions": {
+          "title": "تصعيد ذكي",
+          "desc": "امنح وكيلك تعليمات بلغة طبيعية حول متى يتم تصعيد الاستفسارات إلى الوكلاء البشريين."
+        },
+        "analytics": {
+          "title": "تقارير متقدمة",
+          "desc": "احصل على رؤى وحسّن أداء الوكيل مع تحليلات مفصلة."
+        }
+      }
+    },
+    "PlatformShowcase": {
+      "title": "اطلق قوة الوكلاء المدعومين بالذكاء الاصطناعي",
+      "description": "قم بدمج وكيلك للذكاء الاصطناعي بسهولة مع منصات متنوعة، مما يضمن وظائف سلسة عبر جميع القنوات.",
+      "website": {
+        "title": "دردشة الموقع",
+        "desc": "اتصل بموقعك"
+      },
+      "whatsapp": {
+        "title": "بوت واتساب",
+        "desc": "اتصل بواتساب"
+      },
+      "messenger": {
+        "title": "بوت ماسنجر",
+        "desc": "اتصل بماسنجر"
+      },
+      "learnMore": "معرفة المزيد"
+    },
+    "Testimonials": {
+      "title": "ماذا يقول الناس",
+      "subtitle": "مع أكثر من 10,000 عميل تم خدمتهم، إليك ما يقولونه",
+      "customers": "أكثر من 10,000 عميل",
+      "reviews": "أكثر من 140 تقييم 5 نجوم",
+      "testimonial1": {
+        "quote": "Replyxbase هو إشارة قوية لكيفية تطور دعم العملاء. إنه من أوائل المتبنين لنهج الوكلاء، والذي سيصبح أكثر فعالية وموثوقية وبروزاً.",
+        "author": "جريج كوجان",
+        "role": "الرئيس التنفيذي",
+        "company": "Pinecone"
+      },
+      "testimonial2": {
+        "quote": "أداة قوية جداً مبنية على مكدس OP.",
+        "author": "سارة جنكينز",
+        "role": "رئيسة الدعم",
+        "company": "TechFlow"
+      },
+      "testimonial3": {
+        "quote": "التكامل مع CRM سلس. موصى به بشدة.",
+        "author": "إيما ويلسون",
+        "role": "مديرة المبيعات",
+        "company": "Elevate"
+      }
+    },
+    "Security": {
+      "title": "الأمان والخصوصية على مستوى المؤسسات",
+      "description": "بياناتك متاحة فقط لوكيلك للذكاء الاصطناعي ولا تُستخدم أبداً لتدريب النماذج. جميع البيانات مشفرة في حالة السكون وفي العبور.",
+      "dataOwnership": {
+        "title": "بياناتك تبقى ملكك",
+        "desc": "بياناتك متاحة فقط لوكيلك للذكاء الاصطناعي ولا تُستخدم أبداً لتدريب النماذج."
+      },
+      "encryption": {
+        "title": "تشفير البيانات",
+        "desc": "جميع البيانات مشفرة في حالة السكون وفي العبور. نستخدم خوارزميات التشفير القياسية في الصناعة."
+      },
+      "integrations": {
+        "title": "تكاملات آمنة",
+        "desc": "نستخدم متغيرات موثقة لضمان أن المستخدمين يمكنهم الوصول فقط إلى بياناتهم الخاصة في أنظمتك."
+      }
+    },
+    "Pricing": {
+      "title": "أسعار بسيطة وشفافة",
+      "subtitle": "ابدأ مجاناً، وتوسع مع نموك",
+      "month": "شهر",
+      "mostPopular": "الأكثر شعبية",
+      "free": "مجاني",
+      "freeDesc": "مثالي للبدء",
+      "starter": "البداية",
+      "starterDesc": "للفرق النامية",
+      "pro": "المحترف",
+      "proDesc": "للأعمال",
+      "enterprise": "المؤسسات",
+      "enterpriseDesc": "كل شيء غير محدود",
+      "features": {
+        "1agent": "1 وكيل ذكي",
+        "1000conv": "1,000 رسالة/شهر",
+        "website": "تكامل الموقع",
+        "whatsapp": "تكامل واتساب",
+        "basicSupport": "دعم أساسي",
+        "5agents": "5 وكلاء ذكيين",
+        "10kconv": "10,000 رسالة/شهر",
+        "5members": "5 أعضاء في الفريق",
+        "allIntegrations": "جميع التكاملات",
+        "prioritySupport": "دعم ذو أولوية",
+        "advancedAnalytics": "تحليلات متقدمة",
+        "unlimitedAgents": "وكلاء ذكيون غير محدودين",
+        "50kconv": "50,000 رسالة/شهر",
+        "unlimitedMembers": "أعضاء فريق غير محدودين",
+        "customIntegrations": "تكاملات مخصصة",
+        "support247": "دعم على مدار الساعة",
+        "advancedCRM": "ميزات CRM متقدمة",
+        "unlimitedConv": "رسائل غير محدودة",
+        "whiteLabel": "خيار العلامة البيضاء",
+        "dedicatedSupport": "دعم مخصص",
+        "customSLA": "SLA مخصص"
+      },
+      "terms": {
+        "text": "جميع الخطط تتضمن ميزاتنا الأساسية.",
+        "viewTerms": "عرض الشروط",
+        "and": "و",
+        "privacyPolicy": "سياسة الخصوصية",
+        "noCreditCard": "لا حاجة لبطاقة ائتمان",
+        "cancelAnytime": "إلغاء في أي وقت",
+        "guarantee": "ضمان 14 يوم"
+      },
+      "monthly": "شهري",
+      "yearly": "سنوي",
+      "save": "وفر 20%",
+      "community": "دعم المجتمع",
+      "3agents": "3 وكلاء أذكياء",
+      "100conv": "100 محادثة/شهر",
+      "priority": "دعم ذو أولوية",
+      "analytics": "تحليلات متقدمة",
+      "branding": "هوية مخصصة",
+      "successManager": "مدير نجاح مخصص",
+      "sla": "ضمان عمل 99.9%"
+    },
+    "CTA": {
+      "badge": "هل أنت مستعد للبدء؟",
+      "title": "اجعل تجربة العملاء ميزتك التنافسية",
+      "subtitle": "استخدم Replyxbase لتقديم تجارب دعم استثنائية تميزك عن المنافسة.",
+      "noCreditCard": "لا حاجة لبطاقة ائتمان",
+      "freeTrial": "تجربة مجانية لمدة 14 يوم",
+      "cancelAnytime": "إلغاء في أي وقت"
+    },
+    "Footer": {
+      "desc": "مستقبل التواصل مع العملاء.",
+      "product": "المنتج",
+      "company": "الشركة",
+      "resources": "الموارد",
+      "legal": "قانوني",
+      "newsletter": {
+        "title": "ابق على اطلاع",
+        "description": "احصل على آخر الأخبار والتحديثات في بريدك الإلكتروني.",
+        "placeholder": "أدخل بريدك الإلكتروني",
+        "button": "اشترك"
+      },
+      "links": {
+        "features": "الميزات",
+        "pricing": "الأسعار",
+        "integrations": "التكاملات",
+        "changelog": "التحديثات",
+        "about": "عن Replyxbase",
+        "careers": "الوظائف",
+        "blog": "المدونة",
+        "contact": "تواصل معنا",
+        "docs": "التوثيق",
+        "api": "المطورين (API)",
+        "community": "المجتمع",
+        "help": "مركز المساعدة",
+        "privacy": "الخصوصية",
+        "terms": "الشروط",
+        "security": "الأمان",
+        "status": "حالة النظام",
+        "resources": "الموارد",
+        "company": "الشركة"
+      }
+    },
+    "Widget": {
+      "callout": "تحدث مع الذكاء الاصطناعي",
+      "title": "وكيل Replyxbase الذكي",
+      "subtitle": "دائماً هنا للمساعدة",
+      "online": "متصل",
+      "welcome": "👋 مرحباً! أنا Replyxbase AI، اسألني أي شيء عن Replyxbase!",
+      "welcome2": "بالمناسبة، يمكنك إنشاء وكيل مثلي لموقعك! 😉",
+      "placeholder": "اكتب رسالتك...",
+      "poweredBy": "مدعوم بواسطة",
+      "privacy": {
+        "text": "بالدردشة، أنت توافق على",
+        "link": "سياسة الخصوصية"
+      },
+      "menu": {
+        "newChat": "بدء محادثة جديدة",
+        "endChat": "إنهاء المحادثة",
+        "recentChats": "عرض المحادثات الأخيرة"
+      },
+      "question1": "ما هو Replyxbase؟",
+      "question2": "كيف أضيف بيانات لوكيلي؟",
+      "question3": "هل هناك خطة مجانية؟",
+      "question4": "ما هي إجراءات الذكاء الاصطناعي؟",
+      "aiResponseDefault": "يسعدني المساعدة! Replyxbase هي منصة دعم عملاء مدعومة بالذكاء الاصطناعي تساعد الشركات على أتمتة خدمة العملاء عبر قنوات متعددة مثل واتساب والموقع والبريد الإلكتروني.",
+      "aiResponsePricing": "نقدم خطط تسعير مرنة تبدأ من 0 دولار/شهر للخطة المجانية، 19 دولار/شهر للمبتدئين، 29 دولار/شهر للمحترفين، وتسعير مخصص للمؤسسات. جميع الخطط تتضمن تجربة مجانية لمدة 14 يوماً بدون بطاقة ائتمان!",
+      "aiResponseData": "يمكنك إضافة بيانات لوكيلك عن طريق ربط قاعدة المعرفة الخاصة بك، أو تحميل المستندات، أو التكامل مع أدواتك الحالية. سيتعلم الذكاء الاصطناعي تلقائياً من محتواك لتقديم ردود دقيقة.",
+      "aiResponseActions": "تسمح إجراءات الذكاء الاصطناعي لوكيلك بأداء المهام تلقائياً، مثل حجز المواعيد أو معالجة الطلبات أو جلب المعلومات من نظام CRM الخاص بك. يمكنك تكوين إجراءات مخصصة لتتناسب مع احتياجات عملك.",
+      "aiResponseWhatsapp": "نعم، ندعم واجهة برمجة تطبيقات WhatsApp Business بالكامل! يمكنك إدارة كل شيء من هنا."
+    }
+  },
+  "Auth": {
+    "Login": {
+      "title": "مرحباً بعودتك",
+      "subtitle": "أدخل بريدك الإلكتروني لتسجيل الدخول إلى حسابك",
+      "google": "جوجل",
+      "github": "جيت هب",
+      "or": "أو المتابعة باستخدام",
+      "emailPlaceholder": "name@example.com",
+      "passwordPlaceholder": "كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "noAccount": "ليس لديك حساب؟",
+      "signUpLink": "إنشاء حساب"
+    },
+    "Signup": {
+      "title": "إنشاء حساب",
+      "subtitle": "أدخل بريدك الإلكتروني أدناه لإنشاء حسابك",
+      "namePlaceholder": "الاسم الكامل",
+      "submit": "إنشاء حساب",
+      "hasAccount": "لديك حساب بالفعل؟",
+      "signInLink": "تسجيل الدخول"
+    },
+    "Branding": {
+      "welcome": "مرحباً بك في مستقبل التواصل التجاري",
+      "description": "تواصل مع عملائك عبر جميع المنصات في صندوق وارد موحد مدعوم بالذكاء الاصطناعي."
+    },
+    "CreateOrganization": {
+      "title": "إنشاء مؤسسة",
+      "subtitle": "قم بإعداد مساحة العمل الخاصة بك للبدء",
+      "nameLabel": "اسم المؤسسة",
+      "namePlaceholder": "مثال: شركة النور",
+      "slugLabel": "رابط مساحة العمل",
+      "slugPlaceholder": "al-noor-corp",
+      "slugDescription": "سيكون هذا هو المعرف الفريد الخاص بك",
+      "submit": "إنشاء مساحة العمل",
+      "success": "تم إنشاء مساحة العمل!",
+      "error": "فشل إنشاء المؤسسة",
+      "terms": "بإنشاء مؤسسة، فإنك توافق على شروط الخدمة الخاصة بنا",
+      "slugAvailable": "رابط مساحة العمل متاح",
+      "slugTaken": "هذا الرابط مستخدم بالفعل",
+      "slugChecking": "جاري التحقق...",
+      "slugTooShort": "يجب أن يكون الرابط 3 أحرف على الأقل",
+      "slugInvalid": "يمكن أن يحتوي الرابط فقط على أحرف صغيرة وأرقام وشرطات"
+    }
+  },
+  "Dashboard": {
+    "Home": {
+      "title": "لوحة التحكم",
+      "subtitle": "مرحبًا بعودتك، إليك ما يحدث مع وكلائك اليوم.",
+      "downloadReport": "تحميل التقرير",
+      "createAgent": "إنشاء وكيل جديد",
+      "stats": {
+        "messages": "إجمالي الرسائل",
+        "sales": "تحويلات المبيعات",
+        "csat": "نقاط رضا العملاء",
+        "saved": "الساعات الموفرة"
+      },
+      "charts": {
+        "title": "حجم المحادثات",
+        "last7Days": "آخر 7 أيام",
+        "last30Days": "آخر 30 يومًا",
+        "thisYear": "هذا العام",
+        "loading": "جاري تحميل البيانات..."
+      },
+      "agents": {
+        "title": "الوكلاء النشطون",
+        "viewAll": "عرض الكل",
+        "agent": "الوكيل",
+        "status": "الحالة",
+        "conversations": "المحادثات",
+        "conversion": "التحويل"
+      },
+
+      "bookings": {
+        "title": "مكالمات اليوم",
+        "upcoming": "{count} قادمة",
+        "viewCalendar": "عرض التقويم"
+      },
+      "channels": {
+        "title": "القنوات المتصلة",
+        "connectNew": "ربط قناة جديدة"
+      },
+      "activity": {
+        "title": "النشاط الأخير"
+      }
+    },
+    "Agents": {
+      "title": "الوكلاء",
+      "subtitle": "إدارة وكلاء الذكاء الاصطناعي وقدراتهم.",
+      "createAgent": "إنشاء وكيل",
+      "searchPlaceholder": "بحث عن وكلاء...",
+      "filter": "تصفية",
+      "createNew": "إنشاء وكيل جديد",
+      "createNewDesc": "نشر وكيل ذكاء اصطناعي جديد لعملك.",
+      "noAgentsTitle": "لم يتم العثور على وكلاء",
+      "noAgentsSubtitle": "ابدأ بإنشاء وكيلك الذكي الأول.",
+      "createFirstAgent": "إنشاء الوكيل الأول",
+      "Card": {
+        "conversations": "المحادثات",
+        "users": "المستخدمين",
+        "satisfaction": "الرضا",
+        "viewDashboard": "عرض لوحة التحكم"
+      },
+      "Stats": {
+        "totalConversations": "إجمالي المحادثات",
+        "activeUsers": "المستخدمين النشطين",
+        "avgResponseTime": "متوسط وقت الاستجابة",
+        "satisfactionRate": "معدل الرضا"
+      },
+      "Detail": {
+        "notFoundTitle": "الوكيل غير موجود",
+        "notFoundSubtitle": "الوكيل الذي تبحث عنه غير موجود أو تم حذفه.",
+        "title": "تفاصيل الوكيل",
+        "backToAgents": "العودة للوكلاء",
+        "lastActive": "نشط {time}",
+        "share": "مشاركة",
+        "settings": "الإعدادات",
+        "testAgent": "اختبار الوكيل",
+        "overview": "نظرة عامة",
+        "tabs": {
+          "overview": "نظرة عامة",
+          "knowledge": "المعرفة",
+          "integrations": "التكاملات",
+          "settings": "الإعدادات"
+        },
+        "overview": {
+          "stats": {
+            "totalConversations": "إجمالي المحادثات",
+            "avgResponseTime": "متوسط وقت الاستجابة",
+            "satisfactionRate": "معدل الرضا",
+            "activeUsers": "المستخدمين النشطين"
+          },
+          "chart": {
+            "title": "حجم المحادثات",
+            "subtitle": "نظرة عامة على النشاط الأسبوعي"
+          },
+          "activity": {
+            "title": "النشاط الأخير",
+            "replied": "تم الرد على استفسار العميل",
+            "booked": "تم حجز مكالمة تجريبية",
+            "statusChanged": "تم تغيير حالة الوكيل إلى نشط",
+            "handledCall": "تم التعامل مع مكالمة واردة",
+            "time2min": "منذ دقيقتين",
+            "time15min": "منذ 15 دقيقة",
+            "time1hour": "منذ ساعة",
+            "time2hours": "منذ ساعتين"
+          }
+        },
+        "knowledge": {
+          "add": "إضافة مصدر",
+          "title": "قاعدة المعرفة",
+          "subtitle": "إدارة المستندات التي يستخدمها وكيلك للإجابة على الأسئلة.",
+          "searchPlaceholder": "بحث عن الملفات...",
+          "table": {
+            "name": "الاسم",
+            "type": "النوع",
+            "dateAdded": "تاريخ الإضافة",
+            "status": "الحالة",
+            "actions": "الإجراءات"
+          }
+        },
+        "integrations": {
+          "title": "التكاملات",
+          "subtitle": "قم بربط وكيلك بقنوات ومنصات مختلفة.",
+          "add": "إضافة تكامل",
+          "status": {
+            "active": "نشط",
+            "available": "متاح"
+          },
+          "manage": "إدارة التكامل",
+          "connect": "ربط",
+          "whatsapp": {
+            "description": "قم بربط رقم عملك لأتمتة الردود على واتساب."
+          },
+          "website": {
+            "description": "قم بتضمين مساعد الذكاء الاصطناعي مباشرة على موقعك.",
+            "title": "منشئ الودجت",
+            "subtitle": "قم بتخصيص ودجت الدردشة لموقعك.",
+            "launcherTextDefault": "تحدث معنا",
+            "welcomeMessageDefault": "مرحباً! كيف يمكنني مساعدتك اليوم؟",
+            "actionDefaultLabel": "احجز مكالمة",
+            "newAction": "إجراء جديد",
+            "codeCopied": "تم نسخ الكود إلى الحافظة!",
+            "settingsSaved": "تم حفظ إعدادات الودجت بنجاح",
+            "settingsSaveError": "فشل حفظ الإعدادات",
+            "saving": "جاري الحفظ...",
+            "saveChanges": "حفظ التغييرات",
+            "tabs": {
+              "design": "التصميم",
+              "content": "المحتوى",
+              "settings": "الإعدادات",
+              "install": "التثبيت"
+            },
+            "design": {
+              "brandColor": "لون العلامة التجارية",
+              "launcherStyle": "نمط المشغل",
+              "circle": "دائري",
+              "pill": "حبة",
+              "launcherTextPlaceholder": "نص المشغل (مثال: تحدث معنا)",
+              "position": "الموضع",
+              "bottomLeft": "أسفل يسار",
+              "bottomRight": "أسفل يمين",
+              "customLogo": "شعار مخصص",
+              "logoPlaceholder": "https://example.com/logo.png",
+              "logoHint": "الصق رابط صورة الشعار."
+            },
+            "content": {
+              "welcomeMessage": "رسالة الترحيب",
+              "welcomeMessagePlaceholder": "أدخل الرسالة الأولى...",
+              "faqs": "الأسئلة الشائعة",
+              "questionsCount": "{count} سؤال",
+              "questionPlaceholder": "السؤال (مثال: ما هي ساعات العمل؟)",
+              "answerPlaceholder": "الإجابة...",
+              "addQuestion": "إضافة سؤال"
+            },
+            "settings": {
+              "language": "اللغة",
+              "english": "الإنجليزية (LTR)",
+              "arabic": "العربية (RTL)",
+              "actions": "الإجراءات",
+              "addAction": "إضافة إجراء",
+              "actionLabel": "التسمية",
+              "actionType": "النوع",
+              "booking": "الحجز",
+              "call": "مكالمة",
+              "link": "رابط",
+              "actionIcon": "الأيقونة",
+              "iconCalendar": "تقويم",
+              "iconPhone": "هاتف",
+              "iconUser": "مستخدم",
+              "iconLink": "رابط",
+              "iconMessage": "رسالة",
+              "phoneNumber": "رقم الهاتف",
+              "url": "الرابط",
+              "phonePlaceholder": "+1 234 567 890",
+              "urlPlaceholder": "https://example.com",
+              "allowedDomains": "النطاقات المسموحة",
+              "domainsPlaceholder": "example.com, myapp.com",
+              "domainsHint": "قائمة مفصولة بفواصل للنطاقات التي يمكن تحميل الودجت عليها. اتركه فارغاً للسماح للجميع.",
+              "removeBranding": "إزالة العلامة التجارية",
+              "brandingHint": "إخفاء تذييل \"مدعوم من ReplyXBase\"."
+            },
+            "install": {
+              "title": "تعليمات التثبيت",
+              "description": "انسخ الكود أدناه والصقه في وسم",
+              "descriptionCode": "head",
+              "descriptionEnd": "لموقعك."
+            },
+            "preview": {
+              "livePreview": "معاينة مباشرة",
+              "connected": "متصل",
+              "supportAgent": "وكيل الدعم",
+              "online": "متصل",
+              "chat": "دردشة",
+              "help": "مساعدة",
+              "noFaqs": "لم تتم إضافة أسئلة شائعة بعد.",
+              "typeMessage": "اكتب رسالة...",
+              "poweredBy": "مدعوم من ReplyXBase"
+            }
+          },
+          "messenger": {
+            "description": "أتمتة الردود على رسائل صفحة Facebook الخاصة بك."
+          },
+          "slack": {
+            "description": "أضف الوكيل إلى مساحة عمل Slack الخاصة بك للدعم الداخلي."
+          },
+          "telegram": {
+            "description": "أنشئ بوت Telegram مدعوم بوكلاء الذكاء الاصطناعي الخاص بك."
+          }
+        },
+        "settings": {
+          "general": {
+            "title": "المعلومات العامة",
+            "agentName": "اسم الوكيل",
+            "agentNamePlaceholder": "مثال: بوت الدعم",
+            "role": "الدور / المسمى",
+            "rolePlaceholder": "مثال: نجاح العملاء",
+            "systemPrompt": "موجه النظام",
+            "instructions": "التعليمات",
+            "systemPromptPlaceholder": "أنت مساعد مفيد...",
+            "systemPromptHint": "حدد شخصية الوكيل ونبرته وقيوده.",
+            "saveChanges": "حفظ التغييرات"
+          },
+          "danger": {
+            "title": "منطقة الخطر",
+            "deleteTitle": "حذف الوكيل",
+            "deleteDescription": "إزالة هذا الوكيل وجميع بياناته بشكل دائم. لا يمكن التراجع عن هذا الإجراء.",
+            "deleteButton": "حذف الوكيل"
+          }
+        },
+        "retry": "إعادة المحاولة",
+        "activity": {
+          "title": "النشاط الأخير",
+          "subtitle": "آخر الإجراءات التي قام بها هذا الوكيل"
+        },
+        "status": {
+          "title": "حالة الوكيل",
+          "subtitle": "التحكم في توافر الوكيل",
+          "pause": "إيقاف الوكيل"
+        }
+      },
+      "Create": {
+        "title": "إنشاء وكيل جديد",
+        "subtitle": "قم بتكوين شخصية وكيلك الذكي وقاعدة معرفته.",
+        "backToAgents": "العودة للوكلاء",
+        "steps": {
+          "1": "المعلومات الأساسية",
+          "2": "المعرفة",
+          "3": "القنوات"
+        },
+        "basicInfo": {
+          "title": "هوية الوكيل",
+          "subtitle": "امنح وكيلك اسماً وشخصية."
+        },
+        "form": {
+          "name": "اسم الوكيل",
+          "namePlaceholder": "مثال: بوت الدعم",
+          "role": "الدور الأساسي",
+          "tone": "نبرة الصوت",
+          "model": "نموذج الذكاء الاصطناعي",
+          "capabilities": "القدرات"
+        },
+        "roles": {
+          "support": "دعم العملاء",
+          "sales": "ممثل مبيعات",
+          "assistant": "مساعد شخصي"
+        },
+        "models": {
+          "gpt4": "GPT-4o",
+          "claude": "Claude 3.5 Sonnet",
+          "gemini": "Gemini 1.5 Pro"
+        },
+        "capabilitiesList": {
+          "crm": "الوصول لنظام إدارة العملاء",
+          "booking": "إدارة الحجوزات",
+          "support": "دعم عام"
+        },
+        "models": {
+          "gpt4": "GPT-4o",
+          "gpt4Desc": "الأفضل للتفكير المعقد",
+          "claude": "Claude 3.5 Sonnet",
+          "claudeDesc": "طبيعي وواضح",
+          "gemini": "Gemini 1.5 Pro",
+          "geminiDesc": "سريع ومتعدد الوسائط"
+        },
+        "tones": {
+          "professional": "مهني",
+          "friendly": "ودود",
+          "empathetic": "متعاطف"
+        },
+        "knowledge": {
+          "title": "قاعدة المعرفة",
+          "subtitle": "درب وكيلك على مصادر بياناتك.",
+          "uploadTitle": "رفع المستندات",
+          "uploadDesc": "قم بسحب وإفلات ملفاتك هنا أو انقر للتصفح.",
+          "systemPromptPlaceholder": "أنت مساعد مفيد...",
+          "systemPromptLabel": "موجه النظام",
+          "improveWithAI": "تحسين بالذكاء الاصطناعي"
+        },
+        "successTitle": "تم إنشاء الوكيل بنجاح!",
+        "successSubtitle": "وكيلك جاهز الآن للتدريب والنشر.",
+        "goToDashboard": "الذهاب إلى لوحة التحكم",
+        "industry": "الصناعة",
+        "industries": {
+          "realEstate": "العقارات",
+          "ecommerce": "التجارة الإلكترونية",
+          "healthcare": "الرعاية الصحية",
+          "technology": "التكنولوجيا",
+          "finance": "المالية",
+          "other": "أخرى"
+        },
+        "channels": {
+          "title": "ربط القنوات",
+          "subtitle": "أين يجب أن يكون هذا الوكيل نشطاً؟",
+          "whatsappDesc": "الربط مع واتساب للأعمال API",
+          "telegramDesc": "الربط عبر تيليجرام بوت API",
+          "webDesc": "تضمين في موقعك"
+        },
+        "common": {
+          "or": "أو",
+          "back": "رجوع",
+          "next": "الخطوة التالية",
+          "create": "إنشاء الوكيل"
+        }
+      }
+    },
+    "createAgent": "إنشاء وكيل",
+    "existingAgents": "الوكلاء الحاليين",
+    "Header": {
+      "organizations": "المؤسسات",
+      "createOrganization": "إنشاء مؤسسة",
+      "available": "متاحة",
+      "notifications": "الإشعارات",
+      "markAllRead": "تحديد الكل كمقروء",
+      "unreadMessages": "{count} غير مقروء",
+      "viewAllNotifications": "عرض كل الإشعارات",
+      "Notifications": {
+        "messageFromSarah": "رسالة جديدة من سارة",
+        "paymentReceived": "تم استلام الدفع للطلب #2842",
+        "systemUpdate": "تحديث النظام متاح",
+        "securityAlert": "تنبيه أمني: تم اكتشاف تسجيل دخول جديد",
+        "subscriptionRenew": "سيتم تجديد اشتراكك خلال 7 أيام",
+        "newFollower": "متابع جديد: TechCorp Inc",
+        "downloadCompleted": "اكتمل التنزيل: التقرير الشهري",
+        "2minAgo": "منذ دقيقتين",
+        "1hourAgo": "منذ ساعة",
+        "2hoursAgo": "منذ ساعتين",
+        "3hoursAgo": "منذ 3 ساعات",
+        "5hoursAgo": "منذ 5 ساعات",
+        "6hoursAgo": "منذ 6 ساعات",
+        "1dayAgo": "منذ يوم"
+      },
+      "ProfileMenu": {
+        "profile": "الملف الشخصي",
+        "profileDesc": "عرض ملفك الشخصي",
+        "billing": "الفواتير",
+        "billingDesc": "إدارة الفواتير والاشتراك",
+        "security": "الأمان",
+        "securityDesc": "إعدادات الأمان والخصوصية",
+        "downloads": "التنزيلات",
+        "downloadsDesc": "ملفاتك التي تم تنزيلها",
+        "settings": "الإعدادات",
+        "settingsDesc": "إعدادات الحساب والتطبيق",
+        "help": "المساعدة",
+        "helpDesc": "الحصول على المساعدة والدعم",
+        "signOut": "تسجيل الخروج",
+        "signOutDesc": "تسجيل الخروج من حسابك",
+        "LogoutModal": {
+          "title": "تسجيل الخروج",
+          "description": "هل أنت متأكد أنك تريد تسجيل الخروج؟ ستحتاج إلى تسجيل الدخول مرة أخرى للوصول إلى حسابك.",
+          "cancel": "إلغاء",
+          "confirm": "تسجيل الخروج"
+        }
+      }
+    },
+    "Sidebar": {
+      "dashboard": "لوحة التحكم",
+      "home": "الرئيسية",
+      "inbox": "صندوق الوارد",
+      "agents": "الوكلاء",
+      "crm": "إدارة العملاء",
+      "settings": "الإعدادات"
+    },
+    "CRM": {
+      "title": "الحجوزات وإدارة العملاء",
+      "subtitle": "أدر مواعيدك وعلاقاتك مع العملاء",
+      "newCustomer": "عميل جديد",
+      "searchPlaceholder": "بحث عن عملاء...",
+      "status": "الحالة",
+      "service": "الخدمة",
+      "dateRange": "النطاق الزمني",
+      "export": "تصدير",
+      "filter": "تصفية",
+      "table": "جدول",
+      "kanban": "كانبان",
+      "calendar": "تقويم",
+      "Stats": {
+        "totalBookings": "إجمالي الحجوزات",
+        "pending": "قيد الانتظار",
+        "confirmed": "مؤكد",
+        "activeCustomers": "العملاء النشطين",
+        "revenue": "الإيرادات",
+        "growth": "النمو",
+        "cancelled": "ملغى"
+      },
+      "Form": {
+        "newTitle": "حجز جديد",
+        "editTitle": "تعديل الحجز",
+        "customerInfo": "معلومات العميل",
+        "fullName": "الاسم الكامل",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "company": "الشركة",
+        "bookingDetails": "تفاصيل الحجز",
+        "date": "التاريخ",
+        "startTime": "وقت البدء",
+        "duration": "المدة (دقائق)",
+        "people": "عدد الأشخاص",
+        "serviceType": "نوع الخدمة",
+        "status": "الحالة",
+        "additionalInfo": "معلومات إضافية",
+        "specialRequests": "طلبات خاصة",
+        "internalNotes": "ملاحظات داخلية",
+        "cancel": "إلغاء",
+        "create": "إنشاء حجز",
+        "update": "تحديث الحجز"
+      },
+      "Header": {
+        "title": "إدارة الحجوزات",
+        "subtitle": "أدر جميع حجوزاتك في مكان واحد",
+        "refresh": "تحديث",
+        "newBooking": "حجز جديد"
+      },
+      "ViewToggle": {
+        "table": "عرض الجدول",
+        "calendar": "عرض التقويم",
+        "kanban": "كانبان"
+      },
+      "Filters": {
+        "searchPlaceholder": "بحث باسم العميل، البريد، أو الهاتف...",
+        "filters": "تصفية",
+        "newestFirst": "الأحدث أولاً",
+        "oldestFirst": "الأقدم أولاً",
+        "customerAZ": "العميل أ-ي",
+        "customerZA": "العميل ي-أ",
+        "priority": "الأولوية",
+        "statusFilter": "تصفية الحالة",
+        "allStatuses": "كل الحالات",
+        "serviceType": "نوع الخدمة",
+        "allServices": "كل الخدمات",
+        "dateRange": "النطاق الزمني",
+        "advancedFilters": "تصفية متقدمة",
+        "addFilterRule": "إضافة قاعدة تصفية",
+        "noAdvancedFilters": "لا توجد تصفية متقدمة.",
+        "Dynamic": {
+          "price": "السعر",
+          "people": "الأشخاص",
+          "duration": "المدة",
+          "equals": "يساوي",
+          "gt": "أكبر من",
+          "lt": "أقل من",
+          "valuePlaceholder": "القيمة..."
+        }
+      },
+      "Pagination": {
+        "showing": "عرض {start}-{end} من {total} عنصر",
+        "show": "عرض:"
+      },
+      "Status": {
+        "pending": "قيد الانتظار",
+        "confirmed": "مؤكد",
+        "cancelled": "ملغى",
+        "completed": "مكتمل",
+        "no-show": "لم يحضر"
+      },
+      "Priority": {
+        "normal": "عادي",
+        "high": "مرتفع",
+        "urgent": "عاجل"
+      },
+      "Bookings": {
+        "Table": {
+          "customer": "العميل",
+          "contact": "الاتصال",
+          "dateTime": "التاريخ والوقت",
+          "service": "الخدمة",
+          "status": "الحالة",
+          "actions": "إجراءات"
+        },
+        "Details": {
+          "title": "تفاصيل الحجز",
+          "customerDetails": "تفاصيل العميل",
+          "bookingInfo": "معلومات الحجز",
+          "internalNotes": "ملاحظات داخلية",
+          "tags": "الوسوم",
+          "activityLog": "سجل النشاط",
+          "chatTooltip": "محادثة مع العميل",
+          "editTooltip": "تعديل الحجز",
+          "deleteTooltip": "حذف الحجز",
+          "closeTooltip": "إغلاق",
+          "status": "الحالة",
+          "priority": "الأولوية",
+          "rating": "التقييم",
+          "serviceType": "نوع الخدمة",
+          "duration": "المدة",
+          "people": "الأشخاص",
+          "occasion": "المناسبة",
+          "location": "الموقع",
+          "specialRequests": "طلبات خاصة",
+          "minutes": "دقيقة"
+        },
+        "DeleteModal": {
+          "title": "حذف الحجز",
+          "subtitle": "لا يمكن التراجع عن هذا الإجراء",
+          "confirmation": "هل أنت متأكد أنك تريد حذف هذا الحجز؟ سيتم إزالة جميع البيانات المرتبطة به بشكل دائم.",
+          "cancel": "إلغاء",
+          "delete": "حذف الحجز"
+        }
+      },
+      "Activities": {
+        "Form": {
+          "note": "ملاحظة",
+          "call": "مكالمة",
+          "email": "بريد إلكتروني",
+          "meeting": "اجتماع",
+          "placeholder": "أضف {type}..."
+        },
+        "Log": {
+          "noActivities": "لا توجد أنشطة مسجلة بعد.",
+          "loggedBy": "سجل بواسطة {name}"
+        }
+      },
+      "Calendar": {
+        "today": "اليوم",
+        "month": "شهر",
+        "week": "أسبوع",
+        "day": "يوم",
+        "more": "+{count} المزيد",
+        "Drawer": {
+          "title": "حجوزات {date}",
+          "noBookings": "لا توجد حجوزات لهذا التاريخ",
+          "people": "{count} أشخاص",
+          "viewDetails": "عرض التفاصيل"
+        }
+      },
+      "Kanban": {
+        "customerName": "اسم العميل",
+        "overdue": "متأخر",
+        "viewDetails": "عرض التفاصيل",
+        "noBookings": "لا توجد حجوزات",
+        "renameTooltip": "انقر مرتين لإعادة التسمية"
+      }
+    },
+
+    "Settings": {
+      "title": "الإعدادات",
+      "subtitle": "إدارة تفضيلات حسابك وإعدادات مساحة العمل.",
+      "nav": {
+        "profile": "الملف الشخصي",
+        "account": "الحساب",
+        "notifications": "الإشعارات",
+        "appearance": "المظهر",
+        "billing": "الفوترة"
+      },
+      "Profile": {
+        "title": "إعدادات الملف الشخصي",
+        "description": "تحديث معلوماتك الشخصية وصورة الملف الشخصي.",
+        "form": {
+          "fullName": "الاسم الكامل",
+          "email": "البريد الإلكتروني",
+          "bio": "نبذة",
+          "save": "حفظ التغييرات",
+          "cancel": "إلغاء"
+        }
+      },
+      "Organization": {
+        "title": "إعدادات المؤسسة",
+        "description": "إدارة تفاصيل مساحة العمل والعلامة التجارية.",
+        "form": {
+          "name": "اسم المؤسسة",
+          "domain": "نطاق مساحة العمل",
+          "logo": "شعار المؤسسة",
+          "save": "حفظ التغييرات"
+        }
+      },
+      "Team": {
+        "title": "أعضاء الفريق",
+        "description": "إدارة أعضاء فريقك وأدوارهم.",
+        "invite": "دعوة عضو",
+        "table": {
+          "member": "العضو",
+          "role": "الدور",
+          "status": "الحالة",
+          "actions": "إجراءات"
+        },
+        "roles": {
+          "owner": "المالك",
+          "admin": "مسؤول",
+          "member": "عضو"
+        },
+        "Modals": {
+          "AddMember": {
+            "title": "دعوة عضو للفريق",
+            "email": "البريد الإلكتروني",
+            "role": "الدور",
+            "cancel": "إلغاء",
+            "submit": "إرسال الدعوة"
+          },
+          "RemoveMember": {
+            "title": "إزالة عضو",
+            "confirmation": "هل أنت متأكد أنك تريد إزالة {name} من الفريق؟ لا يمكن التراجع عن هذا الإجراء.",
+            "cancel": "إلغاء",
+            "confirm": "إزالة العضو"
+          },
+          "EditMember": {
+            "title": "تعديل عضو",
+            "role": "الدور",
+            "cancel": "إلغاء",
+            "save": "حفظ التغييرات"
+          }
+        }
+      },
+      "Notifications": {
+        "title": "الإشعارات",
+        "description": "إدارة كيفية تلقي الإشعارات.",
+        "email": {
+          "title": "إشعارات البريد الإلكتروني",
+          "description": "تلقي رسائل بريد إلكتروني حول نشاط حسابك."
+        },
+        "push": {
+          "title": "الإشعارات المنبثقة",
+          "description": "تلقي إشعارات منبثقة على أجهزتك."
+        }
+      },
+      "Appearance": {
+        "title": "المظهر",
+        "description": "تخصيص شكل ومظهر لوحة التحكم الخاصة بك.",
+        "theme": {
+          "title": "السمة"
+        },
+        "language": {
+          "title": "اللغة",
+          "description": "اختر لغتك المفضلة لواجهة المستخدم.",
+          "note": "سيتم تطبيق التغييرات فوراً وتحديث الصفحة."
+        }
+      },
+      "Billing": {
+        "title": "الفوترة والخطط",
+        "description": "إدارة اشتراكك وطرق الدفع.",
+        "paymentMethods": {
+          "title": "طرق الدفع"
+        },
+        "history": {
+          "title": "سجل الفوترة"
+        },
+        "upgradeModal": {
+          "title": "ترقية الخطة",
+          "cancel": "إلغاء",
+          "upgrade": "ترقية الخطة"
+        }
+      }
+    },
+    "Inbox": {
+      "searchPlaceholder": "بحث في الرسائل...",
+      "online": "متصل",
+      "offline": "غير متصل",
+      "activeNow": "نشط الآن",
+      "away": "بعيد",
+      "typing": "يكتب...",
+      "typeMessage": "اكتب رسالة...",
+      "aiActive": "الوكيل الذكي نشط...",
+      "send": "إرسال",
+      "aiMode": "وكيل ذكي",
+      "humanMode": "بشري",
+      "goToCRM": "الذهاب لملف العميل",
+      "source": "المصدر",
+      "contextMenu": {
+        "delete": "حذف المحادثة",
+        "markRead": "تحديد كمقروء",
+        "markUnread": "تحديد كغير مقروء",
+        "archive": "أرشفة"
+      },
+      "emptyState": {
+        "title": "اختر محادثة",
+        "subtitle": "اختر محادثة من القائمة الجانبية لبدء الدردشة"
+      }
+    }
+  },
+  "AIChat": {
+    "title": "كيف يمكنني مساعدتك",
+    "placeholder": "اكتب رسالتك...",
+    "tools": "الأدوات",
+    "attachImage": "إرفاق صورة",
+    "recordVoice": "تسجيل صوتي",
+    "send": "إرسال الرسالة",
+    "toolsList": {
+      "createImage": "إنشاء صورة",
+      "searchWeb": "البحث في الويب",
+      "writeCode": "كتابة كود",
+      "deepResearch": "بحث متعمق",
+      "thinkLonger": "تفكير عميق"
+    }
+  }
+}
