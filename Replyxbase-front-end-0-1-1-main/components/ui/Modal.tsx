@@ -8,6 +8,10 @@ export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
+import { cn } from "@/lib/utils";
+
+// ...
+
 const Modal = forwardRef<HTMLDivElement, ModalProps>(
   ({ open, onClose, title, children, className = "", ...props }, ref) => {
     if (!open) return null;
@@ -19,7 +23,10 @@ const Modal = forwardRef<HTMLDivElement, ModalProps>(
       >
         <div
           ref={ref}
-          className={`bg-white rounded-2xl border-2 border-slate-200 w-full max-w-lg max-h-[90vh] overflow-hidden flex flex-col ${className}`}
+          className={cn(
+            "bg-white rounded-2xl border-2 border-slate-200 w-full max-w-lg max-h-[90vh] overflow-hidden flex flex-col",
+            className
+          )}
           onClick={(e) => e.stopPropagation()}
           {...props}
         >
@@ -47,7 +54,7 @@ const ModalHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className = "", ...props }, ref) => (
     <div
       ref={ref}
-      className={`flex flex-col space-y-1.5 p-6 ${className}`}
+      className={cn("flex flex-col space-y-1.5 p-6", className)}
       {...props}
     />
   )
@@ -58,7 +65,7 @@ const ModalContent = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className = "", ...props }, ref) => (
     <div
       ref={ref}
-      className={`p-6 overflow-y-auto flex-1 ${className}`}
+      className={cn("p-6 overflow-y-auto flex-1", className)}
       {...props}
     />
   )
@@ -69,7 +76,7 @@ const ModalFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className = "", ...props }, ref) => (
     <div
       ref={ref}
-      className={`flex items-center justify-end gap-3 p-6 border-t-2 border-slate-200 ${className}`}
+      className={cn("flex items-center justify-end gap-3 p-6 border-t-2 border-slate-200", className)}
       {...props}
     />
   )

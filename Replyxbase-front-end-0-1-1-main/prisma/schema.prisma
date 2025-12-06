@@ -77,22 +77,26 @@ model Verification {
 }
 
 model Organization {
-  id          String       @id
-  name        String
-  slug        String       @unique
-  logo        String?
-  createdAt   DateTime
-  metadata    String?
-  crmSettings Json?        @default("{\"columns\": [{\"id\": \"pending\", \"title\": \"Pending\"}, {\"id\": \"confirmed\", \"title\": \"Confirmed\"}, {\"id\": \"completed\", \"title\": \"Completed\"}, {\"id\": \"cancelled\", \"title\": \"Cancelled\"}, {\"id\": \"no-show\", \"title\": \"No Show\"}]}")
-  planId      String?
-  agents      Agent[]
-  bookings    Booking[]
-  customers   Customer[]
-  invitations Invitation[]
-  members     Member[]
-  plan        plan?        @relation(fields: [planId], references: [id])
-  pipelines   Pipeline[]
-  deals       Deal[]
+  id                  String       @id
+  name                String
+  slug                String       @unique
+  logo                String?
+  createdAt           DateTime
+  metadata            String?
+  crmSettings         Json?        @default("{\"columns\": [{\"id\": \"pending\", \"title\": \"Pending\"}, {\"id\": \"confirmed\", \"title\": \"Confirmed\"}, {\"id\": \"completed\", \"title\": \"Completed\"}, {\"id\": \"cancelled\", \"title\": \"Cancelled\"}, {\"id\": \"no-show\", \"title\": \"No Show\"}]}")
+  planId              String?
+  polarSubscriptionId String?
+  polarCustomerId     String?
+  subscriptionStatus  String?
+  currentPeriodEnd    DateTime?
+  agents              Agent[]
+  bookings            Booking[]
+  customers           Customer[]
+  invitations         Invitation[]
+  members             Member[]
+  plan                plan?        @relation(fields: [planId], references: [id])
+  pipelines           Pipeline[]
+  deals               Deal[]
 
   @@index([planId])
   @@map("organization")

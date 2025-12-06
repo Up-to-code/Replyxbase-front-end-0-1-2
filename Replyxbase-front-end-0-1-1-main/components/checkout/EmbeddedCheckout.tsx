@@ -1,43 +1,53 @@
 "use client";
 
 import { useEffect } from "react";
-import { PolarEmbedCheckout } from "@polar-sh/checkout";
+import { PolarEmbedCheckout } from "@polar-sh/checkout/embed";
 import { Modal } from "@/components/ui/Modal";
 
 
+// ... imports
 interface EmbeddedCheckoutProps {
   open: boolean;
   onClose: () => void;
-  clientSecret: string;
+  checkoutUrl: string;
 }
 
 export default function EmbeddedCheckout({
   open,
   onClose,
-  clientSecret,
+  checkoutUrl,
 }: EmbeddedCheckoutProps) {
-  // const { theme } = useTheme(); // Removed as per request
-
   useEffect(() => {
-    if (open && clientSecret) {
-      PolarEmbedCheckout.init({
-        clientSecret,
-        theme: "light", // Defaulting to light since next-themes is removed
-        onSuccess: (data: any) => {
-          console.log("Checkout successful", data);
+    let checkoutInstance: any = null;
+
+    if (open && checkoutUrl) {
+      PolarEmbedCheckout.create(checkoutUrl, "light").then((checkout) => {
+        checkoutInstance = checkout;
+        
+        checkout.addEventListener("success", (event: any) => {
+          console.log("Checkout successful", event);
           window.location.href = "/dashboard?success=true";
-        },
-        onClose: () => {
+        });
+
+        checkout.addEventListener("close", () => {
           console.log("Checkout closed");
           onClose();
-        },
+        });
+      }).catch(err => {
+        console.error("Failed to create checkout", err);
       });
     }
-  }, [open, clientSecret, onClose]);
+
+    return () => {
+      if (checkoutInstance) {
+        checkoutInstance.close();
+      }
+    };
+  }, [open, checkoutUrl, onClose]);
 
   return (
-    <Modal open={open} onClose={onClose} className="sm:max-w-xl p-0 overflow-hidden bg-transparent border-0 shadow-none">
-        <div data-polar-checkout />
+    <Modal open={open} onClose={onClose} className="sm:max-w-xl p-0 overflow-hidden">
+        <div /> 
     </Modal>
   );
 }

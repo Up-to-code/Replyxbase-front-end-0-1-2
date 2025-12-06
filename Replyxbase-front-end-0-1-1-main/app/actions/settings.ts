@@ -49,7 +49,7 @@ export async function getSettingsData() {
   const activeOrganization = await getActiveOrganization();
   
   if (!activeOrganization) {
-    redirect("/dashboard");
+    return { user: null, organization: null };
   }
 
   const [user, organization] = await Promise.all([
@@ -58,7 +58,7 @@ export async function getSettingsData() {
   ]);
 
   if (!user || !organization) {
-    redirect("/dashboard");
+    return { user: null, organization: null };
   }
 
   return { user, organization };

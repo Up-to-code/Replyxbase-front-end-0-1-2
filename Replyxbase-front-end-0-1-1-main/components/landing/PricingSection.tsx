@@ -28,7 +28,7 @@ const PricingCard = ({
   tPricing: any;
 }) => {
   const [loading, setLoading] = useState(false);
-  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
   const [showCheckout, setShowCheckout] = useState(false);
   const router = useRouter();
 
@@ -42,12 +42,9 @@ const PricingCard = ({
     setLoading(true);
     try {
         const result = await createCheckoutSession(priceId);
-        if (result.success && result.clientSecret) {
-            setClientSecret(result.clientSecret);
+        if (result.success && result.url) {
+            setCheckoutUrl(result.url);
             setShowCheckout(true);
-        } else if (result.success && result.url) {
-             // Fallback to redirect if clientSecret is missing but URL exists
-             window.location.href = result.url;
         } else if (result.error === "Unauthorized") {
             // User not logged in, redirect to signup/login
             router.push("/signup");
@@ -111,7 +108,7 @@ const PricingCard = ({
       <EmbeddedCheckout 
         open={showCheckout} 
         onClose={() => setShowCheckout(false)} 
-        clientSecret={clientSecret || ""} 
+        checkoutUrl={checkoutUrl || ""} 
       />
     </>
   );

@@ -49,6 +49,7 @@ export interface Plan {
   agentLimit: number;
   features: Record<string, any>;
   isActive: boolean;
+  polarProductId?: string;
 }
 
 export async function getBillingInfo(organizationId: string): Promise<{
@@ -156,6 +157,11 @@ export async function getAllPlans(): Promise<{
       agentLimit: plan.agentLimit,
       features: (plan.features as Record<string, any>) || {},
       isActive: plan.isActive,
+      polarProductId: 
+        plan.slug === "starter" ? process.env.POLAR_PRODUCT_STARTER_ID :
+        plan.slug === "pro" ? process.env.POLAR_PRODUCT_PRO_ID :
+        plan.slug === "enterprise" ? process.env.POLAR_PRODUCT_ENTERPRISE_ID :
+        undefined,
     }));
 
     return {
@@ -283,13 +289,13 @@ export async function getUserBillingInfo(): Promise<{
   }
 }
 
-export async function createCheckoutSession(priceId: string): Promise<{
+export async function createCheckoutSession(priceId: string, organizationId: string): Promise<{
     success: boolean;
     url?: string;
     clientSecret?: string;
     error?: string;
 }> {
-    console.log("createCheckoutSession called for priceId:", priceId);
+    console.log("createCheckoutSession called for priceId:", priceId, "orgId:", organizationId);
     const session = await auth.api.getSession({
         headers: await headers(),
     });
@@ -312,6 +318,9 @@ export async function createCheckoutSession(priceId: string): Promise<{
             products: [priceId],
             successUrl: successUrl,
             customerEmail: session.user.email,
+            metadata: {
+                organizationId: organizationId, // Pass organization ID to webhook
+            },
         });
 
         console.log("Checkout URL generated:", result.url);

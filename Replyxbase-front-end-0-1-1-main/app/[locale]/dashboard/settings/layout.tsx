@@ -1,13 +1,13 @@
 import React from "react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { SettingsSidebar } from "./components/SettingsSidebar";
 
-export default function SettingsLayout({
+export default async function SettingsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const t = useTranslations("Dashboard.Settings");
+  const t = await getTranslations("Dashboard.Settings");
 
   return (
     <div className="min-h-screen bg-white">
@@ -34,3 +34,4 @@ export default function SettingsLayout({
     </div>
   );
 }
+
