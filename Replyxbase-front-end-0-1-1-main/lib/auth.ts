@@ -1,7 +1,14 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { organization } from "better-auth/plugins";
+import { polar } from "@polar-sh/better-auth";
+import { Polar } from "@polar-sh/sdk";
 import prisma from "./prisma";
+
+const polarClient = new Polar({
+  accessToken: process.env.POLAR_ACCESS_TOKEN || "",
+  server: process.env.NODE_ENV === "development" ? "sandbox" : "production", 
+});
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
@@ -29,5 +36,13 @@ export const auth = betterAuth({
         console.log("Invitation email:", data);
       },
     }),
+    ...(process.env.POLAR_ACCESS_TOKEN
+      ? [
+          polar({
+            client: polarClient,
+            use: [], // Fix for "cannot read properties of undefined (reading 'map')"
+          }),
+        ]
+      : []),
   ],
 });

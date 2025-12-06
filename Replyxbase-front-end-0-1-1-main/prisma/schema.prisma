@@ -7,19 +7,23 @@ datasource db {
 }
 
 model User {
-  id            String       @id
-  name          String
-  email         String       @unique
-  emailVerified Boolean      @default(false)
-  image         String?
-  metadata      Json?
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  credits       Int          @default(0)
-  accounts      Account[]
-  invitations   Invitation[]
-  members       Member[]
-  sessions      Session[]
+  id                  String       @id
+  name                String
+  email               String       @unique
+  emailVerified       Boolean      @default(false)
+  image               String?
+  metadata            Json?
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  credits             Int          @default(0)
+  accounts            Account[]
+  invitations         Invitation[]
+  members             Member[]
+  sessions            Session[]
+  planId              String?
+  plan                plan?        @relation(fields: [planId], references: [id])
+  polarSubscriptionId String?
+  polarCustomerId     String?
 
   @@map("user")
 }
@@ -302,4 +306,5 @@ model plan {
   createdAt    DateTime       @default(now())
   updatedAt    DateTime
   organization Organization[]
+  users        User[]
 }

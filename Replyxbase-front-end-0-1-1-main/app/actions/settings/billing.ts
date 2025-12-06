@@ -4,6 +4,12 @@ import { auth } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 import { headers } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { Polar } from "@polar-sh/sdk";
+
+const polar = new Polar({
+  accessToken: process.env.POLAR_ACCESS_TOKEN || "",
+  server: process.env.NODE_ENV === "development" ? "sandbox" : "production",
+});
 
 export interface BillingInfo {
   currentPlan: {
@@ -95,14 +101,10 @@ export async function getBillingInfo(organizationId: string): Promise<{
         }
       : null;
 
-    // Calculate next billing date (30 days from creation or last update)
-    // In a real app, this would come from a subscription table
     const nextBillingDate = organization.plan
       ? new Date(organization.createdAt.getTime() + 30 * 24 * 60 * 60 * 1000)
       : null;
 
-    // For now, return empty billing history and payment methods
-    // In the future, these would come from separate tables
     const billingHistory: BillingInfo["billingHistory"] = [];
     const paymentMethods: BillingInfo["paymentMethods"] = [];
 
@@ -221,5 +223,108 @@ export async function upgradePlan(data: {
   }
 }
 
+export async function getUserBillingInfo(): Promise<{
+  success: boolean;
+  data?: BillingInfo;
+  error?: string;
+}> {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
+  if (!session?.user) {
+    return { success: false, error: "Unauthorized" };
+  }
 
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: session.user.id },
+      include: {
+        plan: true,
+      },
+    });
+
+    if (!user) {
+      return { success: false, error: "User not found" };
+    }
+
+    const currentPlan = user.plan
+      ? {
+          id: user.plan.id,
+          name: user.plan.name,
+          slug: user.plan.slug,
+          price: user.plan.price,
+          currency: user.plan.currency,
+          orgLimit: user.plan.orgLimit,
+          agentLimit: user.plan.agentLimit,
+          features: (user.plan.features as Record<string, any>) || {},
+        }
+      : null;
+
+    const nextBillingDate = user.plan
+      ? new Date(user.createdAt.getTime() + 30 * 24 * 60 * 60 * 1000)
+      : null;
+
+    const billingHistory: BillingInfo["billingHistory"] = [];
+    const paymentMethods: BillingInfo["paymentMethods"] = [];
+
+    return {
+      success: true,
+      data: {
+        currentPlan,
+        nextBillingDate,
+        billingHistory,
+        paymentMethods,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to get billing info:", error);
+    return { success: false, error: "Failed to get billing information" };
+  }
+}
+
+export async function createCheckoutSession(priceId: string): Promise<{
+    success: boolean;
+    url?: string;
+    clientSecret?: string;
+    error?: string;
+}> {
+    console.log("createCheckoutSession called for priceId:", priceId);
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
+
+    console.log("Session in createCheckoutSession:", session?.user?.id);
+
+    if (!session?.user) {
+        console.error("No session found in createCheckoutSession");
+        return { success: false, error: "Unauthorized" };
+    }
+
+    try {
+        console.log("Creating checkout link with customerEmail:", session.user.email);
+        const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+        const successUrl = `${baseUrl}/dashboard?success=true`;
+        console.log("Success URL:", successUrl);
+
+        // SDK expects 'products' array based on validation error
+        const result = await polar.checkouts.create({
+            products: [priceId],
+            successUrl: successUrl,
+            customerEmail: session.user.email,
+        });
+
+        console.log("Checkout URL generated:", result.url);
+        // The embedded checkout requires the client secret. 
+        // Assuming the SDK returns it as 'clientSecret' or similar. 
+        // Based on Polar docs, the response contains client_secret.
+        return { 
+            success: true, 
+            url: result.url,
+            clientSecret: result.clientSecret 
+        };
+    } catch (error) {
+        console.error("Failed to create checkout session:", error);
+        return { success: false, error: "Failed to create checkout session" };
+    }
+}

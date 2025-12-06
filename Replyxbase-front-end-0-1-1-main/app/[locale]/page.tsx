@@ -109,7 +109,11 @@ export default async function LandingPage({ params }: Props) {
         
         {/* Pricing */}
         <div id="pricing" className="scroll-mt-20">
-          <PricingSection />
+          <PricingSection 
+            starterPriceId={process.env.POLAR_PRODUCT_STARTER_ID || ""}
+            proPriceId={process.env.POLAR_PRODUCT_PRO_ID || ""}
+            enterprisePriceId={process.env.POLAR_PRODUCT_ENTERPRISE_ID || ""}
+          />
         </div>
         
         {/* CTA Section */}
