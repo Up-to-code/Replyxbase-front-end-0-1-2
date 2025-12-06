@@ -33,55 +33,20 @@ export async function POST(req: NextRequest) {
     const event = JSON.parse(body);
     console.log("Received Polar Webhook:", event.type);
 
-    if (event.type === "subscription.created" || event.type === "subscription.updated") {
+    if (event.type.startsWith("subscription.")) {
       const subscription = event.data;
       const metadata = subscription.metadata || {};
-      const organizationId = metadata.organizationId; // IMPORTANT: We need to ensure we pass this in checkout
+      const organizationId = metadata.organizationId;
 
       if (!organizationId) {
-          // Fallback: If no metadata, try to find by customer email if user logic allows, 
-          // or log error. For now, we assume metadata is passed.
-          console.warn("No organizationId in subscription metadata", subscription);
-          
-          // Attempt to match by user email? 
-          // Not safe for orgs. We must ensure checkout session has metadata.
+          console.warn(`No organizationId in subscription metadata for event ${event.type}`);
           return NextResponse.json({ received: true });
       }
 
-      // Map Polar Product ID to Plan ID
-      // We need to fetch the plan from our DB using the polarProductId (which we added to actions but not DB schema directly... wait)
-      // Actually, we mapped env vars in 'getAllPlans'. Ideally we should store polarProductId in DB Plan table 
-      // OR we just map strictly by environment variables here too.
-      // Let's use the Environment Variables mapping for now to match 'getAllPlans' logic.
-
-      const starterId = process.env.POLAR_PRODUCT_STARTER_ID;
-      const proId = process.env.POLAR_PRODUCT_PRO_ID;
-      const enterpriseId = process.env.POLAR_PRODUCT_ENTERPRISE_ID;
-
-      let planSlug = "starter"; // default?
-      if (subscription.product_id === starterId) planSlug = "starter";
-      else if (subscription.product_id === proId) planSlug = "pro";
-      else if (subscription.product_id === enterpriseId) planSlug = "enterprise";
-      
-      // Find the plan in our DB by slug
-      const plan = await prisma.plan.findUnique({
-          where: { slug: planSlug }
-      });
-
-      if (plan) {
-           await prisma.organization.update({
-               where: { id: organizationId },
-               data: {
-                   planId: plan.id,
-                   polarSubscriptionId: subscription.id,
-                   polarCustomerId: subscription.customer_id,
-                   subscriptionStatus: subscription.status,
-                   currentPeriodEnd: subscription.current_period_end ? new Date(subscription.current_period_end) : null
-               }
-           });
-           console.log(`Updated Organization ${organizationId} to plan ${planSlug}`);
-      } else {
-          console.error(`Plan not found for slug: ${planSlug}`);
+      if (["subscription.created", "subscription.updated", "subscription.active"].includes(event.type)) {
+           await handleSubscriptionActive(organizationId, subscription);
+      } else if (["subscription.revoked", "subscription.canceled"].includes(event.type)) {
+           await handleSubscriptionEnded(organizationId, subscription);
       }
     }
 
@@ -90,4 +55,58 @@ export async function POST(req: NextRequest) {
     console.error("Webhook processing error:", error);
     return NextResponse.json({ error: "Webhook handler failed" }, { status: 500 });
   }
+}
+
+async function handleSubscriptionActive(organizationId: string, subscription: any) {
+    const starterId = process.env.POLAR_PRODUCT_STARTER_ID;
+    const proId = process.env.POLAR_PRODUCT_PRO_ID;
+    const enterpriseId = process.env.POLAR_PRODUCT_ENTERPRISE_ID;
+
+    let planSlug = "starter"; 
+    if (subscription.product_id === starterId) planSlug = "starter";
+    else if (subscription.product_id === proId) planSlug = "pro";
+    else if (subscription.product_id === enterpriseId) planSlug = "enterprise";
+    
+    // Find the plan in our DB by slug
+    const plan = await prisma.plan.findUnique({
+        where: { slug: planSlug }
+    });
+
+    if (plan) {
+         await prisma.organization.update({
+             where: { id: organizationId },
+             data: {
+                 planId: plan.id,
+                 polarSubscriptionId: subscription.id,
+                 polarCustomerId: subscription.customer_id,
+                 subscriptionStatus: subscription.status,
+                 currentPeriodEnd: subscription.current_period_end ? new Date(subscription.current_period_end) : null
+             }
+         });
+         console.log(`Updated Organization ${organizationId} to plan ${planSlug} (${subscription.status})`);
+    } else {
+        console.error(`Plan not found for slug: ${planSlug} (Product ID: ${subscription.product_id})`);
+    }
+}
+
+async function handleSubscriptionEnded(organizationId: string, subscription: any) {
+    // Determine if we should revert to a free plan or just mark as canceled
+    // For 'canceled', they might still have access until period end, but Polar usually sends 'subscription.updated' for status change?
+    // If event is specifically 'revoked', it's immediate. 'canceled' might just mean no renew.
+    // We will update status. If revoked, we might want to remove planId or set to free immediately.
+    
+    // Check if we have a free plan or just set to null/default
+    // For now, update status and let the app logic handle access control based on Plan + Status + PeriodEnd
+    
+    await prisma.organization.update({
+        where: { id: organizationId },
+        data: {
+            subscriptionStatus: subscription.status,
+            // If revoked, maybe active plan is null? 
+            // Only strictly needed if we want to lock them out immediately.
+            // keeping planId allows them to see what they *had* or renew easily.
+            currentPeriodEnd: subscription.current_period_end ? new Date(subscription.current_period_end) : null
+        }
+    });
+    console.log(`Organization ${organizationId} subscription ended: ${subscription.status}`);
 }
