@@ -634,6 +634,261 @@
         "title": "Recent Activity"
       }
     },
+    "CRM": {
+      "title": "CRM",
+      "subtitle": "Administra tu negocio.",
+      "tabs": {
+        "calendar": "Calendario",
+        "customers": "Clientes",
+        "activities": "Actividades"
+      },
+      "Customers": {
+        "title": "Clientes",
+        "addCustomer": "Añadir cliente",
+        "searchPlaceholder": "Buscar clientes...",
+        "editDetails": "Editar detalles",
+        "newCustomerDetails": "Detalles del nuevo cliente",
+        "table": {
+          "name": "Nombre",
+          "contact": "Contacto",
+          "status": "Estado",
+          "lastVisit": "Última visita"
+        },
+        "status": {
+          "all": "Todos",
+          "active": "Activo",
+          "inactive": "Inactivo",
+          "lead": "Potencial"
+        },
+        "sections": {
+             "contact": "Información de contacto",
+             "details": "Detalles",
+             "notes": "Notas"
+        },
+        "fields": {
+             "fullName": "Nombre completo",
+             "email": "Correo electrónico",
+             "phone": "Teléfono",
+             "company": "Empresa",
+             "address": "Dirección",
+             "status": "Estado"
+        },
+        "placeholders": {
+             "notes": "Añadir notas internas..."
+        },
+        "actions": {
+             "saveChanges": "Guardar cambios",
+             "createCustomer": "Crear cliente"
+        },
+        "messages": {
+             "updateSuccess": "Cliente actualizado con éxito",
+             "updateError": "Error al actualizar cliente",
+             "requiredFields": "Nombre y correo son obligatorios",
+             "createSuccess": "Cliente creado con éxito",
+             "createError": "Error al crear cliente"
+        }
+      },
+      "Activities": {
+        "title": "Registro de actividad",
+        "Form": {
+          "title": "Añadir actividad",
+          "type": "Tipo",
+          "date": "Fecha",
+          "time": "Hora",
+          "duration": "Duración",
+          "notes": "Notas",
+          "save": "Guardar",
+          "cancel": "Cancelar",
+          "placeholder": "Añadir nota...",
+          "types": {
+            "call": "Llamada",
+            "email": "Correo",
+            "meeting": "Reunión",
+            "note": "Nota"
+          },
+          "note": "Nota",
+          "call": "Llamada",
+          "email": "Correo",
+          "meeting": "Reunión"
+        },
+        "types": {
+          "call": "Llamada",
+          "email": "Correo",
+          "meeting": "Reunión",
+          "note": "Nota"
+        },
+        "Log": {
+          "noActivities": "No hay actividades registradas.",
+          "loggedBy": "Registrado por {name}"
+        }
+      },
+      "Stats": {
+        "totalBookings": "Total de reservas",
+        "pending": "Pendiente",
+        "confirmed": "Confirmado",
+        "activeCustomers": "Clientes activos",
+        "revenue": "Ingresos",
+        "growth": "Crecimiento",
+        "cancelled": "Cancelado"
+      },
+      "Form": {
+        "searchExisting": "Cargar cliente existente",
+        "emailOrPhoneRequired": "Por favor proporcione correo o teléfono",
+        "newTitle": "Nueva Reserva",
+        "editTitle": "Editar Reserva",
+        "customerInfo": "Info Cliente",
+        "fullName": "Nombre completo",
+        "email": "Correo electrónico",
+        "phone": "Teléfono",
+        "company": "Empresa",
+        "bookingDetails": "Detalles de la reserva",
+        "date": "Fecha",
+        "startTime": "Hora de inicio",
+        "duration": "Duración (min)",
+        "people": "Personas",
+        "serviceType": "Tipo de servicio",
+        "status": "Estado",
+        "additionalInfo": "Info adicional",
+        "specialRequests": "Solicitudes especiales",
+        "internalNotes": "Notas internas",
+        "cancel": "Cancelar",
+        "create": "Crear reserva",
+        "update": "Actualizar"
+      },
+      "Header": {
+        "title": "Gestión de reservas",
+        "subtitle": "Administra todas tus reservas en un solo lugar",
+        "refresh": "Actualizar",
+        "newBooking": "Nueva reserva"
+      },
+      "ViewToggle": {
+        "table": "Vista de tabla",
+        "calendar": "Vista de calendario",
+        "kanban": "Kanban"
+      },
+      "Filters": {
+        "searchPlaceholder": "Buscar por nombre, correo o teléfono...",
+        "filters": "Filtros",
+        "newestFirst": "Más reciente",
+        "oldestFirst": "Más antiguo",
+        "customerAZ": "Cliente A-Z",
+        "customerZA": "Cliente Z-A",
+        "priority": "Prioridad",
+        "statusFilter": "Filtro de estado",
+        "allStatuses": "Todos los estados",
+        "serviceType": "Tipo de servicio",
+        "allServices": "Todos los servicios",
+        "dateRange": "Rango de fechas",
+        "advancedFilters": "Filtros avanzados",
+        "addFilterRule": "Añadir regla",
+        "apply": "Aplicar",
+        "reset": "Restablecer",
+        "activeFilters": "Filtros activos",
+        "clearAll": "Borrar todo",
+        "noAdvancedFilters": "No hay filtros avanzados.",
+        "Dynamic": {
+          "price": "Precio",
+          "people": "Personas",
+          "duration": "Duración",
+          "equals": "Igual a",
+          "gt": "Mayor que",
+          "lt": "Menor que",
+          "valuePlaceholder": "Valor..."
+        }
+      },
+      "Pagination": {
+        "showing": "Mostrando {start}-{end} de {total}",
+        "show": "Mostrar:"
+      },
+      "Priority": {
+        "normal": "Normal",
+        "high": "Alta",
+        "medium": "Media",
+        "low": "Baja",
+        "urgent": "Urgente"
+      },
+      "Bookings": {
+        "status": {
+          "pending": "Pendiente",
+          "confirmed": "Confirmado",
+          "completed": "Completado",
+          "cancelled": "Cancelado",
+          "no-show": "No presentado"
+        },
+        "Table": {
+          "customer": "Cliente",
+          "contact": "Contacto",
+          "dateTime": "Fecha y hora",
+          "service": "Servicio",
+          "status": "Estado",
+          "actions": "Acciones",
+          "viewDetails": "Ver",
+          "deleteBooking": "Eliminar"
+        },
+        "Details": {
+          "title": "Detalles de la reserva",
+          "customerDetails": "Detalles del cliente",
+          "bookingInfo": "Info reserva",
+          "internalNotes": "Notas internas",
+          "tags": "Etiquetas",
+          "activityLog": "Registro de actividad",
+          "chatTooltip": "Chat con cliente",
+          "editTooltip": "Editar",
+          "deleteTooltip": "Eliminar",
+          "closeTooltip": "Cerrar",
+          "status": "Estado",
+          "priority": "Prioridad",
+          "rating": "Valoración",
+          "serviceType": "Tipo de servicio",
+          "duration": "Duración",
+          "people": "Personas",
+          "occasion": "Ocasión",
+          "location": "Ubicación",
+          "specialRequests": "Solicitudes especiales",
+          "minutes": "minutos"
+        },
+        "DeleteModal": {
+          "title": "Eliminar reserva",
+          "subtitle": "Esta acción no se puede deshacer",
+          "confirmation": "¿Estás seguro de que quieres eliminar esta reserva? Todos los datos asociados se eliminarán permanentemente.",
+          "cancel": "Cancelar",
+          "delete": "Eliminar"
+        }
+      },
+      "Kanban": {
+        "title": "Tablero Kanban",
+        "search": "Buscar...",
+        "viewDetails": "Ver detalles",
+        "empty": "Etapa vacía",
+        "customerName": "Nombre del cliente",
+        "overdue": "Atrasado",
+        "noBookings": "No hay reservas",
+        "pending": "Pendiente",
+        "confirmed": "Confirmado",
+        "completed": "Completado",
+        "cancelled": "Cancelado"
+      },
+      "Status": {
+        "pending": "Pendiente",
+        "confirmed": "Confirmado",
+        "completed": "Completado",
+        "cancelled": "Cancelado"
+      },
+      "Toast": {
+        "createCommon": "Reserva creada exitosamente",
+        "createError": "Error al crear la reserva",
+        "updateCommon": "Reserva actualizada exitosamente",
+        "updateError": "Error al actualizar la reserva",
+        "deleteCommon": "Reserva eliminada exitosamente",
+        "deleteError": "Error al eliminar la reserva",
+        "rescheduleSuccess": "Reserva reprogramada exitosamente",
+        "rescheduleError": "Error al reprogramar",
+        "reorderError": "Error al reordenar",
+        "settingsError": "Error al guardar la configuración",
+        "bulkUpdateSuccess": "Se actualizaron {count} reservas a \"{status}\"",
+        "bulkUpdateError": "Error al realizar la actualización masiva"
+      }
+    },
     "Agents": {
       "title": "Agentes",
       "subtitle": "Gestiona tus agentes IA y sus capacidades.",
@@ -945,180 +1200,7 @@
         }
       }
     },
-    "CRM": {
-      "title": "Bookings & CRM",
-      "subtitle": "Manage your appointments and customer relationships",
-      "newCustomer": "New Customer",
-      "searchPlaceholder": "Search customers...",
-      "status": "Status",
-      "service": "Service",
-      "dateRange": "Date Range",
-      "export": "Export",
-      "filter": "Filter",
-      "table": "Table",
-      "kanban": "Kanban",
-      "calendar": "Calendar",
-      "Stats": {
-        "totalBookings": "Total Bookings",
-        "pending": "Pending",
-        "confirmed": "Confirmed",
-        "activeCustomers": "Active Customers",
-        "revenue": "Revenue",
-        "growth": "Growth",
-        "cancelled": "Cancelled"
-      },
-      "Form": {
-        "newTitle": "New Booking",
-        "editTitle": "Edit Booking",
-        "customerInfo": "Customer Info",
-        "fullName": "Full Name",
-        "email": "Email",
-        "phone": "Phone",
-        "company": "Company",
-        "bookingDetails": "Booking Details",
-        "date": "Date",
-        "startTime": "Start Time",
-        "duration": "Duration (min)",
-        "people": "People",
-        "serviceType": "Service Type",
-        "status": "Status",
-        "additionalInfo": "Additional Info",
-        "specialRequests": "Special Requests",
-        "internalNotes": "Internal Notes",
-        "cancel": "Cancel",
-        "create": "Create Booking",
-        "update": "Update Booking"
-      },
-      "Header": {
-        "title": "Bookings Management",
-        "subtitle": "Manage all your bookings in one place",
-        "refresh": "Refresh",
-        "newBooking": "New Booking"
-      },
-      "ViewToggle": {
-        "table": "Table View",
-        "calendar": "Calendar View",
-        "kanban": "Kanban"
-      },
-      "Filters": {
-        "searchPlaceholder": "Search by customer name, email, or phone...",
-        "filters": "Filters",
-        "newestFirst": "Newest First",
-        "oldestFirst": "Oldest First",
-        "customerAZ": "Customer A-Z",
-        "customerZA": "Customer Z-A",
-        "priority": "Priority",
-        "statusFilter": "Status Filter",
-        "allStatuses": "All Statuses",
-        "serviceType": "Service Type",
-        "allServices": "All Services",
-        "dateRange": "Date Range",
-        "advancedFilters": "Advanced Filters",
-        "addFilterRule": "Add Filter Rule",
-        "noAdvancedFilters": "No advanced filters applied.",
-        "Dynamic": {
-          "price": "Price",
-          "people": "People",
-          "duration": "Duration",
-          "equals": "Equals",
-          "gt": "Greater Than",
-          "lt": "Less Than",
-          "valuePlaceholder": "Value..."
-        }
-      },
-      "Pagination": {
-        "showing": "Showing {start}-{end} of {total} items",
-        "show": "Show:"
-      },
-      "Status": {
-        "pending": "Pending",
-        "confirmed": "Confirmed",
-        "cancelled": "Cancelled",
-        "completed": "Completed",
-        "no-show": "No Show"
-      },
-      "Priority": {
-        "normal": "Normal",
-        "high": "High",
-        "urgent": "Urgent"
-      },
-      "Bookings": {
-        "Table": {
-          "customer": "Customer",
-          "contact": "Contact",
-          "dateTime": "Date & Time",
-          "service": "Service",
-          "status": "Status",
-          "actions": "Actions",
-          "viewDetails": "View Details",
-          "deleteBooking": "Delete Booking"
-        },
-        "Details": {
-          "title": "Booking Details",
-          "customerDetails": "Customer Details",
-          "bookingInfo": "Booking Information",
-          "internalNotes": "Internal Notes",
-          "tags": "Tags",
-          "activityLog": "Activity Log",
-          "chatTooltip": "Chat with Customer",
-          "editTooltip": "Edit Booking",
-          "deleteTooltip": "Delete Booking",
-          "closeTooltip": "Close",
-          "status": "Status",
-          "priority": "Priority",
-          "rating": "Rating",
-          "serviceType": "Service Type",
-          "duration": "Duration",
-          "people": "People",
-          "occasion": "Occasion",
-          "location": "Location",
-          "specialRequests": "Special Requests",
-          "minutes": "minutes"
-        },
-        "DeleteModal": {
-          "title": "Delete Booking",
-          "subtitle": "This action cannot be undone",
-          "confirmation": "Are you sure you want to delete this booking? All associated data will be permanently removed.",
-          "cancel": "Cancel",
-          "delete": "Delete Booking"
-        }
-      },
-      "Activities": {
-        "Form": {
-          "note": "Note",
-          "call": "Call",
-          "email": "Email",
-          "meeting": "Meeting",
-          "placeholder": "Add a {type} note..."
-        },
-        "Log": {
-          "noActivities": "No activities recorded yet.",
-          "loggedBy": "Logged by {name}"
-        }
-      },
-      "Calendar": {
-        "today": "Today",
-        "month": "Month",
-        "week": "Week",
-        "day": "Day",
-        "more": "+{count} more",
-        "Drawer": {
-          "title": "Bookings for {date}",
-          "noBookings": "No bookings for this date",
-          "people": "{count} people",
-          "viewDetails": "View Details"
-        }
-      },
-      "Kanban": {
-        "pending": "Pending",
-        "confirmed": "Confirmed",
-        "completed": "Completed",
-        "cancelled": "Cancelled",
-        "overdue": "Overdue",
-        "viewDetails": "View Details",
-        "noBookings": "No bookings"
-      }
-      },
+  },
       "Settings": {
         "title": "Configuración",
         "subtitle": "Gestiona las preferencias de tu cuenta y la configuración del espacio de trabajo.",

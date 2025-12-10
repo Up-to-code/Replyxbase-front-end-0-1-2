@@ -45,6 +45,52 @@ export async function createLead(data: {
   }
 }
 
+export async function createCustomer(data: {
+  fullName: string;
+  email: string;
+  phone?: string;
+  company?: string;
+  address?: string;
+  status?: string;
+  notes?: string;
+}) {
+  try {
+    const organizationId = await getOrganizationId();
+
+    // Check if customer exists
+    const existing = await prisma.customer.findFirst({
+      where: {
+        organizationId,
+        email: data.email,
+      }
+    });
+
+    if (existing) {
+      return { success: false, error: 'Customer with this email already exists' };
+    }
+
+    const customer = await prisma.customer.create({
+      data: {
+        organizationId,
+        fullName: data.fullName,
+        email: data.email,
+        phone: data.phone || '',
+        company: data.company,
+        address: data.address,
+        status: data.status || 'active',
+        notes: data.notes,
+      }
+    });
+
+    revalidatePath('/dashboard/crm');
+    return { success: true, customer };
+  } catch (error) {
+    console.error('Failed to create customer:', error);
+    return { success: false, error: 'Failed to create customer' };
+  }
+}
+
+
 export async function getCustomers() {
   try {
     const organizationId = await getOrganizationId();
@@ -56,5 +102,33 @@ export async function getCustomers() {
   } catch (error) {
     console.error('Failed to fetch customers:', error);
     return { success: false, error: 'Failed to fetch customers', data: [] };
+  }
+}
+
+export async function updateCustomer(id: string, data: Partial<Customer>) {
+  try {
+    const organizationId = await getOrganizationId();
+    
+    // Verify ownership
+    const existing = await prisma.customer.findFirst({
+        where: { id, organizationId }
+    });
+
+    if (!existing) {
+        throw new Error("Customer not found");
+    }
+
+    const { id: _, ...updateData } = data as any; // Exclude ID from update data
+
+    const customer = await prisma.customer.update({
+      where: { id },
+      data: updateData
+    });
+
+    revalidatePath('/dashboard/crm');
+    return { success: true, customer };
+  } catch (error) {
+    console.error('Failed to update customer:', error);
+    return { success: false, error: 'Failed to update customer' };
   }
 }

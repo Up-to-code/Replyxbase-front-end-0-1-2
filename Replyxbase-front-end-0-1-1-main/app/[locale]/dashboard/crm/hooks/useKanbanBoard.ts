@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Booking } from '../types';
 import { useTranslations } from 'next-intl';
+import { toast } from 'sonner';
 
 interface KanbanBoardHookProps {
   initialBookings: Booking[];
@@ -8,9 +9,11 @@ interface KanbanBoardHookProps {
   onReorder?: (items: { id: string; position: number; status: string }[]) => Promise<void>;
   onUpdateSettings?: (settings: any) => Promise<void>;
   onStatusChange?: (bookingId: string, newStatus: Booking['status']) => void;
+  onBulkStatusChange?: (oldStatus: string, newStatus: string) => Promise<void>;
 }
 
 const defaultColumns: { id: string; title: string }[] = [
+  { id: 'draft', title: 'Draft' },
   { id: 'pending', title: 'Pending' },
   { id: 'confirmed', title: 'Confirmed' },
   { id: 'completed', title: 'Completed' },
@@ -23,7 +26,8 @@ export const useKanbanBoard = ({
   initialSettings,
   onReorder,
   onUpdateSettings,
-  onStatusChange
+  onStatusChange,
+  onBulkStatusChange
 }: KanbanBoardHookProps) => {
   const tStatus = useTranslations("Dashboard.CRM.Status");
   
@@ -49,10 +53,15 @@ export const useKanbanBoard = ({
   // -- Column Management --
   const saveSettings = async (newColumns: {id: string, title: string}[]) => {
       if (onUpdateSettings) {
-          await onUpdateSettings({
-              ...initialSettings,
-              columns: newColumns
-          });
+          try {
+            await onUpdateSettings({
+                ...initialSettings,
+                columns: newColumns
+            });
+          } catch (error) {
+              console.error('Failed to save settings:', error);
+              toast.error('Failed to save column settings');
+          }
       }
   };
 
@@ -64,6 +73,7 @@ export const useKanbanBoard = ({
     const newColumns = [...columns, newColumn];
     setColumns(newColumns);
     await saveSettings(newColumns);
+    toast.success('Column added');
     return newColumn.id; // Return ID to allow auto-focus
   };
 
@@ -71,16 +81,67 @@ export const useKanbanBoard = ({
       const newColumns = columns.filter(c => c.id !== columnId);
       setColumns(newColumns);
       await saveSettings(newColumns);
+      toast.success('Column deleted');
   };
 
   const renameColumn = async (columnId: string, newTitle: string) => {
       if (!newTitle.trim()) return;
       
+      const columnToRename = columns.find(c => c.id === columnId);
+      const oldTitle = columnToRename?.title;
+
       const newColumns = columns.map(col => 
           col.id === columnId ? { ...col, title: newTitle } : col
       );
       setColumns(newColumns);
       await saveSettings(newColumns);
+      
+      // Trigger bulk update if it's a custom column (name-based status)
+      if (columnId.startsWith('custom-') && oldTitle && onBulkStatusChange) {
+          // Optimistic or waiting? Let's just trigger.
+          // Since we use Title as ID for custom columns, we MUST migrate the data.
+          await onBulkStatusChange(oldTitle, newTitle);
+      }
+
+      toast.success('Column renamed');
+  };
+
+  const resetColumns = async () => {
+      const resetCols = defaultColumns.map(col => ({
+          ...col,
+          title: tStatus(col.id as any) || col.title
+      }));
+      setColumns(resetCols);
+      await saveSettings(resetCols);
+      toast.success('Columns reset to default');
+  };
+
+  // -- Column Drag & Drop --
+  const [draggedColumnId, setDraggedColumnId] = useState<string | null>(null);
+
+  const handleColumnDragStart = (e: React.DragEvent, columnId: string) => {
+      setDraggedColumnId(columnId);
+      e.dataTransfer.setData('columnId', columnId);
+      e.dataTransfer.effectAllowed = 'move';
+  };
+
+  const handleColumnDrop = async (e: React.DragEvent, targetColumnId: string) => {
+      e.preventDefault();
+      const draggedId = e.dataTransfer.getData('columnId');
+      if (!draggedId || draggedId === targetColumnId) return;
+
+      const oldIndex = columns.findIndex(c => c.id === draggedId);
+      const newIndex = columns.findIndex(c => c.id === targetColumnId);
+
+      if (oldIndex === -1 || newIndex === -1) return;
+
+      const newColumns = [...columns];
+      const [removed] = newColumns.splice(oldIndex, 1);
+      newColumns.splice(newIndex, 0, removed);
+
+      setColumns(newColumns);
+      await saveSettings(newColumns);
+      setDraggedColumnId(null);
   };
 
 
@@ -112,6 +173,17 @@ export const useKanbanBoard = ({
     setDragOverBookingId(null);
     setDraggedBookingId(null);
 
+    // Determine new status based on column type
+    // User requested "based on column name" specifically.
+    // For custom columns, the status stored in DB will be the readable Column Title.
+    let newStatus = columnId;
+    if (columnId.startsWith('custom-')) {
+        const targetColumn = columns.find(c => c.id === columnId);
+        if (targetColumn) {
+            newStatus = targetColumn.title;
+        }
+    }
+
     // If we have a bookingId and reorder handler
     if (bookingId && onReorder) {
         const draggedBooking = initialBookings.find(b => b.id === bookingId);
@@ -126,52 +198,41 @@ export const useKanbanBoard = ({
         if (dragOverBookingId) {
             const dragOverIndex = newBookingsList.findIndex(b => b.id === dragOverBookingId);
             
-            // If dragging within same column, check if we're moving down (original index < target index)
-            // Note: newBookingsList already has the item removed, so 'originalIndex' comparison requires logic
-            // But simplify: If I drag A over B, and I want to swap, I usually want A after B.
-            // Standard "Insert Before" logic:
-            // List: [A, B, C]. Drag A. list w/o A: [B, C]. Target B(0). Splice(0, 0, A) -> [A, B, C]. No change.
-            // Target C(1). Splice(1, 0, A) -> [B, A, C]. Correct.
-            
-            // To fix "dragging down on B doesn't swap":
-            // We need to know if the user INTENDED to drop 'after'. 
-            // In a strict list, this is hard without coordinate tracking.
-            // However, a common heuristic: if dragOverBookingId matches the original *next* item, we might be moving down.
-            
-            // Better fix: check indices in the *original* list.
+            // Fix sorting logic (simplified)
+            // ... (keeping existing logic for insertion details)
             const originalSourceIndex = bookingsInColumn.findIndex(b => b.id === bookingId);
             const originalTargetIndex = bookingsInColumn.findIndex(b => b.id === dragOverBookingId);
             
             let insertionIndex = dragOverIndex;
 
+            // Simplified dragging down check
             if (columnId === draggedBooking.status && originalSourceIndex !== -1 && originalTargetIndex !== -1) {
-                // Moving down in same column
                 if (originalSourceIndex < originalTargetIndex) {
                     insertionIndex = dragOverIndex + 1; 
                 }
             }
 
             if (dragOverIndex !== -1) {
-                 newBookingsList.splice(insertionIndex, 0, { ...draggedBooking, status: columnId as any });
+                 newBookingsList.splice(insertionIndex, 0, { ...draggedBooking, status: newStatus as any });
             } else {
-                 newBookingsList.push({ ...draggedBooking, status: columnId as any });
+                 newBookingsList.push({ ...draggedBooking, status: newStatus as any });
             }
         } else {
             // Append to end if dropped on empty space in column
-            newBookingsList.push({ ...draggedBooking, status: columnId as any });
+            newBookingsList.push({ ...draggedBooking, status: newStatus as any });
         }
 
         // Create update payload
         const updates = newBookingsList.map((b, index) => ({
             id: b.id,
             position: index,
-            status: columnId
+            status: newStatus
         }));
         
         await onReorder(updates);
     } else if (bookingId && onStatusChange) {
       // Fallback if no reorder logic (legacy support)
-      onStatusChange(bookingId, columnId as any);
+      onStatusChange(bookingId, newStatus as any);
     }
   };
   
@@ -197,6 +258,10 @@ export const useKanbanBoard = ({
       handleDragOver,
       handleDragLeave,
       handleDrop,
-      getBookingsByStatus
+      getBookingsByStatus,
+      resetColumns,
+      handleColumnDragStart,
+      handleColumnDrop,
+      draggedColumnId
   };
 };

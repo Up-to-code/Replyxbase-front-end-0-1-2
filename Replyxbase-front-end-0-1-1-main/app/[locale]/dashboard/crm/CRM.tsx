@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useTransition } from 'react';
 import { Booking, BookingFormData, CalendarView as CalendarViewType, MainView } from './types';
 import { useFilters } from './hooks/useFilters';
-import { createBooking, updateBooking, deleteBooking, rescheduleBooking, reorderBookings } from '@/app/actions/crm/bookings';
+import { createBooking, updateBooking, deleteBooking, rescheduleBooking, reorderBookings, bulkUpdateBookingsStatus } from '@/app/actions/crm/bookings';
 import { updateCRMSettings } from '@/app/actions/crm/organization';
 import { Filters } from './components/shared/Filters';
 import { ViewToggle } from './components/shared/ViewToggle';
@@ -20,9 +20,11 @@ import { RescheduleModal } from './components/bookings/RescheduleModal';
 import { BookingFormDrawer } from './components/bookings/BookingFormDrawer';
 import { BookingPreviewDrawer } from './components/bookings/BookingPreviewDrawer';
 import { StatsOverview } from './components/shared/StatsOverview';
+import { CustomersTab } from './components/CustomersTab';
+import { ActivitiesTab } from './components/ActivitiesTab';
+import { CustomerDetailsDrawer } from './components/CustomerDetailsDrawer';
 
 import { Customer } from './types';
-
 
 
 interface CRMProps {
@@ -41,15 +43,9 @@ interface CRMProps {
     sortField: any;
     sortDirection: any;
   };
-  initialStats: {
-    all: number;
-    pending: number;
-    confirmed: number;
-    cancelled: number;
-    completed: number;
-    noshow: number;
-  };
+  initialStats: Record<string, number>;
   initialSettings: any;
+  initialActivities: any[];
 }
 
 export default function CRM({ 
@@ -59,7 +55,8 @@ export default function CRM({
   initialView,
   initialFilters,
   initialStats,
-  initialSettings
+  initialSettings,
+  initialActivities
 }: CRMProps) {
   // i18n
   const t = useTranslations("Dashboard.CRM");
@@ -84,14 +81,25 @@ export default function CRM({
   }, [pathname, router, searchParams]);
 
   // State
-  const [view, setViewState] = useState<MainView>(initialView);
+  const [activeTab, setActiveTab] = useState<'calendar' | 'customers' | 'activities'>('calendar');
+  const [view, setViewState] = useState<MainView>(initialView || 'calendar');
   const [calendarView, setCalendarView] = useState<CalendarViewType>('month');
   const [currentDate, setCurrentDate] = useState(new Date());
   
   const [bookings, setBookings] = useState<Booking[]>(initialBookings);
   const [stats, setStats] = useState(initialStats);
+  const [settings, setSettings] = useState(initialSettings);
+  const [activities, setActivities] = useState(initialActivities || []);
   const [isLoading, setIsLoading] = useState(false);
   const [pagination, setPagination] = useState(initialPagination);
+
+  // Toast State
+  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+
+  const showToast = (message: string, type: 'success' | 'error' = 'success') => {
+    setToast({ message, type });
+    setTimeout(() => setToast(null), 3000);
+  };
 
   // Sync state when props change
   useEffect(() => {
@@ -99,7 +107,11 @@ export default function CRM({
     setPagination(initialPagination);
     setStats(initialStats);
     setViewState(initialView);
-  }, [initialBookings, initialPagination, initialStats, initialView]);
+    setSettings(initialSettings);
+    setActivities(initialActivities || []);
+  }, [initialBookings, initialPagination, initialStats, initialView, initialSettings, initialActivities]);
+
+
 
   // Drawer & Modal State
   const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
@@ -109,6 +121,20 @@ export default function CRM({
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [bookingToDelete, setBookingToDelete] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Customer Drawer State
+  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
+  const [isCustomerDrawerOpen, setIsCustomerDrawerOpen] = useState(false);
+  const [customers, setCustomers] = useState<Customer[]>(initialCustomers);
+
+  useEffect(() => {
+    setCustomers(initialCustomers);
+  }, [initialCustomers]);
+
+  // Customer Sort & Filter State
+  const [customerSortField, setCustomerSortField] = useState('fullName'); // Default sort by name
+  const [customerSortDirection, setCustomerSortDirection] = useState<'asc' | 'desc'>('asc');
+  const [customerStatusFilter, setCustomerStatusFilter] = useState('all');
 
   // Hooks
   const {
@@ -170,13 +196,125 @@ export default function CRM({
     setPreviewBooking(booking);
   };
 
-  // Toast State
-  const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+    // Tab Content Renderer
+    const renderContent = () => {
+        switch (activeTab) {
+            case 'calendar':
+                return (
+                    <motion.div
+                        key="calendar"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                         <CalendarViewComponent
+                            bookings={bookings}
+                            currentDate={currentDate}
+                            onDateChange={setCurrentDate}
+                            view={calendarView}
+                            onViewChange={setCalendarView}
+                            onBookingClick={handleViewBooking}
+                            onDayClick={(date) => {
+                                setCurrentDate(date);
+                                setCalendarView('day');
+                            }}
+                            onAddBooking={() => {
+                                setSelectedBooking(null);
+                                setIsFormOpen(true);
+                            }}
+                            isLoading={showLoading}
+                        />
+                    </motion.div>
+                );
+            case 'customers':
+                return (
+                    <motion.div
+                        key="customers"
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.2 }}
+                    >
 
-  const showToast = (message: string, type: 'success' | 'error' = 'success') => {
-    setToast({ message, type });
-    setTimeout(() => setToast(null), 3000);
-  };
+                        <CustomersTab 
+                            customers={customers.filter(c => {
+                                const matchesSearch = c.fullName.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                                                    (c.email && c.email.toLowerCase().includes(searchTerm.toLowerCase()));
+                                const matchesStatus = customerStatusFilter === 'all' || c.status === customerStatusFilter;
+                                return matchesSearch && matchesStatus;
+                            }).sort((a, b) => {
+                                const valA = (a as any)[customerSortField];
+                                const valB = (b as any)[customerSortField];
+                                
+                                if (customerSortField === 'lastVisit' || customerSortField === 'createdAt') {
+                                    const timeA = valA ? new Date(valA).getTime() : 0;
+                                    const timeB = valB ? new Date(valB).getTime() : 0;
+                                    return customerSortDirection === 'asc' ? timeA - timeB : timeB - timeA;
+                                }
+                                
+                                const strA = String(valA || '').toLowerCase();
+                                const strB = String(valB || '').toLowerCase();
+                                
+                                if (strA < strB) return customerSortDirection === 'asc' ? -1 : 1;
+                                if (strA > strB) return customerSortDirection === 'asc' ? 1 : -1;
+                                return 0;
+                            })} 
+                            onCustomerClick={(customer) => {
+                                setSelectedCustomer(customer);
+                                setIsCustomerDrawerOpen(true);
+                            }} 
+                           onAddCustomer={() => {
+                                setSelectedCustomer(null);
+                                setIsCustomerDrawerOpen(true);
+                            }}
+                            sortField={customerSortField}
+                            sortDirection={customerSortDirection}
+                            onSortChange={(field) => {
+                                if (customerSortField === field) {
+                                    setCustomerSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
+                                } else {
+                                    setCustomerSortField(field);
+                                    setCustomerSortDirection('asc');
+                                }
+                            }}
+                            statusFilter={customerStatusFilter}
+                            onStatusFilterChange={setCustomerStatusFilter}
+                        />
+                    </motion.div>
+                );
+            case 'activities':
+                return (
+                    <motion.div
+                        key="activities"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                    >
+
+                        <ActivitiesTab 
+                        activities={activities}
+                        onReschedule={(activity) => {
+                            if (activity.booking) {
+                                // Create a partial booking object enough for RescheduleModal
+                                const targetBooking = {
+                                    id: activity.booking.id,
+                                    date: new Date(activity.booking.date), // Ensure Date object
+                                    startTime: activity.booking.startTime || '09:00', // Fallback if missing
+                                } as Booking;
+                                setRescheduleBookingTarget(targetBooking);
+                            }
+                        }}
+                    />
+                    </motion.div>
+                );
+            default:
+                return null;
+        }
+    };
+
+
 
   // Handlers
   const handleCreateBooking = async (formData: BookingFormData) => {
@@ -185,10 +323,10 @@ export default function CRM({
       await createBooking(formData);
       refreshData();
       setIsFormOpen(false);
-      showToast('Booking created successfully');
+      showToast(t('Toast.createCommon'));
     } catch (error) {
       console.error('Failed to create booking:', error);
-      showToast('Failed to create booking', 'error');
+      showToast(t('Toast.createError'), 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -202,10 +340,10 @@ export default function CRM({
       refreshData();
       setIsFormOpen(false);
       setSelectedBooking(null);
-      showToast('Booking updated successfully');
+      showToast(t('Toast.updateCommon'));
     } catch (error) {
       console.error('Failed to update booking:', error);
-      showToast('Failed to update booking', 'error');
+      showToast(t('Toast.updateError'), 'error');
     } finally {
       setIsSubmitting(false);
     }
@@ -218,10 +356,10 @@ export default function CRM({
       refreshData();
       setIsDeleteModalOpen(false);
       setBookingToDelete(null);
-      showToast('Booking deleted successfully');
+      showToast(t('Toast.deleteCommon'));
     } catch (error) {
       console.error('Failed to delete booking:', error);
-      showToast('Failed to delete booking', 'error');
+      showToast(t('Toast.deleteError'), 'error');
     }
   };
 
@@ -232,10 +370,10 @@ export default function CRM({
         await rescheduleBooking(rescheduleBookingTarget.id, date, time);
         refreshData();
         setRescheduleBookingTarget(null);
-        showToast('Booking rescheduled successfully');
+        showToast(t('Toast.rescheduleSuccess'));
     } catch (error) {
         console.error('Failed to reschedule:', error);
-        showToast('Failed to reschedule', 'error');
+        showToast(t('Toast.rescheduleError'), 'error');
     } finally {
         setIsSubmitting(false);
     }
@@ -273,10 +411,10 @@ export default function CRM({
         }
       };
       await updateBooking(updatedBooking.id, formData);
-      showToast('Booking updated');
+      showToast(t('Toast.updateCommon'));
     } catch (error) {
       console.error('Failed to update booking', error);
-      showToast('Failed to update booking', 'error');
+      showToast(t('Toast.updateError'), 'error');
       refreshData();
     }
   };
@@ -298,18 +436,34 @@ export default function CRM({
         await reorderBookings(items);
     } catch (error) {
         console.error('Failed to reorder', error);
-        showToast('Failed to reorder', 'error');
+        showToast(t('Toast.reorderError'), 'error');
         refreshData();
     }
   };
 
-  const handleUpdateSettings = async (settings: any) => {
+  const handleUpdateSettings = async (newSettings: any) => {
+    setSettings(newSettings); // Optimistic update
     try {
-        await updateCRMSettings(settings);
+        await updateCRMSettings(newSettings);
     } catch (error) {
         console.error('Failed to update settings', error);
-        showToast('Failed to save settings', 'error');
+        showToast(t('Toast.settingsError'), 'error');
     }
+  };
+
+  const handleBulkStatusChange = async (oldStatus: string, newStatus: string) => {
+      try {
+          const result = await bulkUpdateBookingsStatus(oldStatus, newStatus);
+          if (result.success) {
+              refreshData();
+              showToast(t('Toast.bulkUpdateSuccess', { count: result.count, status: newStatus }));
+          } else {
+              showToast(result.error || t('Toast.bulkUpdateError'), 'error');
+          }
+      } catch (error) {
+          console.error('Failed to bulk update status:', error);
+          showToast(t('Toast.bulkUpdateError'), 'error');
+      }
   };
 
   const handleStatusChange = async (bookingId: string, newStatus: Booking['status']) => {
@@ -318,6 +472,14 @@ export default function CRM({
 
     const updatedBooking = { ...booking, status: newStatus };
     await handleKanbanUpdate(updatedBooking);
+  };
+
+  const handleUpdateCustomer = (updatedCustomer: Customer) => {
+      setCustomers(prev => prev.map(c => c.id === updatedCustomer.id ? updatedCustomer : c));
+  };
+
+  const handleCreateCustomer = (newCustomer: Customer) => {
+    setCustomers(prev => [newCustomer, ...prev]);
   };
 
   const showLoading = isLoading || isPending;
@@ -344,132 +506,34 @@ export default function CRM({
       </AnimatePresence>
 
       <div className="max-w-[1600px] mx-auto space-y-6 p-6">
-        
-        {/* Header & Stats */}
-        <div className="flex flex-col gap-6">
+          {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">{t("title")}</h1>
-              <p className="text-sm text-slate-600 mt-1">{t("subtitle")}</p>
+              <h1 className="text-2xl font-bold text-slate-900">{t('title')}</h1>
+              <p className="text-sm text-slate-600 mt-1">{t('subtitle')}</p>
             </div>
-            <div className="flex items-center gap-3">
-              <ViewToggle mainView={view} setMainView={handleViewChange} />
-              <button
-                onClick={() => {
-                  setSelectedBooking(null);
-                  setIsFormOpen(true);
-                }}
-                className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#005bbc] hover:bg-[#004a9f] text-white border-2 border-[#005bbc] rounded-xl transition-colors duration-200 font-medium"
-                aria-label={t("Header.newBooking")}
-              >
-                <Plus className="w-4 h-4" />
-                {t("Header.newBooking")}
-              </button>
+            
+            {/* TABS */}
+            <div className="flex p-1 bg-white border border-slate-200 rounded-xl">
+                 {(['calendar', 'customers', 'activities'] as const).map((tab) => (
+                     <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        className={`px-6 py-2 rounded-lg text-sm font-medium transition-all ${
+                            activeTab === tab
+                             ? 'bg-slate-100 text-slate-900 shadow-sm'
+                             : 'text-slate-500 hover:text-slate-700'
+                        } capitalize`}
+                     >
+                         {t(`tabs.${tab}`)}
+                     </button>
+                 ))}
             </div>
           </div>
-          
-          <StatsOverview 
-            stats={stats}
-            isLoading={showLoading} 
-            currentFilter={initialFilters.status}
-            onFilterChange={handleStatusFilterChange}
-          />
-        </div>
 
-        {/* Filters */}
-        <Filters
-          searchTerm={searchTerm}
-          setSearchTerm={(term) => {
-            setSearchTerm(term);
-            const params = new URLSearchParams(searchParams.toString());
-            if (term) params.set('search', term);
-            else params.delete('search');
-            router.replace(`${pathname}?${params.toString()}`);
-          }}
-          statusFilter={statusFilter}
-          setStatusFilter={handleStatusFilterChange}
-          serviceFilter={serviceFilter}
-          setServiceFilter={(service) => {
-            setServiceFilter(service);
-            updateUrl({ service, page: 1 });
-          }}
-          sortField={sortField}
-          sortDirection={sortDirection}
-          onSortChange={handleSortChange}
-          dateRange={dateRange}
-          setDateRange={setDateRange}
-          dynamicFilters={dynamicFilters}
-          addDynamicFilter={addDynamicFilter}
-          removeDynamicFilter={removeDynamicFilter}
-          updateDynamicFilter={updateDynamicFilter}
-        />
-
-        {/* Content */}
-        <AnimatePresence mode="wait">
-          {view === 'table' ? (
-            <motion.div
-              key="table"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              <BookingTable
-                bookings={bookings}
-                isLoading={showLoading}
-                currentPage={pagination.currentPage}
-                totalPages={pagination.totalPages}
-                onPageChange={handlePageChange}
-                onView={handleViewBooking}
-                onDelete={(id) => {
-                  setBookingToDelete(id);
-                  setIsDeleteModalOpen(true);
-                }}
-              />
-            </motion.div>
-          ) : view === 'calendar' ? (
-            <motion.div
-              key="calendar"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              <CalendarViewComponent
-                bookings={bookings}
-                currentDate={currentDate}
-                onDateChange={setCurrentDate}
-                view={calendarView}
-                onViewChange={setCalendarView}
-                onBookingClick={handleViewBooking}
-                onDayClick={(date) => {
-                  setCurrentDate(date);
-                  setCalendarView('day');
-                }}
-                isLoading={showLoading}
-              />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="kanban"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              <KanbanBoard
-                bookings={bookings}
-                onView={handleViewBooking}
-                onStatusChange={handleStatusChange}
-                onUpdateBooking={handleKanbanUpdate}
-                onReorder={handleReorderBookings}
-                onUpdateSettings={handleUpdateSettings}
-                initialSettings={initialSettings}
-                isLoading={showLoading}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
+          <AnimatePresence mode="wait">
+              {renderContent()}
+          </AnimatePresence>
       </div>
 
       <BookingFormDrawer
@@ -481,6 +545,7 @@ export default function CRM({
         onSave={selectedBooking ? handleUpdateBooking : handleCreateBooking}
         isLoading={isSubmitting}
         booking={selectedBooking || undefined}
+        customers={customers}
       />
 
       <DeleteConfirmationModal
@@ -505,6 +570,17 @@ export default function CRM({
             setPreviewBooking(null); // Close preview
             setRescheduleBookingTarget(booking);
         }}
+      />
+
+      <CustomerDetailsDrawer
+        isOpen={isCustomerDrawerOpen}
+        onClose={() => {
+            setIsCustomerDrawerOpen(false);
+            setSelectedCustomer(null);
+        }}
+        customer={selectedCustomer || null}
+        onUpdate={handleUpdateCustomer}
+        onCreate={handleCreateCustomer}
       />
 
       {rescheduleBookingTarget && (

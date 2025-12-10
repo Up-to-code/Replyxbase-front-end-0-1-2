@@ -697,6 +697,90 @@
       },
       "activity": {
         "title": "Recent Activity"
+      },
+      "quickActions": "Quick Actions",
+      "actions": {
+        "newBooking": "New Booking",
+        "addCustomer": "Add Customer",
+        "createAgent": "Create Agent",
+        "more": "More"
+      }
+    },
+
+    "CRM": {
+      "title": "CRM",
+      "subtitle": "Manage your business.",
+      "tabs": {
+        "calendar": "Calendar",
+        "customers": "Customers",
+        "activities": "Activities"
+      },
+      "Kanban": {
+        "title": "Kanban Board",
+        "search": "Search...",
+        "viewDetails": "View Details",
+        "empty": "Empty Stage",
+        "addStage": "Stage",
+        "newBooking": "New Booking",
+        "resetColumns": "Reset Columns",
+        "resetConfirmTitle": "Reset Columns",
+        "resetConfirmDesc": "Are you sure you want to reset the board columns? This will remove all custom columns and restore the default layout. This action cannot be undone.",
+        "resetConfirmLabel": "Reset",
+        "save": "Save",
+        "cancel": "Cancel",
+        "customerName": "Customer Name",
+        "unassigned": "Unassigned"
+      },
+      "Status": {
+        "pending": "Pending",
+        "confirmed": "Confirmed",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+      },
+      "Toast": {
+        "createCommon": "Booking created successfully",
+        "createError": "Failed to create booking",
+        "updateCommon": "Booking updated successfully",
+        "updateError": "Failed to update booking",
+        "deleteCommon": "Booking deleted successfully",
+        "deleteError": "Failed to delete booking",
+        "rescheduleSuccess": "Booking rescheduled successfully",
+        "rescheduleError": "Failed to reschedule",
+        "reorderError": "Failed to reorder",
+        "settingsError": "Failed to save settings",
+        "bulkUpdateSuccess": "Updated {count} bookings to \"{status}\"",
+        "bulkUpdateError": "Failed to perform bulk update"
+      },
+      "Calendar": {
+        "title": "Calendar",
+        "search": "Search bookings...",
+        "allEvents": "All Events",
+        "confirmed": "Confirmed",
+        "pending": "Pending",
+        "completed": "Completed",
+        "today": "Today",
+        "month": "Month",
+        "week": "Week",
+        "day": "Day",
+        "quickAdd": "Quick Add",
+        "more": "+{count} more"
+      },
+      "Customers": {
+        "title": "Customers",
+        "subtitle": "Manage your customer relationships ({count})",
+        "addCustomer": "Add Customer",
+        "name": "Customer Name",
+        "contact": "Contact Info",
+        "statusColumn": "Status",
+        "status": {
+            "all": "All Status",
+            "active": "Active",
+            "inactive": "Inactive",
+            "lead": "Lead"
+        },
+        "lastVisit": "Last Visit",
+        "actions": "Actions",
+        "noCustomers": "No customers found"
       }
     },
     "Agents": {
@@ -905,27 +989,6 @@
               "typeMessage": "Type a message...",
               "poweredBy": "Powered by ReplyXBase"
             }
-          },
-          "whatsapp": {
-            "title": "WhatsApp Integration",
-            "subtitle": "Connect your agent to WhatsApp Business API.",
-            "configSteps": "Configuration Steps",
-            "configStepsDesc": "Follow these steps to connect your number.",
-            "step1": "API Credentials",
-            "step1Desc": "Go to the Meta Developer Portal, select your app, and copy your Phone Number ID and Access Token.",
-            "step2": "Webhook Configuration",
-            "step2Desc": "Copy these values to the \"Configuration\" section in your Meta App settings to receive messages.",
-            "phoneNumberId": "Phone Number ID",
-            "phoneNumberIdPlaceholder": "e.g. 104928...",
-            "accessToken": "Permanent Access Token",
-            "accessTokenPlaceholder": "EAAG...",
-            "callbackUrl": "Callback URL",
-            "verifyToken": "Verify Token",
-            "codeCopied": "Copied to clipboard!",
-            "settingsSaved": "WhatsApp settings saved successfully",
-            "settingsSaveError": "Failed to save settings",
-            "saving": "Saving...",
-            "saveConfiguration": "Save Configuration"
           }
         }
       },
@@ -1010,6 +1073,70 @@
       }
     },
     "CRM": {
+      "tabs": {
+        "calendar": "Calendar",
+        "customers": "Customers",
+        "activities": "Activities"
+      },
+      "Customers": {
+        "title": "Customers",
+        "addCustomer": "Add Customer",
+        "searchPlaceholder": "Search customers...",
+        "editDetails": "Edit details",
+        "newCustomerDetails": "Add new customer details",
+        "table": {
+          "name": "Name",
+          "contact": "Contact",
+          "status": "Status",
+          "lastVisit": "Last Visit"
+        },
+        "status": {
+          "all": "All",
+          "active": "Active",
+          "inactive": "Inactive",
+          "lead": "Lead"
+        },
+        "sections": {
+            "contact": "Contact Information",
+            "details": "Details",
+            "notes": "Notes"
+        },
+        "fields": {
+            "fullName": "Full Name",
+            "email": "Email",
+            "phone": "Phone",
+            "company": "Company",
+            "address": "Address",
+            "status": "Status"
+        },
+        "placeholders": {
+            "notes": "Add internal notes..."
+        },
+        "actions": {
+            "saveChanges": "Save Changes",
+            "createCustomer": "Create Customer"
+        },
+        "messages": {
+            "updateSuccess": "Customer updated successfully",
+            "updateError": "Failed to update customer",
+            "requiredFields": "Name and Email are required",
+            "createSuccess": "Customer created successfully",
+            "createError": "Failed to create customer"
+        }
+      },
+      "Activities": {
+        "title": "Activity Log",
+        "with": "With",
+        "booking": "Booking",
+        "reschedule": "Reschedule",
+        "noActivities": "No recent activities found.",
+        "types": {
+          "call": "Call",
+          "email": "Email",
+          "meeting": "Meeting",
+          "note": "Note"
+        }
+      },
       "title": "Bookings & CRM",
       "subtitle": "Manage your appointments and customer relationships",
       "newCustomer": "New Customer",
@@ -1036,6 +1163,8 @@
       "Form": {
         "newTitle": "New Booking",
         "editTitle": "Edit Booking",
+        "searchExisting": "Load Existing Customer",
+        "emailOrPhoneRequired": "Please provide either email or phone number",
         "customerInfo": "Customer Info",
         "fullName": "Full Name",
         "email": "Email",
@@ -1110,6 +1239,8 @@
       },
       "Bookings": {
         "Table": {
+          "title": "Bookings",
+          "search": "Search bookings...",
           "customer": "Customer",
           "contact": "Contact",
           "dateTime": "Date & Time",
@@ -1163,6 +1294,13 @@
         }
       },
       "Calendar": {
+        "title": "Calendar",
+        "search": "Search",
+        "allEvents": "All Events",
+        "confirmed": "Confirmed",
+        "pending": "Pending",
+        "completed": "Completed",
+        "addEvent": "Add event",
         "today": "Today",
         "month": "Month",
         "week": "Week",
@@ -1176,15 +1314,25 @@
         }
       },
       "Kanban": {
+        "title": "Kanban Board",
+        "search": "Search cards...",
         "pending": "Pending",
         "confirmed": "Confirmed",
         "completed": "Completed",
         "cancelled": "Cancelled",
         "overdue": "Overdue",
         "viewDetails": "View Details",
-        "noBookings": "No bookings"
+        "noBookings": "No bookings",
+        "draft": "Draft",
+        "DeleteColumn": {
+          "title": "Delete Column",
+          "subtitle": "This action cannot be undone",
+          "confirmation": "Are you sure you want to delete this column? All bookings in this column should be moved first.",
+          "cancel": "Cancel",
+          "delete": "Delete Column"
+        }
       }
-      },
+    },
       "Settings": {
         "title": "Settings",
         "subtitle": "Manage your account settings and workspace preferences.",

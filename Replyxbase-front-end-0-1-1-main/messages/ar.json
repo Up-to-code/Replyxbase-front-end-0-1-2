@@ -601,10 +601,19 @@
         "title": "القنوات المتصلة",
         "connectNew": "ربط قناة جديدة"
       },
+
       "activity": {
         "title": "النشاط الأخير"
-      }
-    },
+      },
+      "quickActions": "إجراءات سريعة",
+      "actions": {
+        "newBooking": "حجز جديد",
+        "addCustomer": "إضافة عميل",
+        "createAgent": "إنشاء وكيل",
+        "more": "المزيد"
+      },
+
+
     "Agents": {
       "title": "الوكلاء",
       "subtitle": "إدارة وكلاء الذكاء الاصطناعي وقدراتهم.",
@@ -637,7 +646,7 @@
         "share": "مشاركة",
         "settings": "الإعدادات",
         "testAgent": "اختبار الوكيل",
-        "overview": "نظرة عامة",
+        "overviewTitle": "نظرة عامة",
         "tabs": {
           "overview": "نظرة عامة",
           "knowledge": "المعرفة",
@@ -963,6 +972,58 @@
       "settings": "الإعدادات"
     },
     "CRM": {
+      "tabs": {
+        "calendar": "التقويم",
+        "customers": "العملاء",
+        "activities": "الأنشطة"
+      },
+      "Customers": {
+        "title": "العملاء",
+        "addCustomer": "إضافة عميل",
+        "searchPlaceholder": "بحث عن عملاء...",
+        "editDetails": "تعديل التفاصيل",
+        "newCustomerDetails": "إضافة تفاصيل العميل الجديد",
+        "table": {
+          "name": "الاسم",
+          "contact": "بيانات الاتصال",
+          "status": "الحالة",
+          "lastVisit": "آخر زيارة"
+        },
+        "status": {
+          "all": "الكل",
+          "active": "نشط",
+          "inactive": "غير نشط",
+          "lead": "عميل محتمل"
+        },
+        "sections": {
+            "contact": "معلومات الاتصال",
+            "details": "التفاصيل",
+            "notes": "الملاحظات"
+        },
+        "fields": {
+            "fullName": "الاسم الكامل",
+            "email": "البريد الإلكتروني",
+            "phone": "رقم الهاتف",
+            "company": "الشركة",
+            "address": "العنوان",
+            "status": "الحالة"
+        },
+        "placeholders": {
+            "notes": "أضف ملاحظات داخلية..."
+        },
+        "actions": {
+            "saveChanges": "حفظ التغييرات",
+            "createCustomer": "إنشاء عميل"
+        },
+        "messages": {
+            "updateSuccess": "تم تحديث العميل بنجاح",
+            "updateError": "فشل تحديث العميل",
+            "requiredFields": "الاسم والبريد الإلكتروني مطلوبان",
+            "createSuccess": "تم إنشاء العميل بنجاح",
+            "createError": "فشل إنشاء العميل"
+        }
+      },
+
       "title": "الحجوزات وإدارة العملاء",
       "subtitle": "أدر مواعيدك وعلاقاتك مع العملاء",
       "newCustomer": "عميل جديد",
@@ -985,6 +1046,8 @@
         "cancelled": "ملغى"
       },
       "Form": {
+        "searchExisting": "تحميل عميل موجود",
+        "emailOrPhoneRequired": "يرجى تقديم البريد الإلكتروني أو الهاتف",
         "newTitle": "حجز جديد",
         "editTitle": "تعديل الحجز",
         "customerInfo": "معلومات العميل",
@@ -1099,6 +1162,17 @@
         }
       },
       "Activities": {
+        "title": "سجل الأنشطة",
+        "with": "مع",
+        "booking": "حجز",
+        "reschedule": "إعادة جدولة",
+        "noActivities": "لا توجد أنشطة حديثة.",
+        "types": {
+          "call": "مكالمة",
+          "email": "بريد إلكتروني",
+          "meeting": "اجتماع",
+          "note": "ملاحظة"
+        },
         "Form": {
           "note": "ملاحظة",
           "call": "مكالمة",
@@ -1112,6 +1186,13 @@
         }
       },
       "Calendar": {
+        "title": "التقويم",
+        "search": "بحث",
+        "allEvents": "كل الأحداث",
+        "confirmed": "مؤكد",
+        "pending": "قيد الانتظار",
+        "completed": "مكتمل",
+        "addEvent": "إضافة حدث",
         "today": "اليوم",
         "month": "شهر",
         "week": "أسبوع",
@@ -1125,11 +1206,37 @@
         }
       },
       "Kanban": {
+        "title": "لوحة كانبان",
+        "search": "بحث...",
+        "empty": "مرحلة فارغة",
+        "addStage": "مرحلة",
+        "newBooking": "حجز جديد",
+        "resetColumns": "إعادة تعيين الأعمدة",
+        "resetConfirmTitle": "إعادة تعيين الأعمدة",
+        "resetConfirmDesc": "هل أنت متأكد أنك تريد إعادة تعيين أعمدة اللوحة؟ سيؤدي هذا إلى إزالة جميع الأعمدة المخصصة واستعادة التخطيط الافتراضي. لا يمكن التراجع عن هذا الإجراء.",
+        "resetConfirmLabel": "إعادة تعيين",
+        "save": "حفظ",
+        "cancel": "إلغاء",
         "customerName": "اسم العميل",
         "overdue": "متأخر",
         "viewDetails": "عرض التفاصيل",
         "noBookings": "لا توجد حجوزات",
+        "unassigned": "غير معين",
         "renameTooltip": "انقر مرتين لإعادة التسمية"
+      },
+      "Toast": {
+        "createCommon": "تم إنشاء الحجز بنجاح",
+        "createError": "فشل إنشاء الحجز",
+        "updateCommon": "تم تحديث الحجز بنجاح",
+        "updateError": "فشل تحديث الحجز",
+        "deleteCommon": "تم حذف الحجز بنجاح",
+        "deleteError": "فشل حذف الحجز",
+        "rescheduleSuccess": "تم إعادة جدولة الحجز بنجاح",
+        "rescheduleError": "فشل إعادة الجدولة",
+        "reorderError": "فشل إعادة الترتيب",
+        "settingsError": "فشل حفظ الإعدادات",
+        "bulkUpdateSuccess": "تم تحديث {count} حجوزات إلى \"{status}\"",
+        "bulkUpdateError": "فشل التحديث الجماعي"
       }
     },
 
@@ -1281,5 +1388,6 @@
       "deepResearch": "بحث متعمق",
       "thinkLonger": "تفكير عميق"
     }
+  }
   }
 }

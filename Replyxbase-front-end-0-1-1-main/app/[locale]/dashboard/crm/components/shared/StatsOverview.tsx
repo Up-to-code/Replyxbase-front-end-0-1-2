@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, Users, Calendar, AlertCircle, CheckCircle, Clock, CheckCheck, UserX } from 'lucide-react';
+import { Calendar, Clock, CheckCircle, AlertCircle, CheckCheck, UserX, Hash } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 /**
@@ -7,21 +7,24 @@ import { useTranslations } from 'next-intl';
  */
 interface StatsOverviewProps {
   /** Stats object with counts */
-  stats: {
-    all: number;
-    pending: number;
-    confirmed: number;
-    cancelled: number;
-    completed: number;
-    noshow: number;
-  };
+  stats: Record<string, number>;
   /** Whether data is loading */
   isLoading?: boolean;
   /** Current active filter */
   currentFilter?: string;
   /** Callback to change filter */
   onFilterChange?: (filter: string) => void;
+  /** Available columns from Kanban settings */
+  columns?: { id: string; title: string }[];
 }
+
+const STATUS_CONFIG: Record<string, any> = {
+  pending: { icon: Clock, color: 'text-[#F59E0B]', bg: 'bg-[#F59E0B]/10', border: 'border-[#F59E0B]' },
+  confirmed: { icon: CheckCircle, color: 'text-[#10B981]', bg: 'bg-[#10B981]/10', border: 'border-[#10B981]' },
+  cancelled: { icon: AlertCircle, color: 'text-[#EF4444]', bg: 'bg-[#EF4444]/10', border: 'border-[#EF4444]' },
+  completed: { icon: CheckCheck, color: 'text-[#3B82F6]', bg: 'bg-[#3B82F6]/10', border: 'border-[#3B82F6]' },
+  'no-show': { icon: UserX, color: 'text-slate-500', bg: 'bg-slate-500/10', border: 'border-slate-500' },
+};
 
 /**
  * Displays key statistics about bookings as interactive premium tabs.
@@ -30,74 +33,65 @@ export const StatsOverview: React.FC<StatsOverviewProps> = ({
   stats,
   isLoading,
   currentFilter,
-  onFilterChange
+  onFilterChange,
+  columns = []
 }) => {
   const t = useTranslations("Dashboard.CRM.Stats");
 
   const statItems = React.useMemo(() => {
-    return [
-      {
-        id: 'all',
-        title: t("totalBookings"),
-        value: stats.all,
-        icon: Calendar,
-        color: 'text-[#005bbc]',
-        bg: 'bg-[#005bbc]/10',
-        activeBorder: 'border-[#005bbc]',
-        activeBg: 'bg-[#005bbc]/5'
-      },
-      {
-        id: 'pending',
-        title: t("pending"),
-        value: stats.pending,
-        icon: Clock,
-        color: 'text-[#F59E0B]',
-        bg: 'bg-[#F59E0B]/10',
-        activeBorder: 'border-[#F59E0B]',
-        activeBg: 'bg-[#F59E0B]/5'
-      },
-      {
-        id: 'confirmed',
-        title: t("confirmed"),
-        value: stats.confirmed,
-        icon: CheckCircle,
-        color: 'text-[#10B981]',
-        bg: 'bg-[#10B981]/10',
-        activeBorder: 'border-[#10B981]',
-        activeBg: 'bg-[#10B981]/5'
-      },
-      {
-        id: 'cancelled',
-        title: t("cancelled"),
-        value: stats.cancelled,
-        icon: AlertCircle,
-        color: 'text-[#EF4444]',
-        bg: 'bg-[#EF4444]/10',
-        activeBorder: 'border-[#EF4444]',
-        activeBg: 'bg-[#EF4444]/5'
-      },
-      {
-        id: 'completed',
-        title: t("completed") || 'Completed',
-        value: stats.completed,
-        icon: CheckCheck,
-        color: 'text-[#3B82F6]',
-        bg: 'bg-[#3B82F6]/10',
-        activeBorder: 'border-[#3B82F6]',
-        activeBg: 'bg-[#3B82F6]/5'
-      },
-      {
-        id: 'no-show',
-        title: t("noShow") || 'No Show',
-        value: stats.noshow,
-        icon: UserX,
-        color: 'text-slate-500',
-        bg: 'bg-slate-500/10',
-        activeBorder: 'border-slate-500',
-        activeBg: 'bg-slate-500/5'
-      }
+    // 1. Total Card
+    const items = [{
+      id: 'all',
+      key: 'all',
+      title: t("totalBookings"),
+      value: stats.all || 0,
+      icon: Calendar,
+      color: 'text-[#005bbc]',
+      bg: 'bg-[#005bbc]/10',
+      activeBorder: 'border-[#005bbc]',
+      activeBg: 'bg-[#005bbc]/5'
+    }];
+
+    // 2. Column Cards
+    // If no columns provided, fallback to default set (though likely columns will be passed)
+    const activeColumns = columns.length > 0 ? columns : [
+        { id: 'pending', title: t("pending") },
+        { id: 'confirmed', title: t("confirmed") },
+        { id: 'completed', title: t("completed") },
+        { id: 'cancelled', title: t("cancelled") },
+        { id: 'no-show', title: t("noShow") }
     ];
-  }, [stats, t]);
+
+    activeColumns.forEach(col => {
+        // Determine the key used in stats object
+        // User requested "based on column name".
+        // Custom columns: status = Title.
+        // Default columns: status = ID (legacy/safe).
+        const statsKey = col.id.startsWith('custom-') ? col.title : col.id;
+        
+        // Get Config
+        const config = STATUS_CONFIG[col.id] || { 
+            icon: Hash, 
+            color: 'text-slate-600', 
+            bg: 'bg-slate-600/10', 
+            border: 'border-slate-600' 
+        };
+
+        items.push({
+            id: statsKey, // Filter ID
+            key: col.id, // React Key (Unique)
+            title: col.title, // Display Title (responsive to renaming)
+            value: stats[statsKey] || 0,
+            icon: config.icon,
+            color: config.color,
+            bg: config.bg,
+            activeBorder: config.border,
+            activeBg: config.bg.replace('/10', '/5')
+        });
+    });
+
+    return items;
+  }, [stats, t, columns]);
 
   if (isLoading) {
     return (
@@ -123,7 +117,7 @@ export const StatsOverview: React.FC<StatsOverviewProps> = ({
         const isActive = currentFilter === stat.id;
         return (
           <button
-            key={stat.id}
+            key={stat.key}
             onClick={() => onFilterChange?.(stat.id)}
             className={`
               relative p-5 rounded-2xl border-2 transition-all duration-200 text-left group

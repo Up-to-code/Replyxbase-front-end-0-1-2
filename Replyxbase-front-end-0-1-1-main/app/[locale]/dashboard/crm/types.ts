@@ -42,7 +42,7 @@ export interface BookingFormData {
     occasion: string;
     specialRequests: string;
     location: string;
-    status: 'pending' | 'confirmed' | 'cancelled' | 'completed' | 'no-show' | string;
+    status: 'pending' | 'confirmed' | 'cancelled' | 'completed' | 'no-show' | 'draft' | string;
     priority: 'normal' | 'high' | 'urgent';
     staffAssigned: string;
     notes: string;

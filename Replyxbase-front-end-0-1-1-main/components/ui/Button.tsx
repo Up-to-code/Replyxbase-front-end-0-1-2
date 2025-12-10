@@ -4,7 +4,7 @@ import { Loader2, LucideIcon } from "lucide-react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "icon";
   loading?: boolean;
   icon?: LucideIcon;
   glow?: boolean;
@@ -35,6 +35,7 @@ const Button: React.FC<ButtonProps> = ({
     sm: "px-4 py-2 text-sm",
     md: "px-6 py-3 text-base",
     lg: "px-8 py-4 text-lg",
+    icon: "p-2",
   };
 
   const glowClasses = glow && variant === "primary" ? "shadow-lg shadow-[#005bbc]/25" : "";

@@ -4,6 +4,8 @@ import { getBookings, createBooking, updateBooking, deleteBooking, updateBooking
 import { logActivity } from '@/app/actions/crm/activities';
 import { useFilters } from './useFilters';
 
+import { toast } from 'sonner';
+
 export const useBookings = (filters: ReturnType<typeof useFilters>) => {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +30,7 @@ export const useBookings = (filters: ReturnType<typeof useFilters>) => {
       }
     } catch (error) {
       console.error('Failed to fetch bookings:', error);
+      toast.error('Failed to fetch bookings');
     } finally {
       setIsLoading(false);
     }
@@ -53,7 +56,10 @@ export const useBookings = (filters: ReturnType<typeof useFilters>) => {
   const handleCreateBooking = async (data: BookingFormData) => {
     const result = await createBooking(data);
     if (result.success) {
+      toast.success('Booking created successfully');
       refresh();
+    } else {
+      toast.error('Failed to create booking');
     }
     return result;
   };
@@ -61,7 +67,10 @@ export const useBookings = (filters: ReturnType<typeof useFilters>) => {
   const handleUpdateBooking = async (id: string, data: BookingFormData) => {
     const result = await updateBooking(id, data);
     if (result.success) {
+      toast.success('Booking updated successfully');
       refresh();
+    } else {
+      toast.error('Failed to update booking');
     }
     return result;
   };
@@ -76,12 +85,14 @@ export const useBookings = (filters: ReturnType<typeof useFilters>) => {
       if (!result.success) {
         throw new Error('Failed to delete');
       }
+      toast.success('Booking deleted successfully');
       refresh(); // Refresh to ensure sync
       return result;
     } catch (error) {
       // Revert on failure
       setBookings(previousBookings);
       console.error('Delete failed:', error);
+      toast.error('Failed to delete booking');
       return { success: false, error };
     }
   };
@@ -96,6 +107,7 @@ export const useBookings = (filters: ReturnType<typeof useFilters>) => {
       if (!result.success) {
         throw new Error('Failed to update status');
       }
+      toast.success(`Status updated to ${status}`);
       // No need to refresh immediately if optimistic update worked, 
       // but good to sync eventually. For now, we trust the optimistic update.
       return result;
@@ -103,6 +115,7 @@ export const useBookings = (filters: ReturnType<typeof useFilters>) => {
       // Revert on failure
       setBookings(previousBookings);
       console.error('Status update failed:', error);
+      toast.error('Failed to update status');
       return { success: false, error };
     }
   };
@@ -110,7 +123,10 @@ export const useBookings = (filters: ReturnType<typeof useFilters>) => {
   const handleAddActivity = async (type: 'call' | 'email' | 'note' | 'meeting', content: string, relatedTo: 'booking' | 'customer', relatedId: string) => {
     const result = await logActivity(type, content, relatedTo, relatedId);
     if (result.success) {
+      toast.success('Activity logged');
       refresh();
+    } else {
+      toast.error('Failed to log activity');
     }
     return result;
   };

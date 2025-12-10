@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import locales from "@/i18n/request";
+import { routing } from "@/i18n/routing";
 import "./globals.css";
 import { Toaster } from "sonner";
 
@@ -92,14 +92,7 @@ export const metadata: Metadata = {
 };
 
 export function generateStaticParams() {
-  // Ensure locales is treated as an array of strings
-  const localeArray = Array.isArray(locales) 
-    ? locales 
-    : typeof locales === 'object' 
-      ? Object.values(locales) 
-      : ['en']; // fallback to English
-  
-  return localeArray.map((locale) => ({ locale: String(locale) }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
 interface RootLayoutProps {
@@ -110,7 +103,7 @@ interface RootLayoutProps {
 }
 
 import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
+
 
 export default async function RootLayout({
   children,

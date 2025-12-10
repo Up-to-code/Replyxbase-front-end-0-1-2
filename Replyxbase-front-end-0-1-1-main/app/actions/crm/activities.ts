@@ -33,3 +33,56 @@ export async function logActivity(
     return { success: false, error: 'Failed to log activity' };
   }
 }
+
+export async function getActivities(page: number = 1, limit: number = 20) {
+    try {
+        const session = await getSession();
+        if (!session?.user || !session.session.activeOrganizationId) return { success: false, error: 'Unauthorized' };
+
+        const organizationId = session.session.activeOrganizationId;
+        const skip = (page - 1) * limit;
+
+        const [activities, total] = await Promise.all([
+            prisma.activity.findMany({
+                where: { 
+                    OR: [
+                        { booking: { organizationId } },
+                        { customer: { organizationId } },
+                        { deal: { organizationId } }
+                    ]
+                 },
+                include: {
+                    booking: { select: { id: true, date: true, serviceType: true, startTime: true } },
+                    customer: { select: { id: true, fullName: true } }
+                },
+                orderBy: { createdAt: 'desc' },
+                take: limit,
+                skip
+            }),
+            prisma.activity.count({
+                where: { 
+                    OR: [
+                        { booking: { organizationId } },
+                        { customer: { organizationId } },
+                        { deal: { organizationId } }
+                    ]
+                }
+            })
+        ]);
+
+        return {
+            success: true,
+            data: activities,
+            pagination: {
+                page,
+                limit,
+                total,
+                totalPages: Math.ceil(total / limit)
+            }
+        };
+
+    } catch (error) {
+        console.error("Failed to get activities:", error);
+        return { success: false, error: "Failed to fetch activities" };
+    }
+}

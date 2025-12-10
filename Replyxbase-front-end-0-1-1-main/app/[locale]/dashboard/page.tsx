@@ -1,26 +1,78 @@
-import React from "react";
-import { Metadata } from "next";
+import { getSession } from "@/lib/auth-server";
+import { redirect } from "next/navigation";
 import DashboardClient from "./components/DashboardClient";
-import { getTranslations } from "next-intl/server";
-import { dashboardData } from '@/app/lib/mock-data';
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Dashboard.Home");
+import { getDashboardStats } from "@/app/actions/dashboard";
 
-  return {
-    title: t("title"),
-    description: t("subtitle"),
-  };
-}
+export default async function DashboardPage() {
+  const session = await getSession();
 
-export default function DashboardPage() {
+  if (!session) {
+    redirect("/login");
+  }
+
+  // Fetch real aggregated data
+  const dashboardData = await getDashboardStats();
+
+  if (!dashboardData) {
+      // Handle edge case where no data or org found
+      return null;
+  }
+  
+  // Transform Bookings for DashboardClient
+  const formattedBookings = dashboardData.bookings.map(booking => ({
+    customer: booking.customer?.fullName || "Unknown Customer",
+    date: booking.date,
+    startTime: booking.startTime,
+    type: booking.serviceType,
+    status: booking.status
+  }));
+
+  const formattedTodaysBookings = dashboardData.todaysBookings.map(booking => ({
+    customer: booking.customer?.fullName || "Unknown Customer",
+    date: booking.date,
+    startTime: booking.startTime,
+    type: booking.serviceType,
+    status: booking.status
+  }));
+
+  // Construct Real Stats
+  const stats = [
+    {
+      id: "bookings",
+      label: "Upcoming Bookings",
+      value: dashboardData.stats.bookings.toString(),
+      icon: "Calendar",
+      color: "blue"
+    },
+    {
+      id: "active_agents",
+      label: "Active Agents",
+      value: dashboardData.stats.activeAgents.toString(),
+      icon: "Bot",
+      color: "purple"
+    },
+    {
+      id: "total_customers",
+       label: "Total Customers",
+      value: dashboardData.stats.customers.toString(), 
+      icon: "Users",
+      color: "orange"
+    },
+    {
+      id: "pending_bookings",
+      label: "Pending Bookings",
+      value: dashboardData.stats.pendingBookings.toString(),
+      icon: "Clock",
+      color: "green"
+    }
+  ];
+
   return (
-    <DashboardClient
-      stats={dashboardData.stats}
-      platforms={dashboardData.platforms}
-      agents={dashboardData.agents}
-      bookings={dashboardData.bookings}
-      activity={dashboardData.activity}
-      chartData={dashboardData.chartData}
+    <DashboardClient 
+      stats={stats}
+      bookings={formattedBookings}
+      todaysBookings={formattedTodaysBookings}
+      recentCustomers={dashboardData.recentCustomers}
     />
   );
 }

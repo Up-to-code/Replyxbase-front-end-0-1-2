@@ -1,9 +1,9 @@
-import { getSession } from '@/lib/auth-server';
+import { getActiveOrganization } from '@/app/actions/organization';
 
 export async function getOrganizationId() {
-  const session = await getSession();
-  if (!session?.session?.activeOrganizationId) {
+  const organization = await getActiveOrganization();
+  if (!organization) {
     throw new Error('No active organization');
   }
-  return session.session.activeOrganizationId;
+  return organization.id;
 }

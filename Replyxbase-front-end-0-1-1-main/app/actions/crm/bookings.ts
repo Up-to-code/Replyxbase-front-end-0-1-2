@@ -255,7 +255,7 @@ export async function createBooking(formData: BookingFormData) {
     return { success: true, booking: newBooking as unknown as Booking };
   } catch (error) {
     console.error('Failed to create booking:', error);
-    return { success: false, error: 'Failed to create booking' };
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to create booking' };
   }
 }
 
@@ -315,7 +315,7 @@ export async function updateBooking(bookingId: string, formData: BookingFormData
     return { success: true, booking: updatedBooking as unknown as Booking };
   } catch (error) {
     console.error('Failed to update booking:', error);
-    return { success: false, error: 'Failed to update booking' };
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to update booking' };
   }
 }
 
@@ -349,7 +349,7 @@ export async function rescheduleBooking(bookingId: string, date: Date, startTime
     return { success: true, booking: updatedBooking as unknown as Booking };
   } catch (error) {
     console.error('Failed to reschedule booking:', error);
-    return { success: false, error: 'Failed to reschedule booking' }; 
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to reschedule booking' };
   }
 }
 
@@ -374,7 +374,7 @@ export async function reorderBookings(items: { id: string; position: number; sta
     return { success: true };
   } catch (error) {
     console.error('Failed to reorder bookings:', error);
-    return { success: false, error: 'Failed to reorder bookings' };
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to reorder bookings' };
   }
 }
 
@@ -387,7 +387,7 @@ export async function deleteBooking(bookingId: string) {
     return { success: true };
   } catch (error) {
     console.error('Failed to delete booking:', error);
-    return { success: false, error: 'Failed to delete booking' };
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to delete booking' };
   }
 }
 
@@ -405,7 +405,32 @@ export async function updateBookingStatus(bookingId: string, status: Booking['st
     return { success: true, booking: booking as unknown as Booking };
   } catch (error) {
     console.error('Failed to update booking status:', error);
-    return { success: false, error: 'Failed to update booking status' };
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to update booking status' };
+  }
+}
+
+export async function bulkUpdateBookingsStatus(currentStatus: string, newStatus: string) {
+  try {
+    const organizationId = await getOrganizationId();
+    
+    // Only update if statuses are different
+    if (currentStatus === newStatus) return { success: true, count: 0 };
+
+    const result = await prisma.booking.updateMany({
+      where: {
+        organizationId,
+        status: currentStatus // Updates all bookings with the old status (Title)
+      },
+      data: {
+        status: newStatus // To the new status (Title)
+      }
+    });
+
+    revalidatePath('/dashboard/crm');
+    return { success: true, count: result.count };
+  } catch (error) {
+    console.error('Failed to bulk update booking status:', error);
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to bulk update status' };
   }
 }
 
@@ -537,35 +562,23 @@ export async function getBookingStats(
       where
     });
 
-    const stats = {
-      all: 0,
-      pending: 0,
-      confirmed: 0,
-      cancelled: 0,
-      completed: 0,
-      noshow: 0
+    const stats: Record<string, number> = {
+      all: 0
     };
 
     statusCounts.forEach((group) => {
       const count = group._count.status;
       stats.all += count;
-      if (group.status === 'pending') stats.pending = count;
-      if (group.status === 'confirmed') stats.confirmed = count;
-      if (group.status === 'cancelled') stats.cancelled = count;
-      if (group.status === 'completed') stats.completed = count;
-      if (group.status === 'no-show') stats.noshow = count;
+      if (group.status) {
+        stats[group.status] = count;
+      }
     });
 
     return stats;
   } catch (error) {
     console.error('Failed to fetch booking stats:', error);
     return {
-      all: 0,
-      pending: 0,
-      confirmed: 0,
-      cancelled: 0,
-      completed: 0,
-      noshow: 0
+      all: 0
     };
   }
 }
