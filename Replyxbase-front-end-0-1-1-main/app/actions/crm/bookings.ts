@@ -183,33 +183,50 @@ export async function createBooking(formData: BookingFormData) {
   try {
     const organizationId = await getOrganizationId();
 
-    // Check if customer exists or create new
-    let customer = await prisma.customer.findFirst({
-      where: {
-        organizationId,
-        email: formData.customer.email,
-      }
-    });
+    // Check if customer exists by email OR phone, create new if not found
+    let customer = null;
+    
+    if (formData.customer.email) {
+      customer = await prisma.customer.findFirst({
+        where: {
+          organizationId,
+          email: formData.customer.email,
+        }
+      });
+    }
+    
+    // If not found by email, try phone
+    if (!customer && formData.customer.phone) {
+      customer = await prisma.customer.findFirst({
+        where: {
+          organizationId,
+          phone: formData.customer.phone,
+        }
+      });
+    }
 
+    // Create new customer if not found
     if (!customer) {
       customer = await prisma.customer.create({
         data: {
           organizationId,
           fullName: formData.customer.fullName,
-          email: formData.customer.email,
-          phone: formData.customer.phone,
+          email: formData.customer.email || '',
+          phone: formData.customer.phone || '',
           company: formData.customer.company,
           address: formData.customer.address,
           notes: formData.customer.notes,
+          status: 'active',
         }
       });
     } else {
-      // Update existing customer info
+      // Update existing customer info with new data
       customer = await prisma.customer.update({
         where: { id: customer.id },
         data: {
           fullName: formData.customer.fullName,
-          phone: formData.customer.phone,
+          email: formData.customer.email || customer.email,
+          phone: formData.customer.phone || customer.phone,
           company: formData.customer.company,
           address: formData.customer.address,
           notes: formData.customer.notes,

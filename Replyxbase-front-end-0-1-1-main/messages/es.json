@@ -1200,8 +1200,7 @@
         }
       }
     },
-  },
-      "Settings": {
+    "Settings": {
         "title": "Configuración",
         "subtitle": "Gestiona las preferencias de tu cuenta y la configuración del espacio de trabajo.",
         "nav": {
@@ -1308,8 +1307,7 @@
             "upgrade": "Actualizar plan"
           }
         }
-      }
-    },
+      },
     "Inbox": {
       "searchPlaceholder": "Search messages...",
       "online": "Online",

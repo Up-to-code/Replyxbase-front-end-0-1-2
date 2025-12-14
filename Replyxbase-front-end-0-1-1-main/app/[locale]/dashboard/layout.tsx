@@ -1,7 +1,8 @@
 import { getSession } from "@/lib/auth-server";
 import { redirect } from "next/navigation";
 import { CreateOrganization } from "@/components/auth/CreateOrganization";
-import { DashboardLayoutClient } from "./components/DashboardLayoutClient";
+import { AppLayout } from "@/components/layout/AppLayout";
+import { AppLayoutProps } from "@/components/layout/AppLayout/types";
 
 import { getAgents } from "@/app/actions/agent";
 import { getOrganizations, getActiveOrganization } from "@/app/actions/organization";
@@ -32,7 +33,21 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   // Fetch agents using the active organization ID
   const agents = await getAgents(activeOrganization.id);
 
-  return <DashboardLayoutClient agents={agents}>{children}</DashboardLayoutClient>;
+  // Transform agents to match AppLayoutProps type
+  const formattedAgents: AppLayoutProps['agents'] = agents.map(agent => ({
+    id: agent.id,
+    organizationId: agent.organizationId,
+    name: agent.name,
+    role: agent.role,
+    status: agent.status,
+    avatar: agent.avatar,
+    isWebsiteEnabled: agent.isWebsiteEnabled,
+    isWhatsappEnabled: agent.isWhatsappEnabled,
+    isDmEnabled: agent.isDmEnabled,
+    createdAt: agent.createdAt
+  }));
+
+  return <AppLayout agents={formattedAgents}>{children}</AppLayout>;
 };
 
 export default DashboardLayout;

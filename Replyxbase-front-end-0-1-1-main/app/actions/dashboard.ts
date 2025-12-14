@@ -14,12 +14,11 @@ export async function getDashboardStats() {
   }
 
   const organizationId = session.session.activeOrganizationId;
-  
   const now = new Date();
   const startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const endOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-
-  // Parallelize data fetching
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+  const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
   const [
     bookingsCount,
     customersCount,
@@ -27,9 +26,9 @@ export async function getDashboardStats() {
     recentBookings,
     todaysBookings,
     recentCustomers,
-    deals
+    pendingBookingsCount,
+    monthBookings
   ] = await Promise.all([
-    // 1. Total Upcoming/Pending Bookings (Future)
     prisma.booking.count({
       where: {
         organizationId,
@@ -37,70 +36,75 @@ export async function getDashboardStats() {
         date: { gte: now }
       }
     }),
-    
-    // 2. Total Customers
     prisma.customer.count({
       where: { organizationId }
     }),
-
-    // 3. Active Agents
     prisma.agent.count({
       where: { 
         organizationId,
         status: 'active'
       }
     }),
-
-    // 4. Recent Bookings (General upcoming list)
     prisma.booking.findMany({
       where: { 
         organizationId,
-        date: { gte: now }
+        date: { gte: now },
+        status: { in: ['pending', 'confirmed'] }
       },
-      orderBy: { date: 'asc' }, // Soonest first
-      take: 5,
+      orderBy: [
+        { date: 'asc' },
+        { startTime: 'asc' }
+      ],
+      take: 10,
       include: { customer: true }
     }),
-
-    // 5. TODAY'S Bookings
     prisma.booking.findMany({
       where: { 
         organizationId,
         date: {
-            gte: startOfToday,
-            lt: endOfToday
+          gte: startOfToday,
+          lt: endOfToday
         },
         status: 'confirmed'
       },
       orderBy: { startTime: 'asc' },
       include: { customer: true }
     }),
-
-    // 6. Recent Customers (Newest first)
     prisma.customer.findMany({
-        where: { organizationId },
-        orderBy: { createdAt: 'desc' },
-        take: 5
+      where: { organizationId },
+      orderBy: { createdAt: 'desc' },
+      take: 5
     }),
-
-    // 7. Pending Bookings (Actionable Items)
     prisma.booking.count({
-        where: {
-            organizationId,
-            status: 'pending'
+      where: {
+        organizationId,
+        status: 'pending'
+      }
+    }),
+    prisma.booking.findMany({
+      where: {
+        organizationId,
+        date: {
+          gte: startOfMonth,
+          lte: endOfMonth
         }
+      },
+      select: { date: true }
     })
   ]);
+
+  const bookingDates = monthBookings.map(b => new Date(b.date).getDate());
 
   return {
     stats: {
         bookings: bookingsCount,
         customers: customersCount,
         activeAgents: activeAgentsCount,
-        pendingBookings: deals // Reuse variable name again for now
+        pendingBookings: pendingBookingsCount
     },
     bookings: recentBookings,
     todaysBookings,
-    recentCustomers
+    recentCustomers,
+    monthBookingDates: bookingDates
   };
 }
